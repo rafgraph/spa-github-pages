@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './components/App';
+import Home from './components/Home';
 import PageNotFound from './components/PageNotFound';
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20,6 +21,7 @@ function redirectToDomain() {
 
 const routes = (
   <Route path="/" component={App}>
+    <IndexRoute component={Home} />
 
     // redirect for github pages
     <Route path={githubRepoName} onEnter={redirectToDomain} />

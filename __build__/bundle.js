@@ -58,6 +58,10 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
+	var _Home = __webpack_require__(231);
+	
+	var _Home2 = _interopRequireDefault(_Home);
+	
 	var _PageNotFound = __webpack_require__(230);
 	
 	var _PageNotFound2 = _interopRequireDefault(_PageNotFound);
@@ -80,6 +84,7 @@
 	var routes = _react2.default.createElement(
 	  _reactRouter.Route,
 	  { path: '/', component: _App2.default },
+	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
 	  '// redirect for github pages',
 	  _react2.default.createElement(_reactRouter.Route, { path: githubRepoName, onEnter: redirectToDomain }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '*', component: _PageNotFound2.default })
@@ -25693,29 +25698,13 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(168);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function App(_ref) {
 	  var children = _ref.children;
 	
 	
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      _reactRouter.Link,
-	      { to: { pathname: '/foo', query: { redirect: true, path: '/abc/qwe/fdfg', hash: 'def' } } },
-	      'to foo'
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      'Hello world'
-	    ),
-	    children
-	  );
+	  return children;
 	}
 	
 	exports.default = App;
@@ -25745,6 +25734,49 @@
 	}
 	
 	exports.default = PageNotFound;
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(168);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function Home() {
+	  var query = {
+	    redirect: true,
+	    path: '/abc/qwe/fdfg',
+	    hash: 'def'
+	  };
+	
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      'Hello world'
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { to: { pathname: '/foo', query: query } },
+	      'to foo'
+	    )
+	  );
+	}
+	
+	exports.default = Home;
 
 /***/ }
 /******/ ]);
