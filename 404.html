@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React for GitHub Pages</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function noAmp(text) {
+        return text.split('&').join('%26');
+      }
+
+      var origin = window.location.origin;
+      var pathname = noAmp(window.location.pathname.split('/').join('%2F'));
+      var query = noAmp(window.location.search.slice(1));
+      var hash = noAmp(window.location.hash.slice(1));
+
+      var redirectTo = origin + '/?' +
+        'redirect=true' +
+        '&pathname=' + pathname +
+        '&query=' + query +
+        '&hash=' + hash;
+
+      location.replace(redirectTo);
+    </script>
+  </body>
+</html>

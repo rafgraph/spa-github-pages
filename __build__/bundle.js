@@ -58,11 +58,11 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _Home = __webpack_require__(231);
+	var _Home = __webpack_require__(230);
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _PageNotFound = __webpack_require__(230);
+	var _PageNotFound = __webpack_require__(231);
 	
 	var _PageNotFound2 = _interopRequireDefault(_PageNotFound);
 	
@@ -75,9 +75,9 @@
 	var githubRepoName = 'react-github-pages';
 	// the custom domain where the site is located
 	// SET THIS: e.g. http://subdomain.example.tld, or http://www.example.tld
-	var domain = 'http://' + githubRepoName + '.' + location.host.replace('www.', '');
+	var domain = 'http://' + githubRepoName + '.' + window.location.host.replace('www.', '');
 	function redirectToDomain() {
-	  location.replace(domain);
+	  window.location.replace(domain);
 	}
 	///////////////////////////////////////////////////////////////////////////////
 	
@@ -25700,43 +25700,15 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function App(_ref) {
-	  var children = _ref.children;
-	
-	
-	  return children;
+	function App(props) {
+	  console.log(props);
+	  return props.children;
 	}
 	
 	exports.default = App;
 
 /***/ },
 /* 230 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function PageNotFound(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    'Page not found'
-	  );
-	}
-	
-	exports.default = PageNotFound;
-
-/***/ },
-/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25777,6 +25749,33 @@
 	}
 	
 	exports.default = Home;
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function PageNotFound(props) {
+	  console.log(props);
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'Page not found'
+	  );
+	}
+	
+	exports.default = PageNotFound;
 
 /***/ }
 /******/ ]);

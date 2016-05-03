@@ -13,9 +13,9 @@ import PageNotFound from './components/PageNotFound';
 const githubRepoName = 'react-github-pages';
 // the custom domain where the site is located
 // SET THIS: e.g. http://subdomain.example.tld, or http://www.example.tld
-const domain = `http://${githubRepoName}.${location.host.replace('www.', '')}`;
+const domain = `http://${githubRepoName}.${window.location.host.replace('www.', '')}`;
 function redirectToDomain() {
-  location.replace(domain)
+  window.location.replace(domain)
 }
 ///////////////////////////////////////////////////////////////////////////////
 
