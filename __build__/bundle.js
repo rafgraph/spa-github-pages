@@ -60,7 +60,25 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var routes = _react2.default.createElement(_reactRouter.Route, { path: '/', component: _App2.default });
+	///////////////////////////////////////////////////////////////////////////////
+	// redirect for github pages, b/c gh-pages are always availble at /my-repo-name
+	// https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/
+	// SET THIS: e.g. my-repo-name
+	var githubRepoName = 'react-github-pages';
+	// the custom domain where the site is located
+	// SET THIS: e.g. http://subdomain.example.tld, or http://www.example.tld
+	var domain = 'http://' + githubRepoName + '.' + location.host.replace('www.', '');
+	function redirectToDomain() {
+	  location.replace(domain);
+	}
+	///////////////////////////////////////////////////////////////////////////////
+	
+	var routes = _react2.default.createElement(
+	  _reactRouter.Route,
+	  { path: '/', component: _App2.default },
+	  '// redirect for github pages',
+	  _react2.default.createElement(_reactRouter.Route, { path: githubRepoName, onEnter: redirectToDomain })
+	);
 	
 	(0, _reactDom.render)(_react2.default.createElement(
 	  _reactRouter.Router,
