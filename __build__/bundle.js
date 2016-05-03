@@ -58,6 +58,10 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
+	var _PageNotFound = __webpack_require__(230);
+	
+	var _PageNotFound2 = _interopRequireDefault(_PageNotFound);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	///////////////////////////////////////////////////////////////////////////////
@@ -77,7 +81,8 @@
 	  _reactRouter.Route,
 	  { path: '/', component: _App2.default },
 	  '// redirect for github pages',
-	  _react2.default.createElement(_reactRouter.Route, { path: githubRepoName, onEnter: redirectToDomain })
+	  _react2.default.createElement(_reactRouter.Route, { path: githubRepoName, onEnter: redirectToDomain }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '*', component: _PageNotFound2.default })
 	);
 	
 	(0, _reactDom.render)(_react2.default.createElement(
@@ -25688,6 +25693,8 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(168);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function App(_ref) {
@@ -25698,6 +25705,11 @@
 	    'div',
 	    null,
 	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { to: { pathname: '/foo', query: { redirect: true, path: '/abc/qwe/fdfg', hash: 'def' } } },
+	      'to foo'
+	    ),
+	    _react2.default.createElement(
 	      'div',
 	      null,
 	      'Hello world'
@@ -25707,6 +25719,32 @@
 	}
 	
 	exports.default = App;
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function PageNotFound(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'Page not found'
+	  );
+	}
+	
+	exports.default = PageNotFound;
 
 /***/ }
 /******/ ]);

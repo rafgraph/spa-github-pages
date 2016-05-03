@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './components/App';
+import PageNotFound from './components/PageNotFound';
 
 ///////////////////////////////////////////////////////////////////////////////
 // redirect for github pages, b/c gh-pages are always availble at /my-repo-name
@@ -18,10 +19,11 @@ function redirectToDomain() {
 ///////////////////////////////////////////////////////////////////////////////
 
 const routes = (
-  <Route path='/' component={App}>
+  <Route path="/" component={App}>
 
     // redirect for github pages
     <Route path={githubRepoName} onEnter={redirectToDomain} />
+    <Route path="*" component={PageNotFound} />
   </Route>
 );
 
