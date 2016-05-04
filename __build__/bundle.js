@@ -81,9 +81,30 @@
 	}
 	///////////////////////////////////////////////////////////////////////////////
 	
+	///////////////////////////////////////////////////////////////////////////////
+	function checkForRedirectQuery(nextState, replace) {
+	  var query = nextState.location.query;
+	  if (query.redirect) {
+	    (function () {
+	      var queryObject = {};
+	      query.query.split('&').map(function (q) {
+	        return q.split('=');
+	      }).forEach(function (arr) {
+	        queryObject[arr[0]] = arr.slice(1).join('=');
+	      });
+	      replace({
+	        pathname: query.pathname,
+	        query: queryObject,
+	        hash: '#' + query.hash
+	      });
+	    })();
+	  }
+	}
+	///////////////////////////////////////////////////////////////////////////////
+	
 	var routes = _react2.default.createElement(
 	  _reactRouter.Route,
-	  { path: '/', component: _App2.default },
+	  { path: '/', component: _App2.default, onEnter: checkForRedirectQuery },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
 	  '// redirect for github pages',
 	  _react2.default.createElement(_reactRouter.Route, { path: githubRepoName, onEnter: redirectToDomain }),

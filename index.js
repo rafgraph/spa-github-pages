@@ -19,8 +19,26 @@ function redirectToDomain() {
 }
 ///////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////
+function checkForRedirectQuery(nextState, replace) {
+  const query = nextState.location.query
+  if (query.redirect) {
+    let queryObject = {};
+    query.query.split('&').map( q => q.split('=') ).forEach( arr => {
+      queryObject[arr[0]] = arr.slice(1).join('=');
+    })
+    replace({
+      pathname: query.pathname,
+      query: queryObject,
+      hash: `#${query.hash}`
+    })
+  }
+}
+///////////////////////////////////////////////////////////////////////////////
+
+
 const routes = (
-  <Route path="/" component={App}>
+  <Route path="/" component={App} onEnter={checkForRedirectQuery}>
     <IndexRoute component={Home} />
 
     // redirect for github pages
