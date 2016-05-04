@@ -1,8 +1,7 @@
 import React from 'react';
 
-function App(props) {
-  console.log(props);
-  return props.children;
+function App({ children }) {
+  return children;
 }
 
 export default App;

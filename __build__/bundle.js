@@ -25731,9 +25731,10 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function App(props) {
-	  console.log(props);
-	  return props.children;
+	function App(_ref) {
+	  var children = _ref.children;
+	
+	  return children;
 	}
 	
 	exports.default = App;
@@ -25757,12 +25758,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function Home() {
-	  var query = {
-	    redirect: true,
-	    path: '/abc/qwe/fdfg',
-	    hash: 'def'
-	  };
-	
 	  return _react2.default.createElement(
 	    'div',
 	    null,
@@ -25773,7 +25768,7 @@
 	    ),
 	    _react2.default.createElement(
 	      _reactRouter.Link,
-	      { to: { pathname: '/foo', query: query } },
+	      { to: { pathname: '/one/two', query: { a: 'b', c: 'd' }, hash: '#def' } },
 	      'to foo'
 	    )
 	  );
@@ -25798,7 +25793,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function PageNotFound(props) {
-	  console.log(props);
 	  return _react2.default.createElement(
 	    'div',
 	    null,
