@@ -85,19 +85,29 @@
 	function checkForRedirectQuery(nextState, replace) {
 	  var query = nextState.location.query;
 	  if (query.redirect) {
-	    (function () {
-	      var queryObject = {};
-	      query.query.split('&').map(function (q) {
-	        return q.split('=');
-	      }).forEach(function (arr) {
-	        queryObject[arr[0]] = arr.slice(1).join('=');
-	      });
-	      replace({
-	        pathname: query.pathname,
-	        query: queryObject,
-	        hash: '#' + query.hash
-	      });
-	    })();
+	    var redirectTo = {};
+	
+	    if (typeof query.pathname === 'string' && query.pathname !== '') {
+	      redirectTo.pathname = query.pathname;
+	    }
+	
+	    if (typeof query.query === 'string' && query.query !== '') {
+	      (function () {
+	        var queryObject = {};
+	        query.query.split('&').map(function (q) {
+	          return q.split('=');
+	        }).forEach(function (arr) {
+	          queryObject[arr[0]] = arr.slice(1).join('=');
+	        });
+	        redirectTo.query = queryObject;
+	      })();
+	    }
+	
+	    if (typeof query.hash === 'string' && query.hash !== '') {
+	      redirectTo.hash = '#' + query.hash;
+	    }
+	
+	    replace(redirectTo);
 	  }
 	}
 	///////////////////////////////////////////////////////////////////////////////

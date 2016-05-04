@@ -23,15 +23,25 @@ function redirectToDomain() {
 function checkForRedirectQuery(nextState, replace) {
   const query = nextState.location.query
   if (query.redirect) {
-    let queryObject = {};
-    query.query.split('&').map( q => q.split('=') ).forEach( arr => {
-      queryObject[arr[0]] = arr.slice(1).join('=');
-    })
-    replace({
-      pathname: query.pathname,
-      query: queryObject,
-      hash: `#${query.hash}`
-    })
+    let redirectTo = {}
+
+    if (typeof query.pathname === 'string' && query.pathname !== '') {
+      redirectTo.pathname = query.pathname;
+    }
+
+    if (typeof query.query === 'string' && query.query !== '') {
+      let queryObject = {};
+      query.query.split('&').map( q => q.split('=') ).forEach( arr => {
+        queryObject[arr[0]] = arr.slice(1).join('=');
+      })
+      redirectTo.query = queryObject;
+    }
+
+    if (typeof query.hash === 'string' && query.hash !== '') {
+      redirectTo.hash = `#${query.hash}`
+    }
+
+    replace(redirectTo)
   }
 }
 ///////////////////////////////////////////////////////////////////////////////
