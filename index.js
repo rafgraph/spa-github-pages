@@ -5,6 +5,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './components/App';
 import Home from './components/Home';
 import PageNotFound from './components/PageNotFound';
+import ExampleComponent from './components/ExampleComponent';
+import ExampleTwoDeepComponent from './components/ExampleTwoDeepComponent';
 
 
 
@@ -68,8 +70,12 @@ function redirectToDomain() {
 
 const routes = (
   // onEnter hook checks for redirect query before App component is loaded
-  <Route path="/" component={App} onEnter={checkForRedirectQuery}>
+  <Route path="/" mapMenuTitle="Home" component={App} onEnter={checkForRedirectQuery}>
     <IndexRoute component={Home} />
+
+    <Route path="example" mapMenuTitle="Example" component={ExampleComponent}>
+      <Route path="two-deep" mapMenuTitle="Two Deep" component={ExampleTwoDeepComponent} />
+    </Route>
 
     // redirect for github pages when accessed at /my-repo-name
     <Route path={githubRepoName} onEnter={redirectToDomain} />

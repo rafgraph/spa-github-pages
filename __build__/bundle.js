@@ -66,6 +66,14 @@
 	
 	var _PageNotFound2 = _interopRequireDefault(_PageNotFound);
 	
+	var _ExampleComponent = __webpack_require__(232);
+	
+	var _ExampleComponent2 = _interopRequireDefault(_ExampleComponent);
+	
+	var _ExampleTwoDeepComponent = __webpack_require__(233);
+	
+	var _ExampleTwoDeepComponent2 = _interopRequireDefault(_ExampleTwoDeepComponent);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	///////////////////////////////////////////////////////////////////////////////
@@ -132,8 +140,13 @@
 	// onEnter hook checks for redirect query before App component is loaded
 	_react2.default.createElement(
 	  _reactRouter.Route,
-	  { path: '/', component: _App2.default, onEnter: checkForRedirectQuery },
+	  { path: '/', mapMenuTitle: 'Home', component: _App2.default, onEnter: checkForRedirectQuery },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
+	  _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: 'example', mapMenuTitle: 'Example', component: _ExampleComponent2.default },
+	    _react2.default.createElement(_reactRouter.Route, { path: 'two-deep', mapMenuTitle: 'Two Deep', component: _ExampleTwoDeepComponent2.default })
+	  ),
 	  '// redirect for github pages when accessed at /my-repo-name',
 	  _react2.default.createElement(_reactRouter.Route, { path: githubRepoName, onEnter: redirectToDomain }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '*', component: _PageNotFound2.default })
@@ -25746,12 +25759,51 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(168);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function App(_ref) {
-	  var children = _ref.children;
+	function App(props) {
+	  console.log(props);
 	
-	  return children;
+	  function mapMenu() {
+	    var path = '';
+	    return props.routes.filter(function (route) {
+	      return route.mapMenuTitle;
+	    }).map(function (route) {
+	      return {
+	        path: path += (path.slice(-1) === '/' ? '' : '/') + route.path.split('/').pop(),
+	        mapMenuTitle: route.mapMenuTitle
+	      };
+	    });
+	  }
+	
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'h2',
+	      null,
+	      'React for Github Pages'
+	    ),
+	    _react2.default.createElement(
+	      'nav',
+	      null,
+	      mapMenu().map(function (route, index, array) {
+	        return _react2.default.createElement(
+	          'span',
+	          { key: index },
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: route.path },
+	            route.mapMenuTitle
+	          ),
+	          index + 1 < array.length && ' > '
+	        );
+	      })
+	    ),
+	    props.children
+	  );
 	}
 	
 	exports.default = App;
@@ -25818,6 +25870,62 @@
 	}
 	
 	exports.default = PageNotFound;
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function ExampleComponent(props) {
+	
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'example component',
+	    props.children
+	  );
+	}
+	
+	exports.default = ExampleComponent;
+
+/***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function ExampleTwoDeepComponent(props) {
+	  console.log(props);
+	
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'example two deep'
+	  );
+	}
+	
+	exports.default = ExampleTwoDeepComponent;
 
 /***/ }
 /******/ ]);
