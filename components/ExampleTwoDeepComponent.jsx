@@ -5,7 +5,7 @@ function ExampleTwoDeepComponent(props) {
 
   return (
     <div>
-      example two deep
+      
     </div>
   )
 }

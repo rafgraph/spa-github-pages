@@ -149,7 +149,7 @@
 	  ),
 	  '// redirect for github pages when accessed at /my-repo-name',
 	  _react2.default.createElement(_reactRouter.Route, { path: githubRepoName, onEnter: redirectToDomain }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '*', component: _PageNotFound2.default })
+	  _react2.default.createElement(_reactRouter.Route, { path: '*', mapMenuTitle: 'Page Not Found', component: _PageNotFound2.default })
 	);
 	
 	(0, _reactDom.render)(_react2.default.createElement(_reactRouter.Router, {
@@ -25791,8 +25791,15 @@
 	    null,
 	    _react2.default.createElement(
 	      'h2',
-	      null,
+	      { style: { marginBottom: 0 } },
 	      'React for Github Pages'
+	    ),
+	    _react2.default.createElement(
+	      'a',
+	      { href: 'https://github.com/rafrex/react-github-pages#readme',
+	        style: { marginBottom: '1em', display: 'block' }
+	      },
+	      'https://github.com/rafrex/react-github-pages'
 	    ),
 	    _react2.default.createElement(
 	      'nav',
@@ -25828,14 +25835,27 @@
 	    'div',
 	    null,
 	    _react2.default.createElement(
-	      'div',
+	      'p',
 	      null,
-	      'Hello world'
+	      'Description... (todo)'
 	    ),
 	    _react2.default.createElement(
-	      _reactRouter.Link,
-	      { to: { pathname: '/one/two', query: { a: 'b', c: 'd' }, hash: '#def' } },
-	      'to foo'
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/example' },
+	        'Example page'
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/example/two-deep?param1=foo&param2=bar' },
+	        'Example two deep with query'
+	      )
 	    )
 	  );
 	}
@@ -25860,9 +25880,9 @@
 	
 	function PageNotFound(props) {
 	  return _react2.default.createElement(
-	    'div',
+	    'p',
 	    null,
-	    'Page not found'
+	    'Page not found - the path did not match any react-router routes.'
 	  );
 	}
 	
@@ -25882,15 +25902,29 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(168);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function ExampleComponent(props) {
-	
+	  console.log(props);
 	  return _react2.default.createElement(
 	    'div',
 	    null,
-	    'example component',
-	    props.children
+	    _react2.default.createElement(
+	      'p',
+	      null,
+	      'You\'re at an example page. Refresh the page or copy/paste the url to test out React for GitHub\'s redirect functionality.'
+	    ),
+	    props.children ? props.children : _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/example/two-deep?param1=foo&param2=bar' },
+	        'Example two deep with query'
+	      )
+	    )
 	  );
 	}
 	
@@ -25915,11 +25949,7 @@
 	function ExampleTwoDeepComponent(props) {
 	  console.log(props);
 	
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    'example two deep'
-	  );
+	  return _react2.default.createElement('div', null);
 	}
 	
 	exports.default = ExampleTwoDeepComponent;

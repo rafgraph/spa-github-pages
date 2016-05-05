@@ -79,7 +79,7 @@ const routes = (
 
     // redirect for github pages when accessed at /my-repo-name
     <Route path={githubRepoName} onEnter={redirectToDomain} />
-    <Route path="*" component={PageNotFound} />
+    <Route path="*" mapMenuTitle="Page Not Found" component={PageNotFound} />
   </Route>
 );
 

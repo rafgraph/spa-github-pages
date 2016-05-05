@@ -4,8 +4,9 @@ import { Link } from 'react-router';
 function Home() {
   return (
     <div>
-      <div>Hello world</div>
-      <Link to={{ pathname: '/one/two', query: { a: 'b', c: 'd' }, hash: '#def' }}>to foo</Link>
+      <p>Description... (todo)</p>
+      <div><Link to="/example">Example page</Link></div>
+      <div><Link to="/example/two-deep?param1=foo&param2=bar">Example two deep with query</Link></div>
     </div>
   );
 }
