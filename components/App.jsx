@@ -11,7 +11,7 @@ function App({ children, routes }) {
           <span key={index}>
             <Link
               to={path += ((path.slice(-1) === '/' ? '' : '/') +
-                  route.path.split('/').pop())}
+                  (route.path === '/' ? '' : route.path))}
             >
               {route.mapMenuTitle}
             </Link>
