@@ -25779,7 +25779,7 @@
 	        _react2.default.createElement(
 	          _reactRouter.Link,
 	          {
-	            to: path += (path.slice(-1) === '/' ? '' : '/') + route.path.split('/').pop()
+	            to: path += (path.slice(-1) === '/' ? '' : '/') + (route.path === '/' ? '' : route.path)
 	          },
 	          route.mapMenuTitle
 	        ),

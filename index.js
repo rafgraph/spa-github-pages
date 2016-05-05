@@ -32,7 +32,7 @@ function checkForRedirectQuery(nextState, replace) {
 
     if (typeof query.query === 'string' && query.query !== '') {
       let queryObject = {};
-      query.query.split('&').map( q => q.split('=') ).forEach( arr => {
+      query.query.split('&').map(q => q.split('=')).forEach(arr => {
         queryObject[arr[0]] = arr.slice(1).join('=');
       })
       redirectTo.query = queryObject;
