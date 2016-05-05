@@ -6,7 +6,7 @@ function ExampleComponent(props) {
   return (
     <div>
       <p>
-        You're at an example page. Refresh the page or copy/paste the url to test out the redirect functionality of React for GitHub Pages.
+        You're at an example page. Refresh the page or copy/paste the url to test out the redirect functionality.
       </p>
       {props.children ? props.children :
         <div><Link to="/example/two-deep?field1=foo&field2=bar">

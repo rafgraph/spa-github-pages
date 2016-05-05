@@ -15,8 +15,8 @@ import ExampleTwoDeepComponent from './components/ExampleTwoDeepComponent';
 // ----------------------------------------------------------------------------
 // Takes the redirect query string created in 404.html, converts it back into
 // the correct url, then uses react-router to redirect to the correct url which
-// loads the repsrective routes and components. When a there is a fresh page
-// load with a path that is defined with frontend routes, GitHub pages will
+// loads the repsrective routes and components. When there is a fresh page
+// load for a path that is defined with frontend routes, GitHub pages will
 // return the custom 404.html page, which then redirects back to just the
 // base domain with a query string representing the attempted url, to which
 // GitHub pages returns index.html. The single page react app is loaded,
