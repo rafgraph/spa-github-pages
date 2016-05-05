@@ -25839,7 +25839,13 @@
 	    _react2.default.createElement(
 	      'p',
 	      null,
-	      'Description... (todo)'
+	      'This is a simple, style free app using the React for GitHub Pages boilerplate. It is built with React and React Router using browserHistory. Navigate with the links below and refresh the page or copy/paste the url to test out the redirect functionality deployed to overcome GitHub Pages incompatibility with single page apps with frontend routing (like this one). For instructions on how to use this boilerplate to deploy your own React project using GitHub Pages see ',
+	      _react2.default.createElement(
+	        'a',
+	        { href: 'https://github.com/rafrex/react-github-pages#readme' },
+	        'the repo'
+	      ),
+	      '.'
 	    ),
 	    _react2.default.createElement(
 	      'div',
@@ -25917,7 +25923,7 @@
 	    _react2.default.createElement(
 	      'p',
 	      null,
-	      'You\'re at an example page. Refresh the page or copy/paste the url to test out the redirect functionality (this same page should load after the redirect).'
+	      'This is an example page. Refresh the page or copy/paste the url to test out the redirect functionality (this same page should load after the redirect).'
 	    ),
 	    children ? children : _react2.default.createElement(
 	      'div',
