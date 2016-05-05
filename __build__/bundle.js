@@ -25972,13 +25972,13 @@
 	    _react2.default.createElement(
 	      'ul',
 	      { style: { marginTop: 0 } },
-	      Object.keys(location.query).map(function (p, index) {
+	      Object.keys(location.query).map(function (field, index) {
 	        return _react2.default.createElement(
 	          'li',
 	          { key: index },
-	          p,
+	          field,
 	          ': ',
-	          location.query[p]
+	          location.query[field]
 	        );
 	      })
 	    )

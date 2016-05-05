@@ -14,9 +14,9 @@ function ExampleTwoDeepComponent({ location }) {
     <div>
       <div>{queryStringTitle()}</div>
       <ul style={{marginTop: 0}}>
-        {Object.keys(location.query).map((p, index) =>
+        {Object.keys(location.query).map((field, index) =>
           <li key={index}>
-            {p}: {location.query[p]}
+            {field}: {location.query[field]}
           </li>
         )}
       </ul>
