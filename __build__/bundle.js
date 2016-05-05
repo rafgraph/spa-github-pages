@@ -25792,7 +25792,7 @@
 	    _react2.default.createElement(
 	      'h2',
 	      { style: { marginBottom: 0 } },
-	      'React for Github Pages'
+	      'React for GitHub Pages'
 	    ),
 	    _react2.default.createElement(
 	      'a',
@@ -25853,7 +25853,7 @@
 	      null,
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/example/two-deep?param1=foo&param2=bar' },
+	        { to: '/example/two-deep?field1=foo&field2=bar' },
 	        'Example two deep with query'
 	      )
 	    )
@@ -25914,14 +25914,14 @@
 	    _react2.default.createElement(
 	      'p',
 	      null,
-	      'You\'re at an example page. Refresh the page or copy/paste the url to test out React for GitHub\'s redirect functionality.'
+	      'You\'re at an example page. Refresh the page or copy/paste the url to test out the redirect functionality of React for GitHub Pages.'
 	    ),
 	    props.children ? props.children : _react2.default.createElement(
 	      'div',
 	      null,
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/example/two-deep?param1=foo&param2=bar' },
+	        { to: '/example/two-deep?field1=foo&field2=bar' },
 	        'Example two deep with query'
 	      )
 	    )
@@ -25948,11 +25948,42 @@
 	
 	function ExampleTwoDeepComponent(props) {
 	  console.log(props);
+	  // debugger;
+	  function queryStringTitle() {
+	    if (Object.keys(props.location.query).length === 0) {
+	      return 'No query string in the url';
+	    } else {
+	      return 'The query string field-value pairs are:';
+	    }
+	  }
 	
-	  return _react2.default.createElement('div', null);
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      queryStringTitle()
+	    ),
+	    _react2.default.createElement(
+	      'ul',
+	      { style: { marginTop: 0 } },
+	      Object.keys(props.location.query).map(function (p, index) {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: index },
+	          p,
+	          ': ',
+	          props.location.query[p]
+	        );
+	      })
+	    )
+	  );
 	}
 	
 	exports.default = ExampleTwoDeepComponent;
+	
+	// {props.location.query.keys.map()}
 
 /***/ }
 /******/ ]);

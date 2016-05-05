@@ -24,7 +24,7 @@ function App(props) {
 
   return(
     <div>
-      <h2 style={{marginBottom: 0}}>React for Github Pages</h2>
+      <h2 style={{marginBottom: 0}}>React for GitHub Pages</h2>
       <a href="https://github.com/rafrex/react-github-pages#readme"
         style={{marginBottom: '1em', display: 'block'}}
       >
