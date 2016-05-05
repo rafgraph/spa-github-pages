@@ -25766,15 +25766,23 @@
 	function App(props) {
 	  console.log(props);
 	
-	  function mapMenu() {
+	  function generateMapMenu() {
 	    var path = '';
 	    return props.routes.filter(function (route) {
 	      return route.mapMenuTitle;
-	    }).map(function (route) {
-	      return {
-	        path: path += (path.slice(-1) === '/' ? '' : '/') + route.path.split('/').pop(),
-	        mapMenuTitle: route.mapMenuTitle
-	      };
+	    }).map(function (route, index, array) {
+	      return _react2.default.createElement(
+	        'span',
+	        { key: index },
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          {
+	            to: path += (path.slice(-1) === '/' ? '' : '/') + route.path.split('/').pop()
+	          },
+	          route.mapMenuTitle
+	        ),
+	        index + 1 < array.length && ' > '
+	      );
 	    });
 	  }
 	
@@ -25789,18 +25797,7 @@
 	    _react2.default.createElement(
 	      'nav',
 	      null,
-	      mapMenu().map(function (route, index, array) {
-	        return _react2.default.createElement(
-	          'span',
-	          { key: index },
-	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { to: route.path },
-	            route.mapMenuTitle
-	          ),
-	          index + 1 < array.length && ' > '
-	        );
-	      })
+	      generateMapMenu()
 	    ),
 	    props.children
 	  );
