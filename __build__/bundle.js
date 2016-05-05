@@ -25763,12 +25763,14 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function App(props) {
-	  console.log(props);
+	function App(_ref) {
+	  var children = _ref.children;
+	  var routes = _ref.routes;
+	
 	
 	  function generateMapMenu() {
 	    var path = '';
-	    return props.routes.filter(function (route) {
+	    return routes.filter(function (route) {
 	      return route.mapMenuTitle;
 	    }).map(function (route, index, array) {
 	      return _react2.default.createElement(
@@ -25788,7 +25790,7 @@
 	
 	  return _react2.default.createElement(
 	    'div',
-	    null,
+	    { style: { maxWidth: '500px' } },
 	    _react2.default.createElement(
 	      'h2',
 	      { style: { marginBottom: 0 } },
@@ -25806,7 +25808,7 @@
 	      null,
 	      generateMapMenu()
 	    ),
-	    props.children
+	    children
 	  );
 	}
 	
@@ -25906,17 +25908,18 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function ExampleComponent(props) {
-	  console.log(props);
+	function ExampleComponent(_ref) {
+	  var children = _ref.children;
+	
 	  return _react2.default.createElement(
 	    'div',
 	    null,
 	    _react2.default.createElement(
 	      'p',
 	      null,
-	      'You\'re at an example page. Refresh the page or copy/paste the url to test out the redirect functionality.'
+	      'You\'re at an example page. Refresh the page or copy/paste the url to test out the redirect functionality (this same page should load after the redirect).'
 	    ),
-	    props.children ? props.children : _react2.default.createElement(
+	    children ? children : _react2.default.createElement(
 	      'div',
 	      null,
 	      _react2.default.createElement(
@@ -25946,11 +25949,12 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function ExampleTwoDeepComponent(props) {
-	  console.log(props);
-	  // debugger;
+	function ExampleTwoDeepComponent(_ref) {
+	  var location = _ref.location;
+	
+	
 	  function queryStringTitle() {
-	    if (Object.keys(props.location.query).length === 0) {
+	    if (Object.keys(location.query).length === 0) {
 	      return 'No query string in the url';
 	    } else {
 	      return 'The query string field-value pairs are:';
@@ -25968,13 +25972,13 @@
 	    _react2.default.createElement(
 	      'ul',
 	      { style: { marginTop: 0 } },
-	      Object.keys(props.location.query).map(function (p, index) {
+	      Object.keys(location.query).map(function (p, index) {
 	        return _react2.default.createElement(
 	          'li',
 	          { key: index },
 	          p,
 	          ': ',
-	          props.location.query[p]
+	          location.query[p]
 	        );
 	      })
 	    )
@@ -25982,8 +25986,6 @@
 	}
 	
 	exports.default = ExampleTwoDeepComponent;
-	
-	// {props.location.query.keys.map()}
 
 /***/ }
 /******/ ]);
