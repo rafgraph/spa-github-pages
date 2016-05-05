@@ -25781,7 +25781,7 @@
 	          },
 	          route.mapMenuTitle
 	        ),
-	        index + 1 < array.length && ' > '
+	        index + 1 < array.length && ' / '
 	      );
 	    });
 	  }

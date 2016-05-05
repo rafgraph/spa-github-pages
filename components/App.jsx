@@ -16,7 +16,7 @@ function App(props) {
             >
               {route.mapMenuTitle}
             </Link>
-            {(index + 1) < array.length && ' > '}
+            {(index + 1) < array.length && ' / '}
           </span>
         ))
     );
