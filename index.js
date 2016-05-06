@@ -15,7 +15,7 @@ import ExampleTwoDeepComponent from './components/ExampleTwoDeepComponent';
 // ----------------------------------------------------------------------------
 // Takes the redirect query string created in 404.html, converts it back into
 // the correct url, then uses react-router to redirect to the correct url which
-// loads the repsrective routes and components. When there is a fresh page
+// loads the respective routes and components. When there is a fresh page
 // load for a path that is defined with frontend routes, GitHub pages will
 // return the custom 404.html page, which then redirects back to just the
 // base domain with a query string representing the attempted url, to which
@@ -51,10 +51,10 @@ function checkForRedirectQuery(nextState, replace) {
 // React for GitHub Pages - https://github.com/rafrex/react-github-pages
 // ----------------------------------------------------------------------------
 // Redirect for github pages from /my-repo-name to your custom domain,
-// because gh-pages are always availble at /my-repo-name even when a
+// because gh-pages are always available at /my-repo-name even when a
 // custom domain is in use. Accessing the site at /my-repo-name will
 // cause the routing to break, so when the site is accessed at /my-repo-name,
-// a redirect to the cutom domain is required.
+// a redirect to the custom domain is required.
 // https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/
 // SET THIS: e.g. my-repo-name
 const githubRepoName = 'react-github-pages';
