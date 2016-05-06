@@ -9,6 +9,14 @@ import ExampleComponent from './components/ExampleComponent';
 import ExampleTwoDeepComponent from './components/ExampleTwoDeepComponent';
 
 
+function checkForRedirect(nextState, replace) {
+  const location = nextState.location;
+  if (location.query.redirect) {
+    parseRedirectQuery(location.query, replace);
+  } else if (location.pathname.split('/')[1] === gitHubRepoName) {
+    redirectToDomain();
+  }
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // React for GitHub Pages - https://github.com/rafrex/react-github-pages
@@ -21,29 +29,26 @@ import ExampleTwoDeepComponent from './components/ExampleTwoDeepComponent';
 // base domain with a query string representing the attempted url, to which
 // GitHub pages returns index.html. The single page react app is loaded,
 // this function is run, and the correct route is entered.
-function checkForRedirectQuery(nextState, replace) {
-  const query = nextState.location.query
-  if (query.redirect) {
-    let redirectTo = {}
+function parseRedirectQuery(query, replace) {
+  let redirectTo = {}
 
-    if (typeof query.pathname === 'string' && query.pathname !== '') {
-      redirectTo.pathname = query.pathname;
-    }
-
-    if (typeof query.query === 'string' && query.query !== '') {
-      let queryObject = {};
-      query.query.split('&').map(q => q.split('=')).forEach(arr => {
-        queryObject[arr[0]] = arr.slice(1).join('=');
-      })
-      redirectTo.query = queryObject;
-    }
-
-    if (typeof query.hash === 'string' && query.hash !== '') {
-      redirectTo.hash = `#${query.hash}`
-    }
-
-    replace(redirectTo)
+  if (typeof query.pathname === 'string' && query.pathname !== '') {
+    redirectTo.pathname = query.pathname;
   }
+
+  if (typeof query.query === 'string' && query.query !== '') {
+    let queryObject = {};
+    query.query.split('&').map(q => q.split('=')).forEach(arr => {
+      queryObject[arr[0]] = arr.slice(1).join('=');
+    })
+    redirectTo.query = queryObject;
+  }
+
+  if (typeof query.hash === 'string' && query.hash !== '') {
+    redirectTo.hash = `#${query.hash}`
+  }
+
+  replace(redirectTo)
 }
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -57,7 +62,7 @@ function checkForRedirectQuery(nextState, replace) {
 // a redirect to the custom domain is required.
 // https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/
 // SET THIS: e.g. my-repo-name
-const githubRepoName = 'react-github-pages';
+const gitHubRepoName = 'react-github-pages';
 // The custom domain for your site
 // SET THIS: e.g. http://subdomain.example.tld, or http://www.example.tld
 const domain = 'http://react-github-pages.rafrex.com';
@@ -69,16 +74,14 @@ function redirectToDomain() {
 
 
 const routes = (
-  // onEnter hook checks for redirect query before App component is loaded
-  <Route path="/" mapMenuTitle="Home" component={App} onEnter={checkForRedirectQuery}>
+  // onEnter hook checks if a redirect is needed before App component is loaded
+  <Route path="/" mapMenuTitle="Home" component={App} onEnter={checkForRedirect}>
     <IndexRoute component={Home} />
 
     <Route path="example" mapMenuTitle="Example" component={ExampleComponent}>
       <Route path="two-deep" mapMenuTitle="Two Deep" component={ExampleTwoDeepComponent} />
     </Route>
 
-    // redirect for github pages when accessed at /my-repo-name
-    <Route path={githubRepoName} onEnter={redirectToDomain} />
     <Route path="*" mapMenuTitle="Page Not Found" component={PageNotFound} />
   </Route>
 );

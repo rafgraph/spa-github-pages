@@ -3,7 +3,7 @@
 
 React for GitHub Pages is a lightweight solution for deploying [React](https://github.com/facebook/react) single page apps (with [React Router](https://github.com/reactjs/react-router) `browserHistory`) using [GitHub Pages](https://pages.github.com/).
 
-I love React with React Router. Need complex views with lifecycle methods and dynamic routing? Done. Need a simple site with a few fixed routes? Use functional stateless components and JSX. Done. And I love GitHub Pages. Git push on a gh-pages branch and it's live on a great CDN (for free), does it get any better than that? But unfortunately GitHub Pages doesn't get along with React, until now...
+I love React with React Router. Need complex views with lifecycle methods and dynamic routing? Done. Need a simple site with a few fixed routes? Use functional stateless components and JSX. Done. And I love GitHub Pages. Git push on a gh-pages branch and it's live on a great CDN (for free), does it get any better than that? But unfortunately GitHub Pages doesn't play nice with React, until now...
 
 ##### Why it's necessary
 GitHub Pages is a static server that doesn't support single page apps. When there is a fresh page load for a url like `example.tld/foo`, where `/foo` is a frontend route, GitHub Pages returns a 404 becasue it knows nothing of `/foo`. (Note you could use `hashHistory` instead, but really no one wants to use `hashHistory` with its janky urls and incompatibility with `#hash-fragments`, e.g. `example.tld/foo` becomes `example.tld/#/foo?_k=yknaj`, ugh).

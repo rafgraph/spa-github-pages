@@ -76,6 +76,15 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function checkForRedirect(nextState, replace) {
+	  var location = nextState.location;
+	  if (location.query.redirect) {
+	    parseRedirectQuery(location.query, replace);
+	  } else if (location.pathname.split('/')[1] === gitHubRepoName) {
+	    redirectToDomain();
+	  }
+	}
+	
 	///////////////////////////////////////////////////////////////////////////////
 	// React for GitHub Pages - https://github.com/rafrex/react-github-pages
 	// ----------------------------------------------------------------------------
@@ -87,33 +96,30 @@
 	// base domain with a query string representing the attempted url, to which
 	// GitHub pages returns index.html. The single page react app is loaded,
 	// this function is run, and the correct route is entered.
-	function checkForRedirectQuery(nextState, replace) {
-	  var query = nextState.location.query;
-	  if (query.redirect) {
-	    var redirectTo = {};
+	function parseRedirectQuery(query, replace) {
+	  var redirectTo = {};
 	
-	    if (typeof query.pathname === 'string' && query.pathname !== '') {
-	      redirectTo.pathname = query.pathname;
-	    }
-	
-	    if (typeof query.query === 'string' && query.query !== '') {
-	      (function () {
-	        var queryObject = {};
-	        query.query.split('&').map(function (q) {
-	          return q.split('=');
-	        }).forEach(function (arr) {
-	          queryObject[arr[0]] = arr.slice(1).join('=');
-	        });
-	        redirectTo.query = queryObject;
-	      })();
-	    }
-	
-	    if (typeof query.hash === 'string' && query.hash !== '') {
-	      redirectTo.hash = '#' + query.hash;
-	    }
-	
-	    replace(redirectTo);
+	  if (typeof query.pathname === 'string' && query.pathname !== '') {
+	    redirectTo.pathname = query.pathname;
 	  }
+	
+	  if (typeof query.query === 'string' && query.query !== '') {
+	    (function () {
+	      var queryObject = {};
+	      query.query.split('&').map(function (q) {
+	        return q.split('=');
+	      }).forEach(function (arr) {
+	        queryObject[arr[0]] = arr.slice(1).join('=');
+	      });
+	      redirectTo.query = queryObject;
+	    })();
+	  }
+	
+	  if (typeof query.hash === 'string' && query.hash !== '') {
+	    redirectTo.hash = '#' + query.hash;
+	  }
+	
+	  replace(redirectTo);
 	}
 	///////////////////////////////////////////////////////////////////////////////
 	
@@ -127,28 +133,26 @@
 	// a redirect to the custom domain is required.
 	// https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/
 	// SET THIS: e.g. my-repo-name
-	var githubRepoName = 'react-github-pages';
+	var gitHubRepoName = 'react-github-pages';
 	// The custom domain for your site
 	// SET THIS: e.g. http://subdomain.example.tld, or http://www.example.tld
-	var domain = 'http://' + githubRepoName + '.' + window.location.host.replace('www.', '');
+	var domain = 'http://react-github-pages.rafrex.com';
 	function redirectToDomain() {
 	  window.location.replace(domain);
 	}
 	///////////////////////////////////////////////////////////////////////////////
 	
 	var routes =
-	// onEnter hook checks for redirect query before App component is loaded
+	// onEnter hook checks if a redirect is needed before App component is loaded
 	_react2.default.createElement(
 	  _reactRouter.Route,
-	  { path: '/', mapMenuTitle: 'Home', component: _App2.default, onEnter: checkForRedirectQuery },
+	  { path: '/', mapMenuTitle: 'Home', component: _App2.default, onEnter: checkForRedirect },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: 'example', mapMenuTitle: 'Example', component: _ExampleComponent2.default },
 	    _react2.default.createElement(_reactRouter.Route, { path: 'two-deep', mapMenuTitle: 'Two Deep', component: _ExampleTwoDeepComponent2.default })
 	  ),
-	  '// redirect for github pages when accessed at /my-repo-name',
-	  _react2.default.createElement(_reactRouter.Route, { path: githubRepoName, onEnter: redirectToDomain }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '*', mapMenuTitle: 'Page Not Found', component: _PageNotFound2.default })
 	);
 	
