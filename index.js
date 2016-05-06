@@ -60,7 +60,7 @@ function checkForRedirectQuery(nextState, replace) {
 const githubRepoName = 'react-github-pages';
 // The custom domain for your site
 // SET THIS: e.g. http://subdomain.example.tld, or http://www.example.tld
-const domain = `http://${githubRepoName}.${window.location.host.replace('www.', '')}`;
+const domain = 'http://react-github-pages.rafrex.com';
 function redirectToDomain() {
   window.location.replace(domain)
 }
