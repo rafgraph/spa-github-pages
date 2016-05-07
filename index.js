@@ -75,7 +75,7 @@ const gitHubRepoName = 'react-github-pages';
 // SET THIS: e.g. http://subdomain.example.tld, or http://www.example.tld
 const domain = 'http://react-github-pages.rafrex.com';
 function redirectToDomain() {
-  window.location.replace(domain)
+  window.location.replace(domain);
 }
 ///////////////////////////////////////////////////////////////////////////////
 
