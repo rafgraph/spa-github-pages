@@ -25873,8 +25873,8 @@
 	      null,
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/example/two-deep?field1=foo&field2=bar' },
-	        'Example two deep with query'
+	        { to: '/example/two-deep?field1=foo&field2=bar#boom!' },
+	        'Example two deep with query and hash'
 	      )
 	    )
 	  );
@@ -25946,8 +25946,8 @@
 	      null,
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/example/two-deep?field1=foo&field2=bar' },
-	        'Example two deep with query'
+	        { to: '/example/two-deep?field1=foo&field2=bar#boom!' },
+	        'Example two deep with query and hash'
 	      )
 	    )
 	  );
@@ -25983,26 +25983,56 @@
 	    }
 	  }
 	
+	  function hashFragmentTitle() {
+	    if (location.hash !== '') {
+	      return 'The hash fragment is:';
+	    } else {
+	      return 'No hash frgament in the url';
+	    }
+	  }
+	
 	  return _react2.default.createElement(
 	    'div',
 	    null,
 	    _react2.default.createElement(
 	      'div',
 	      null,
-	      queryStringTitle()
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        queryStringTitle()
+	      ),
+	      _react2.default.createElement(
+	        'ul',
+	        { style: { marginTop: 0 } },
+	        Object.keys(location.query).map(function (field, index) {
+	          return _react2.default.createElement(
+	            'li',
+	            { key: index },
+	            field,
+	            ': ',
+	            location.query[field]
+	          );
+	        })
+	      )
 	    ),
 	    _react2.default.createElement(
-	      'ul',
-	      { style: { marginTop: 0 } },
-	      Object.keys(location.query).map(function (field, index) {
-	        return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        hashFragmentTitle()
+	      ),
+	      _react2.default.createElement(
+	        'ul',
+	        { style: { marginTop: 0 } },
+	        location.hash !== '' ? _react2.default.createElement(
 	          'li',
-	          { key: index },
-	          field,
-	          ': ',
-	          location.query[field]
-	        );
-	      })
+	          null,
+	          location.hash.slice(1)
+	        ) : undefined
+	      )
 	    )
 	  );
 	}

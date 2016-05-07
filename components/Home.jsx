@@ -16,8 +16,8 @@ function Home() {
         the repo</a>.
       </p>
       <div><Link to="/example">Example page</Link></div>
-      <div><Link to="/example/two-deep?field1=foo&field2=bar">
-        Example two deep with query
+      <div><Link to="/example/two-deep?field1=foo&field2=bar#boom!">
+        Example two deep with query and hash
       </Link></div>
     </div>
   );

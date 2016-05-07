@@ -10,16 +10,32 @@ function ExampleTwoDeepComponent({ location }) {
     }
   }
 
+  function hashFragmentTitle() {
+    if (location.hash !== '') {
+      return 'The hash fragment is:';
+    } else {
+      return 'No hash frgament in the url';
+    }
+  }
+
   return (
     <div>
-      <div>{queryStringTitle()}</div>
-      <ul style={{marginTop: 0}}>
-        {Object.keys(location.query).map((field, index) =>
-          <li key={index}>
-            {field}: {location.query[field]}
-          </li>
-        )}
-      </ul>
+      <div>
+        <div>{queryStringTitle()}</div>
+        <ul style={{marginTop: 0}}>
+          {Object.keys(location.query).map((field, index) =>
+            <li key={index}>
+              {field}: {location.query[field]}
+            </li>
+          )}
+        </ul>
+      </div>
+      <div>
+        <div>{hashFragmentTitle()}</div>
+        <ul style={{marginTop: 0}}>
+          {location.hash !== '' ? <li>{location.hash.slice(1)}</li> : undefined}
+        </ul>
+      </div>
     </div>
   )
 }
