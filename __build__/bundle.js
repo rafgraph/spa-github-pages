@@ -25969,26 +25969,53 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(168);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function ExampleTwoDeepComponent(_ref) {
 	  var location = _ref.location;
 	
 	
+	  var queryPresent = Object.keys(location.query).length !== 0 ? true : false;
+	  var hashPresent = location.hash !== '' ? true : false;
+	
 	  function queryStringTitle() {
-	    if (Object.keys(location.query).length === 0) {
-	      return 'No query string in the url';
-	    } else {
+	    if (queryPresent) {
 	      return 'The query string field-value pairs are:';
+	    } else {
+	      return 'No query string in the url';
 	    }
 	  }
 	
 	  function hashFragmentTitle() {
-	    if (location.hash !== '') {
+	    if (hashPresent) {
 	      return 'The hash fragment is:';
 	    } else {
 	      return 'No hash frgament in the url';
 	    }
+	  }
+	
+	  function linkToShowQueryAndOrHash() {
+	    if (queryPresent && hashPresent) return;
+	
+	    var queryString = queryPresent ? location.search : '?field1=foo&field2=bar';
+	    var hashFragment = hashPresent ? location.hash : '#boom!';
+	
+	    var linkText = '';
+	    if (queryPresent && !hashPresent) linkText = 'Show with hash fragment';
+	    if (!queryPresent && hashPresent) linkText = 'Show with query string';
+	    if (!queryPresent && !hashPresent) linkText = 'Show with query string and hash fragment';
+	
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/example/two-deep' + queryString + hashFragment },
+	        linkText
+	      )
+	    );
 	  }
 	
 	  return _react2.default.createElement(
@@ -26027,13 +26054,14 @@
 	      _react2.default.createElement(
 	        'ul',
 	        { style: { marginTop: 0 } },
-	        location.hash !== '' ? _react2.default.createElement(
+	        hashPresent ? _react2.default.createElement(
 	          'li',
 	          null,
 	          location.hash.slice(1)
 	        ) : undefined
 	      )
-	    )
+	    ),
+	    linkToShowQueryAndOrHash()
 	  );
 	}
 	
