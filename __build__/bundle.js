@@ -85,7 +85,7 @@
 	// for both types and calls the appropriate function to handle the redirect.
 	function checkForRedirect(nextState, replace) {
 	  var location = nextState.location;
-	  if (location.query.redirect) {
+	  if (location.query.redirect === 'true') {
 	    parseRedirectQuery(location.query, replace);
 	  } else if (location.pathname.split('/')[1] === gitHubRepoName) {
 	    redirectToDomain();
