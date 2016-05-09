@@ -1,18 +1,14 @@
 {
   "name": "react-github-pages",
-  "version": "1.0.0",
-  "description": "",
+  "description": "React with React Router boilerplate for GitHub Pages",
+  "author": "rafrex <code@rafrex.com>",
+  "license": "MIT",
+  "private": "true",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rafrex/react-github-pages.git"
   },
-  "keywords": [],
-  "author": "rafrex <code@rafrex.com>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rafrex/react-github-pages/issues"
   },
