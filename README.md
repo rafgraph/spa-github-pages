@@ -19,28 +19,31 @@ The other issue of GitHub Pages always being available at `/my-repo-name` is han
 
 
 ## Usage instructions
-*For general information on using GitHub Pages please see [GitHub Pages Basics][ghPagesBasics], note that pages can be [User, Organization or Project Pages][ghPagesTypes]*
-- Clone this repo (`$ git clone https://github.com/rafrex/react-github-pages.git`)
-- Delete the `.git` directory (`cd` into the `react-github-pages` directory and run `$ rm -rf .git`)
-- If you're using this boilerplate as a new repository
- - `$ git init` in the `react-github-pages` directory, and then `$ git add .` and `$ git commit -m "Add React for GitHub Pages boilerplate"` to initialize a fresh repository
- - If this will be a Project Pages site, then change the branch name from `master` to `gh-pages` (`$ git branch -m gh-pages`), if this will be a User or Organization Pages site, then leave the branch name as `master`
- - Create an empty repo on GitHub.com (don't add a readme, gitignore or license), and add it as a remote to the local repo (`$ git remote add origin <your-new-github-repo-url>`)
- - Feel free to rename the local `react-github-pages` directory to anything you wnat (e.g. `your-project-name`)
-- If you're adding this boilerplate as the `gh-pages` branch of an existing repository
- - Create and checkout a new orphaned branch named `gh-pages` for your existing repo (`$ git checkout --orphan gh-pages`), note that the `gh-pages` branch won't appear in the list of branches until you make your first commit
- - Delete all of the files and directories from the working directory of your existing repo (`$ git rm -rf .`)
- - Copy all of the files and directories from the cloned `react-github-pages` directory into your project's now empty working directory
- - `$ git add .` and `$ git commit -m "Add React for GitHub Pages boilerplate"` to instantiate the `gh-pages` branch
-- Set up your custom domain - see GitHub Pages instructions for [setting up a custom domain][customDomain]
+*For general information on using GitHub Pages please see [GitHub Pages Basics][ghPagesBasics], note that pages can be [User, Organization or Project Pages][ghPagesTypes]*  
+
+1. Clone this repo (`$ git clone https://github.com/rafrex/react-github-pages.git`)
+2. Delete the `.git` directory (`cd` into the `react-github-pages` directory and run `$ rm -rf .git`)
+3. Instantiate the repository
+  - If you're using this boilerplate as a new repository
+    - `$ git init` in the `react-github-pages` directory, and then `$ git add .` and `$ git commit -m "Add React for GitHub Pages boilerplate"` to initialize a fresh repository
+    - If this will be a Project Pages site, then change the branch name from `master` to `gh-pages` (`$ git branch -m gh-pages`), if this will be a User or Organization Pages site, then leave the branch name as `master`
+    - Create an empty repo on GitHub.com (don't add a readme, gitignore or license), and add it as a remote to the local repo (`$ git remote add origin <your-new-github-repo-url>`)
+    - Feel free to rename the local `react-github-pages` directory to anything you wnat (e.g. `your-project-name`)
+  - If you're adding this boilerplate as the `gh-pages` branch of an existing repository
+    - Create and checkout a new orphaned branch named `gh-pages` for your existing repo (`$ git checkout --orphan gh-pages`), note that the `gh-pages` branch won't appear in the list of branches until you make your first commit
+    - Delete all of the files and directories from the working directory of your existing repo (`$ git rm -rf .`)
+    - Copy all of the files and directories from the cloned `react-github-pages` directory into your project's now empty working directory
+    - `$ git add .` and `$ git commit -m "Add React for GitHub Pages boilerplate"` to instantiate the `gh-pages` branch
+4. Set up your custom domain - see GitHub Pages instructions for [setting up a custom domain][customDomain]
+ - *Note that you must use a custom domain if you are setting up a Project Pages site in order for GitHub Pages to serve the custom 404 page, however, if you are creating a User or Organization Pages site, then using a custom domain is optional (if you don't use a custom domain delete the `CNAME` file)*
  - Update the [`CNAME` file][cnameFile] with your custom domain, don't include `http://`, but do include a subdomain if desired, e.g. `www` or `your-subdomain`
  - Update your `CNAME` and/a `A` record with your DNS provider
- - Note that you must use a custom domain if you are setting up a Project Pages site in order for GitHub Pages to serve the custom 404 page, however, if you are creating a User or Organization Pages site, then using a custom domain is optional (if you don't use a custom domain delete the `CNAME` file)
-- [Set your repo name in index.js][setRepoName], this should match your repository name as it is listed on GitHub
-- [Set your domain name in index.js][setDomain], if you are using a custom domain then this should match the domain in your `CNAME` file (except include the `http://`), if you are not using a custom domain, then this will be `http://<your github username or orgname>.github.io`
-- Run `$ npm install` to install React and other dependencies, and then run `$ webpack` to update the build
-- `$ git commit` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin master` for User or Organization Pages)
-- The example site should now be live on your domain
+5. [Set your repo name in index.js][setRepoName], this should match your repository name as it is listed on GitHub
+6. [Set your domain name in index.js][setDomain], if you are using a custom domain then this should match the domain in your `CNAME` file (except include the `http://`), if you are not using a custom domain, then this will be `http://<your github username or orgname>.github.io`
+7. Run `$ npm install` to install React and other dependencies, and then run `$ webpack` to update the build
+8. `$ git commit` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin master` for User or Organization Pages)
+
+The example site should now be live on your domain
 
 ##### Creating your own site
 - Write your own React components, create your own [routes][routes], and add some style!
