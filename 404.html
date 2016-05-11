@@ -17,19 +17,19 @@
       // http://www.foo.tld/?redirect=true&pathname=%2Fone%2Ftwo&query=a=b%26c=d&hash=qwe
       /////////////////////////////////////////////////////////////////////////
 
-      // Remove & from text and replace with %26
+      // Remove '&' from text and replace with '%26'
       function noAmp(text) {
         return text.split('&').join('%26');
       }
 
-      // If browser doesn't support window.location.origin
-      function determineOrigin() {
+      // Incase browser doesn't support window.location.origin
+      function getOrigin() {
         if (window.location.origin) return window.location.origin;
         return window.location.protocol + "//" + window.location.hostname +
-          (window.location.port ? ':' + window.location.port: '');
+          (window.location.port ? ':' + window.location.port : '');
       }
 
-      var origin = determineOrigin();
+      var origin = getOrigin();
       var pathname = noAmp(window.location.pathname.split('/').join('%2F'));
       var query = noAmp(window.location.search.slice(1));
       var hash = noAmp(window.location.hash.slice(1));
