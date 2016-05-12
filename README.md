@@ -1,4 +1,4 @@
-## React for GitHub Pages
+# React for GitHub Pages
 [Live example](http://react-github-pages.rafrex.com)  
 
 React for GitHub Pages is a lightweight solution for deploying [React][react] single page apps with [React Router][reactRouter] `browserHistory` using [GitHub Pages][ghPagesOverview].
@@ -37,11 +37,12 @@ The other issue of GitHub Pages always being available at `/my-repo-name` is han
 4. Set up your custom domain - see GitHub Pages instructions for [setting up a custom domain][customDomain]
  - *Note that you must use a custom domain if you are setting up a Project Pages site in order for GitHub Pages to serve the custom 404 page, however, if you are creating a User or Organization Pages site, then using a custom domain is optional (if you don't use a custom domain delete the `CNAME` file)*
  - Update the [`CNAME` file][cnameFile] with your custom domain, don't include `http://`, but do include a subdomain if desired, e.g. `www` or `your-subdomain`
- - Update your `CNAME` and/a `A` record with your DNS provider
+ - Update your `CNAME` and/or `A` record with your DNS provider
+ - Run `$ dig your-subdomain.your-domain.tld` to make sure it's set up properly with your DNS (don't include `http://`)
 5. [Set your repo name in index.js][setRepoName], this should match your repository name as it is listed on GitHub
 6. [Set your domain name in index.js][setDomain], if you are using a custom domain then this should match the domain in your `CNAME` file (except include the `http://`), if you are not using a custom domain, then this will be `http://<your github username or orgname>.github.io`
 7. Run `$ npm install` to install React and other dependencies, and then run `$ webpack` to update the build
-8. `$ git commit` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin master` for User or Organization Pages)
+8. `$ git add .` and `$ git commit -m "Update boilerplate for use with my domain"` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin master` for User or Organization Pages)
 
 The example site should now be live on your domain
 
@@ -49,11 +50,12 @@ The example site should now be live on your domain
 - Write your own React components, create your own [routes][routes], and add some style!
 - Change the [title in `index.html`][indexHtmlTitle] and the [title in `404.html`][404htmlTitle] to your site's title, also [remove the Google analytics script][googleAnalytics] from the header of `index.html` (the analytics function is wrapped in an `if` statement so that it will only run on the example site's domain (http://react-github-pages.rafrex.com), but you don't need it, so remove it or replace it with your own analytics)
 - Change the readme and license as you see fit
-- After you update your code run `$ webpack` to update the build, then `$ git commit` and `$ git push` to make your changes live
+- After you update your code run `$ webpack` (or `$ webpack -p` for [production][webpackProduction], or `-d` for [development][webpackDevelopment]) to update the build, then `$ git commit` and `$ git push` to make your changes live
 
 ##### Miscellaneous
 - The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
 - Need form submission on your static site? Use [Formspree][formspree]
+- One of the awesome things about the GitHub Pages CDN is that all files are automatically compressed with gzip, so no need to worry about compressing your JavaScript, HTML or CSS files for production
 
 
 ## Want to help?
@@ -97,6 +99,8 @@ Thoughts, questions, suggestions? Contact me via [email][email] or [twitter][twi
 <!-- other links -->
 [react]: https://github.com/facebook/react
 [reactRouter]: https://github.com/reactjs/react-router
+[webpackProduction]: https://webpack.github.io/docs/cli.html#production-shortcut-p
+[webpackDevelopment]: https://webpack.github.io/docs/cli.html#development-shortcut-d
 [formspree]: http://formspree.io/
 [email]: mailto:code@rafrex.com
 [twitter]: https://twitter.com/rafrrex
