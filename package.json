@@ -1,7 +1,7 @@
 {
   "name": "react-github-pages",
   "description": "React with React Router boilerplate for GitHub Pages",
-  "author": "rafrex <code@rafrex.com>",
+  "author": "Rafael Pedicini <code@rafrex.com>",
   "license": "MIT",
   "private": "true",
   "main": "index.js",
