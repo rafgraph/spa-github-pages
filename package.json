@@ -1,18 +1,18 @@
 {
   "name": "react-github-pages",
-  "description": "React with React Router boilerplate for GitHub Pages",
+  "description": "Single Page Apps for GitHub Pages",
   "author": "Rafael Pedicini <code@rafrex.com>",
   "license": "MIT",
   "private": "true",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rafrex/react-github-pages.git"
+    "url": "git+https://github.com/rafrex/spa-github-pages.git"
   },
   "bugs": {
-    "url": "https://github.com/rafrex/react-github-pages/issues"
+    "url": "https://github.com/rafrex/spa-github-pages/issues"
   },
-  "homepage": "https://github.com/rafrex/react-github-pages#readme",
+  "homepage": "https://github.com/rafrex/spa-github-pages#readme",
   "dependencies": {
     "babel-core": "^6.8.0",
     "babel-loader": "^6.2.4",
