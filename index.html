@@ -4,6 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Single Page Apps for GitHub Pages</title>
+    <script type="text/javascript">
+      (function(l) {
+        var gitHubRepoName = 'spa-github-pages'
+        var domain = 'http://spa-github-pages.rafrex.com'
+
+        if (l.pathname.split('/')[1] === gitHubRepoName) {
+          l.replace(domain);
+        }
+      }(window.location))
+    </script>
   </head>
   <body>
     <div id="root"></div>
