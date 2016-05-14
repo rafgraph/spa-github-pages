@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Single Page Apps for GitHub Pages</title>
-  </head>
-  <body>
     <script type="text/javascript">
 
       /////////////////////////////////////////////////////////////////////////
-      // React for GitHub Pages - https://github.com/rafrex/react-github-pages
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafrex/spa-github-pages
       // ----------------------------------------------------------------------
       // This script takes the current url and converts the path, query and
       // hash fragment into just a query string, and then redirects the browser
@@ -24,23 +23,24 @@
 
       // Incase browser doesn't support window.location.origin
       function getOrigin() {
-        if (window.location.origin) return window.location.origin;
-        return window.location.protocol + "//" + window.location.hostname +
-          (window.location.port ? ':' + window.location.port : '');
+        return window.location.protocol + '//' + window.location.hostname +
+        (window.location.port ? ':' + window.location.port : '');
       }
 
-      var origin = getOrigin();
+      var origin = window.location.origin ? window.location.origin : getOrigin();
       var pathname = noAmp(window.location.pathname.split('/').join('%2F'));
       var query = noAmp(window.location.search.slice(1));
       var hash = noAmp(window.location.hash.slice(1));
 
       var redirectTo = origin + '/?' +
-        'redirect=true' +
-        '&pathname=' + pathname +
-        '&query=' + query +
-        '&hash=' + hash;
+      'redirect=true' +
+      '&pathname=' + pathname +
+      '&query=' + query +
+      '&hash=' + hash;
 
       window.location.replace(redirectTo);
     </script>
+  </head>
+  <body>
   </body>
 </html>
