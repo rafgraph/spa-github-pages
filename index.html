@@ -8,15 +8,27 @@
       (function(l) {
         var gitHubRepoName = 'spa-github-pages'
         var domain = 'http://spa-github-pages.rafrex.com'
-
         if (l.pathname.split('/')[1] === gitHubRepoName) {
           l.replace(domain);
+        } else if (l.search) {
+          var q = {};
+          l.search.slice(1).split('&').forEach(function(v) {
+            var a = v.split('=');
+            q[a[0]] = a.slice(1).join('=').replace(/%26/g, '&');
+          });
+          if(q.redirect === 'true') {
+            window.history.replaceState(null, null,
+              (q.pathname ? q.pathname : '') +
+              (q.query ? q.query : '') +
+              l.hash
+            );
+          }
         }
       }(window.location))
     </script>
   </head>
   <body>
     <div id="root"></div>
-    <script src="__build__/bundle.js"></script>
+    <script src="/__build__/bundle.js"></script>
   </body>
 </html>
