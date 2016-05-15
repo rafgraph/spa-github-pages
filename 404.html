@@ -13,7 +13,7 @@
       // string into just a query string, and then redirects the browser
       // to the new url with only a query string and hash fragment,
       // e.g. http://www.foo.tld/one/two?a=b&c=d#qwe, becomes
-      // http://www.foo.tld/?redirect=true&pathname=/one/two&query=a=b%26c=d#qwe
+      // http://www.foo.tld/?redirect=true&pathname=%2Fone%2Ftwo&query=a=b%26c=d#qwe
       // Note: this 404.html file must be at least 512 bytes for it to work
       // with Internet Explorer (it is currently > 512 bytes)
       /////////////////////////////////////////////////////////////////////////
@@ -22,8 +22,8 @@
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
         '/?' + 'redirect=true' +
-        (l.pathname ? '&pathname=' + l.pathname.replace(/&/g, '%26') : '') +
-        (l.search ? '&query=' + l.search.replace(/&/g, '%26') : '') +
+        (l.pathname ? '&pathname=' + l.pathname.replace(/\//g, '%2F').replace(/&/g, '%26') : '') +
+        (l.search ? '&query=' + l.search.replace(/\//g, '%2F').replace(/&/g, '%26') : '') +
         l.hash
       );
 

@@ -40,7 +40,7 @@
           var q = {};
           l.search.slice(1).split('&').forEach(function(v) {
             var a = v.split('=');
-            q[a[0]] = a.slice(1).join('=').replace(/%26/g, '&');
+            q[a[0]] = a.slice(1).join('=').replace(/%2F/g, '/').replace(/%26/g, '&');
           });
           if(q.redirect === 'true') {
             window.history.replaceState(null, null,
@@ -71,7 +71,7 @@
           'please remove the script from the index.html file.');
       }
     </script>
-    <!-- Start Google Analytics -->
+    <!-- End Google Analytics -->
 
   </head>
   <body>
