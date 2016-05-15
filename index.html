@@ -5,9 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Single Page Apps for GitHub Pages</title>
     <script type="text/javascript">
+
+      /////////////////////////////////////////////////////////////////////////
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafrex/spa-github-pages
+      // ----------------------------------------------------------------------
+      // This script checks to see if 1) the site is accessed at /my-repo-name
+      // or if 2) a redirect is present in the query string.
+      // 1. GitHub Pages are always available at /my-repo-name even when a
+      // custom domain is in use, which can break frontend routing, so
+      // if the site is accessed at /my-repo-name a redirect to just
+      // the domain using window.location.replace(...) is required.
+      // https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/
+      // 2. Takes the redirect query string created in the 404.html script,
+      // converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to attempt to load the new url.
+      // When the single page app is loaded further down in this file,
+      // the correct url will be waiting in the browser's history for
+      // the single page app to route accordingly.
+      /////////////////////////////////////////////////////////////////////////
+
       (function(l) {
+        // SET THIS: e.g. my-repo-name
         var gitHubRepoName = 'spa-github-pages'
+        // SET THIS: e.g. http://subdomain.example.tld
         var domain = 'http://spa-github-pages.rafrex.com'
+
         if (l.pathname.split('/')[1] === gitHubRepoName) {
           l.replace(domain);
         } else if (l.search) {
@@ -29,6 +53,7 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- single page app in bundle.js -->
     <script src="/__build__/bundle.js"></script>
   </body>
 </html>
