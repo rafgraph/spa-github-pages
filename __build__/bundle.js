@@ -25066,7 +25066,11 @@
 	    'p',
 	    null,
 	    'Page not found - the path, ',
-	    location.pathname,
+	    _react2.default.createElement(
+	      'code',
+	      null,
+	      location.pathname
+	    ),
 	    ', did not match any React Router routes.'
 	  );
 	}
