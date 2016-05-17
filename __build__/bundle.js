@@ -24971,6 +24971,7 @@
 	function Home() {
 	  var reactLink = 'https://github.com/facebook/react';
 	  var reactRouterLink = 'https://github.com/reactjs/react-router';
+	  var ghPagesLink = 'https://pages.github.com/';
 	  var repoReadmeLink = 'https://github.com/rafrex/spa-github-pages#readme';
 
 	  return _react2.default.createElement(
@@ -24999,7 +25000,14 @@
 	        null,
 	        'browserHistory'
 	      ),
-	      '. Navigate with the links below and refresh the page or copy/paste the url to test out the redirect functionality deployed to overcome GitHub Pages incompatibility with single page apps (like this one).'
+	      '. Navigate with the links below and refresh the page or copy/paste the url to test out the redirect functionality deployed to overcome ',
+	      ' ',
+	      _react2.default.createElement(
+	        'a',
+	        { href: ghPagesLink },
+	        'GitHub Pages'
+	      ),
+	      ' incompatibility with single page apps (like this one).'
 	    ),
 	    _react2.default.createElement(
 	      'p',
