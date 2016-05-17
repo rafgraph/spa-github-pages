@@ -21,14 +21,12 @@ function App({ children, routes }) {
     );
   }
 
+  const repoLink = 'https://github.com/rafrex/spa-github-pages';
+
   return(
-    <div style={{maxWidth: '500px'}}>
-      <h2 style={{marginBottom: 0}}>Single Page Apps for GitHub Pages</h2>
-      <a href="https://github.com/rafrex/spa-github-pages"
-        style={{marginBottom: '1em', display: 'block'}}
-      >
-        https://github.com/rafrex/spa-github-pages
-      </a>
+    <div>
+      <h1>Single Page Apps for GitHub Pages</h1>
+      <a href={repoLink}>https://github.com/rafrex/spa-github-pages</a>
       <nav>
         {generateMapMenu()}
       </nav>

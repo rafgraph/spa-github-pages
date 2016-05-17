@@ -1,0 +1,89 @@
+/*reset*/
+html, body, nav, p, div, span, h1, ul, li, a {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+#root {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #f0f0f0;
+}
+
+#root > div {
+  min-width: 34vw;
+  max-width: 500px;
+  margin: auto;
+  padding: 3vh 3vw 12vh 3vw;
+}
+
+#root > div > a {
+  font-size: 14px;
+}
+
+html {
+  background-color: rgb(0, 120, 0);
+}
+
+body {
+  font-family: helvetica neue, helvetica, sans-serif;;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 0.5vh;
+}
+
+nav {
+  margin: 3vh 0;
+}
+
+p {
+  margin: 3vh 0;
+}
+
+#root > div > div > div {
+  margin: 1vh 0;
+}
+
+#root > div > div > div > div {
+  margin: 3vh 0;
+}
+
+a {
+  border-bottom: 1px dotted rgb(0, 168, 0);
+}
+
+a:hover, a:active {
+  color: rgb(0, 144, 0);
+  border-bottom: 1px dotted #B0B0B0;
+}
+
+li {
+  list-style: none;
+  margin-left: 5px;
+  padding-left: 18px;
+  text-indent: -15px;
+  margin: 0.5vh 0;
+}
+
+li:before {
+  content: "\2013";
+  padding-right: 7px;
+}
+
+code {
+  font-family: monospace;
+  font-size: 14px;
+  padding-left: 2px;
+}

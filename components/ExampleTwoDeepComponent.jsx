@@ -44,7 +44,7 @@ function ExampleTwoDeepComponent({ location }) {
     <div>
       <div>
         <div>{queryStringTitle()}</div>
-        <ul style={{marginTop: 0}}>
+        <ul>
           {Object.keys(location.query).map((field, index) =>
             <li key={index}>
               {field}: {location.query[field]}
@@ -54,7 +54,7 @@ function ExampleTwoDeepComponent({ location }) {
       </div>
       <div>
         <div>{hashFragmentTitle()}</div>
-        <ul style={{marginTop: 0}}>
+        <ul>
           {hashPresent ? <li>{location.hash.slice(1)}</li> : undefined}
         </ul>
       </div>
