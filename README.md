@@ -5,9 +5,9 @@
 This is a lightweight solution for deploying single page apps with [GitHub Pages][ghPagesOverview]. You can easily deploy a [React][react] single page app with [React Router][reactRouter] `browserHostory`, like the one in the [live example][liveExample], or a single page app built with any frontend library or framework.
 
 ##### Why it's necessary
-GitHub Pages is a static server that doesn't support single page apps. When there is a fresh page load for a url like `example.tld/foo`, where `/foo` is a frontend route, GitHub Pages returns a 404 because it knows nothing of `/foo`. This only affects fresh page loads, however, as navigating to `/foo` from within the single page app is not a problem because the server never receives a request for `/foo`.
-
-Also, [GitHub Pages are always available at `example.tld/my-repo-name`][ghPagesMyRepoName], even when a custom domain is in use. Accessing the site at `/my-repo-name` can cause frontend routing to break, so when the site is accessed at `/my-repo-name`, a redirect to just the domain with no path is required.
+There are two separate issues with hosting single page apps with GitHub Pages:
+ 1. The GitHub Pages server doesn't support single page apps. When there is a fresh page load for a url like `example.tld/foo`, where `/foo` is a frontend route, the GitHub Pages server returns 404 because it knows nothing of `/foo`.
+ 2. [GitHub Pages are always available at `example.tld/my-repo-name`][ghPagesMyRepoName], even when a custom domain is in use. Accessing the site at `/my-repo-name` can cause frontend routing to break, so when the site is accessed at `/my-repo-name`, a redirect to just the domain with no path is required.
 
 ##### How it works
 When the GitHub Pages server gets a request for a path defined with frontend routes, e.g. `example.tld/foo`, it returns a custom `404.html` page. The [custom `404.html` page contains a script][404html] that takes the current url and converts the path and query string into just a query string, and then redirects the browser to the new url with only a query string and hash fragment. For example, `example.tld/one/two?a=b&c=d#qwe`, becomes `example.tld/?redirect=true&pathname=%2Fone%2Ftwo&query=a=b%26c=d#qwe`.
