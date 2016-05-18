@@ -62,11 +62,20 @@ p {
 
 a {
   border-bottom: 1px dotted rgb(0, 168, 0);
+  touch-action: none;
+  -ms-touch-action: none;
 }
 
 a:hover, a:active {
   color: rgb(0, 144, 0);
   border-bottom: 1px dotted #B0B0B0;
+}
+
+@media (hover: none) {
+  a:hover {
+    color: inherit;
+    border-bottom: 1px dotted rgb(0, 168, 0);
+  }
 }
 
 li {
@@ -84,6 +93,6 @@ li:before {
 
 code {
   font-family: monospace;
-  font-size: 14px;
+  font-size: 15px;
   padding-left: 2px;
 }
