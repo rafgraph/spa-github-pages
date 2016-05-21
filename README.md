@@ -2,7 +2,7 @@
 
 [Live example][liveExample]  
 
-This is a lightweight solution for deploying single page apps with [GitHub Pages][ghPagesOverview]. You can easily deploy a [React][react] single page app with [React Router][reactRouter] `browserHostory`, like the one in the [live example][liveExample], or a single page app built with any frontend library or framework.
+This is a lightweight solution for deploying single page apps with [GitHub Pages][ghPagesOverview]. You can easily deploy a [React][react] single page app with [React Router][reactRouter] `browserHistory`, like the one in the [live example][liveExample], or a single page app built with any frontend library or framework.
 
 ##### Why it's necessary
 There are two separate issues with hosting single page apps with GitHub Pages:
