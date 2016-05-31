@@ -31,6 +31,10 @@ html, body, nav, p, div, span, h1, ul, li, a {
 
 html {
   background-color: rgb(0, 120, 0);
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
 }
 
 body {
@@ -71,11 +75,9 @@ a:hover, a:active {
   border-bottom: 1px dotted #B0B0B0;
 }
 
-@media (hover: none), (hover: on-demand) {
-  a:hover, a:active {
-    color: inherit;
-    border-bottom: 1px dotted rgb(0, 168, 0);
-  }
+.current-input-touch a:hover, .current-input-touch a:active {
+  color: inherit;
+  border-bottom: 1px dotted rgb(0, 168, 0);
 }
 
 li {
