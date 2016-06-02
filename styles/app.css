@@ -66,14 +66,15 @@ p {
 
 a {
   border-bottom: 1px dotted rgb(0, 168, 0);
-  touch-action: none;
-  -ms-touch-action: none;
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
 }
 
 a:hover, a:active {
   color: rgb(0, 144, 0);
   border-bottom: 1px dotted #B0B0B0;
 }
+
 .current-input-touch a:hover {
   color: inherit;
   border-bottom: 1px dotted rgb(0, 168, 0);
