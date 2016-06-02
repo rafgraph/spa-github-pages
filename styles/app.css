@@ -74,10 +74,14 @@ a:hover, a:active {
   color: rgb(0, 144, 0);
   border-bottom: 1px dotted #B0B0B0;
 }
-
-.current-input-touch a:hover, .current-input-touch a:active {
+.current-input-touch a:hover {
   color: inherit;
   border-bottom: 1px dotted rgb(0, 168, 0);
+}
+
+.current-input-touch a:active {
+  color: rgb(0, 144, 0);
+  border-bottom: 1px solid #B0B0B0;
 }
 
 li {
