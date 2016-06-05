@@ -26259,7 +26259,7 @@
 	      null,
 	      'This is an example page. Refresh the page or copy/paste the url to test out the redirect functionality (this same page should load after the redirect).'
 	    ),
-	    children ? children : _react2.default.createElement(
+	    children || _react2.default.createElement(
 	      'div',
 	      null,
 	      _react2.default.createElement(
@@ -26300,28 +26300,21 @@
 	function ExampleTwoDeepComponent(_ref) {
 	  var location = _ref.location;
 
-
-	  var queryPresent = Object.keys(location.query).length !== 0 ? true : false;
-	  var hashPresent = location.hash !== '' ? true : false;
+	  var queryPresent = Object.keys(location.query).length !== 0;
+	  var hashPresent = location.hash !== '';
 
 	  function queryStringTitle() {
-	    if (queryPresent) {
-	      return 'The query string field-value pairs are:';
-	    } else {
-	      return 'No query string in the url';
-	    }
+	    if (queryPresent) return 'The query string field-value pairs are:';
+	    return 'No query string in the url';
 	  }
 
 	  function hashFragmentTitle() {
-	    if (hashPresent) {
-	      return 'The hash fragment is:';
-	    } else {
-	      return 'No hash frgament in the url';
-	    }
+	    if (hashPresent) return 'The hash fragment is:';
+	    return 'No hash frgament in the url';
 	  }
 
 	  function linkToShowQueryAndOrHash() {
-	    if (queryPresent && hashPresent) return;
+	    if (queryPresent && hashPresent) return null;
 
 	    var queryString = queryPresent ? location.search : '?field1=foo&field2=bar';
 	    var hashFragment = hashPresent ? location.hash : '#boom!';

@@ -6,28 +6,21 @@ const propTypes = {
 };
 
 function ExampleTwoDeepComponent({ location }) {
-
-  const queryPresent = Object.keys(location.query).length !== 0 ? true : false;
-  const hashPresent = location.hash !== '' ? true : false;
+  const queryPresent = Object.keys(location.query).length !== 0;
+  const hashPresent = location.hash !== '';
 
   function queryStringTitle() {
-    if (queryPresent) {
-      return 'The query string field-value pairs are:';
-    } else {
-      return 'No query string in the url';
-    }
+    if (queryPresent) return 'The query string field-value pairs are:';
+    return 'No query string in the url';
   }
 
   function hashFragmentTitle() {
-    if (hashPresent) {
-      return 'The hash fragment is:';
-    } else {
-      return 'No hash frgament in the url';
-    }
+    if (hashPresent) return 'The hash fragment is:';
+    return 'No hash frgament in the url';
   }
 
   function linkToShowQueryAndOrHash() {
-    if (queryPresent && hashPresent) return;
+    if (queryPresent && hashPresent) return null;
 
     const queryString = (queryPresent ? location.search : '?field1=foo&field2=bar');
     const hashFragment = (hashPresent ? location.hash : '#boom!');
