@@ -3,7 +3,6 @@ html, body,  div, span, a, p, ul, li, h1, nav {
   margin: 0;
   border: 0;
   padding: 0;
-  outline: 0;
   box-sizing: inherit;
   font: inherit;
   text-decoration: inherit;
