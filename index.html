@@ -30,9 +30,9 @@
 
       (function(l) {
         // SET THIS: e.g. my-repo-name
-        var gitHubRepoName = 'spa-github-pages'
+        var gitHubRepoName = 'spa-github-pages';
         // SET THIS: e.g. http://subdomain.example.tld
-        var domain = 'http://spa-github-pages.rafrex.com'
+        var domain = 'http://spa-github-pages.rafrex.com';
 
         if (l.pathname.split('/')[1] === gitHubRepoName) {
           l.replace(domain);
@@ -42,7 +42,7 @@
             var a = v.split('=');
             q[a[0]] = a.slice(1).join('=').replace(/%2F/g, '/').replace(/%26/g, '&');
           });
-          if(q.redirect === 'true') {
+          if (q.redirect === 'true') {
             window.history.replaceState(null, null,
               (q.pathname ? q.pathname : '') +
               (q.query ? q.query : '') +
@@ -72,7 +72,7 @@
       }
     </script>
     <!-- End Google Analytics -->
-    
+
     <link rel="stylesheet" href="/styles/app.css">
   </head>
   <body>
