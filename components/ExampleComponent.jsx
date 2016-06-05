@@ -14,7 +14,7 @@ function ExampleComponent({ children }) {
           Example two deep with query and hash
         </Link></div>}
     </div>
-  )
+  );
 }
 
 export default ExampleComponent;

@@ -4,18 +4,18 @@ import { Link } from 'react-router';
 function Home() {
   const reactLink = 'https://github.com/facebook/react';
   const reactRouterLink = 'https://github.com/reactjs/react-router';
-  const ghPagesLink = 'https://pages.github.com/'
+  const ghPagesLink = 'https://pages.github.com/';
   const repoReadmeLink = 'https://github.com/rafrex/spa-github-pages#readme';
 
   return (
     <div>
       <p>
         This is an example single page app built
-        with <a href={reactLink}>React</a> and { ' ' }
-        <a href={reactRouterLink}>React&nbsp;Router</a> using { ' ' }
+        with <a href={reactLink}>React</a> and {' '}
+        <a href={reactRouterLink}>React&nbsp;Router</a> using {' '}
         <code>browserHistory</code>. Navigate with the links below and
         refresh the page or copy/paste the url to test out the redirect
-        functionality deployed to overcome { ' ' }
+        functionality deployed to overcome {' '}
         <a href={ghPagesLink}>GitHub&nbsp;Pages</a> incompatibility
         with single page apps (like this one).
       </p>

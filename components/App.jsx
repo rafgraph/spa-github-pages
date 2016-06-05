@@ -23,7 +23,7 @@ function App({ children, routes }) {
 
   const repoLink = 'https://github.com/rafrex/spa-github-pages';
 
-  return(
+  return (
     <div>
       <h1>Single Page Apps for GitHub Pages</h1>
       <a href={repoLink}>https://github.com/rafrex/spa-github-pages</a>
