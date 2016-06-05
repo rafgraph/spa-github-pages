@@ -29,4 +29,4 @@ render(
     routes={routes}
   />,
   document.getElementById('root')
-)
+);
