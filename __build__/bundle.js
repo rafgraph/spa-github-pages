@@ -25603,6 +25603,13 @@
 
 	  function generateMapMenu() {
 	    var path = '';
+
+	    function nextPath(route) {
+	      path += (path.slice(-1) === '/' ? '' : '/') + (route.path === '/' ? '' : route.path);
+
+	      return path;
+	    }
+
 	    return routes.filter(function (route) {
 	      return route.mapMenuTitle;
 	    }).map(function (route, index, array) {
@@ -25611,9 +25618,7 @@
 	        { key: index },
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          {
-	            to: path += (path.slice(-1) === '/' ? '' : '/') + (route.path === '/' ? '' : route.path)
-	          },
+	          { to: nextPath(route) },
 	          route.mapMenuTitle
 	        ),
 	        index + 1 < array.length && ' / '
