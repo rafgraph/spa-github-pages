@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+
+const propTypes = {
+  location: PropTypes.object.isRequired,
+};
 
 function ExampleTwoDeepComponent({ location }) {
 
@@ -62,5 +66,7 @@ function ExampleTwoDeepComponent({ location }) {
     </div>
   );
 }
+
+ExampleTwoDeepComponent.propTypes = propTypes;
 
 export default ExampleTwoDeepComponent;

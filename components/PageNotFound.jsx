@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+
+const propTypes = {
+  location: PropTypes.object.isRequired,
+};
 
 function PageNotFound({ location }) {
   return (
@@ -8,5 +12,7 @@ function PageNotFound({ location }) {
     </p>
   );
 }
+
+PageNotFound.propTypes = propTypes;
 
 export default PageNotFound;

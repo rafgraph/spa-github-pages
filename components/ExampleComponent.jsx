@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+
+const propTypes = {
+  children: PropTypes.element,
+};
 
 function ExampleComponent({ children }) {
   return (
@@ -16,5 +20,7 @@ function ExampleComponent({ children }) {
     </div>
   );
 }
+
+ExampleComponent.propTypes = propTypes;
 
 export default ExampleComponent;

@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-function App({ children, routes }) {
+const propTypes = {
+  children: PropTypes.element.isRequired,
+  routes: PropTypes.array.isRequired,
+};
 
+const App = ({ children, routes }) => {
   function generateMapMenu() {
     let path = '';
 
@@ -11,7 +15,6 @@ function App({ children, routes }) {
         (path.slice(-1) === '/' ? '' : '/') +
         (route.path === '/' ? '' : route.path)
       );
-
       return path;
     }
 
@@ -38,6 +41,8 @@ function App({ children, routes }) {
       {children}
     </div>
   );
-}
+};
+
+App.propTypes = propTypes;
 
 export default App;
