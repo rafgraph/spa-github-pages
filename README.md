@@ -59,7 +59,8 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
     - Write your own React components, create your own routes, and add your own style!
     - Change the [title in `index.html`][indexHtmlTitle] and the [title in `404.html`][404htmlTitle] to your site's title, also [remove the Google analytics script][googleAnalytics] from the header of `index.html` (the analytics function is wrapped in an `if` statement so that it will only run on the example site's domain (http://spa-github-pages.rafrex.com), but you don't need it, so remove it or replace it with your own analytics)
     - Change the readme, license and package.json as you see fit
-    - After you update your code run `$ webpack` (or `$ webpack -p` for [production][webpackProduction], or `-d` for [development][webpackDevelopment]) to update the build, then `$ git commit` and `$ git push` to make your changes live  
+    - After you update your code run `$ webpack` (or `$ webpack -p` for [production][webpackProduction], or `-d` for [development][webpackDevelopment]) to update the build, then `$ git commit` and `$ git push` to make your changes live
+      - Note that `$ webpack -p` is [overloaded in the webpack config][webpackConfigOverload] to strip out dead code not needed in production (e.g. PropTypes validation, comments, etc)
 
 ##### Miscellaneous
 - The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
@@ -80,6 +81,7 @@ Thoughts, questions, suggestions? Contact me via [email][email] or [twitter][twi
 [indexHtmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L6
 [404htmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L5
 [googleAnalytics]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L58
+[webpackConfigOverload]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/webpack.config.babel.js#L19
 [issues]: https://github.com/rafrex/spa-github-pages/issues
 
 <!-- links to github docs -->
