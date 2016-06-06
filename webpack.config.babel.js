@@ -15,30 +15,21 @@ export default {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  plugins: ((argv) => {
-    const plugins = [];
-    const mode = (() => {
-      if (argv.indexOf('-p') !== -1) return 'production';
-      if (argv.indexOf('-d') !== -1) return 'development';
-      return undefined;
-    })();
-
-    if (mode) {
-      plugins.push(new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify('production'),
-        },
-      }));
+  plugins: (() => {
+    if (process.argv.indexOf('-p') !== -1) {
+      return [
+        new webpack.DefinePlugin({
+          'process.env': {
+            NODE_ENV: JSON.stringify('production'),
+          },
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+          output: {
+            comments: false,
+          },
+        }),
+      ];
     }
-
-    if (mode === 'production') {
-      plugins.push(new webpack.optimize.UglifyJsPlugin({
-        output: {
-          comments: false,
-        },
-      }));
-    }
-
-    return plugins;
-  })(process.argv),
+    return [];
+  })(),
 };
