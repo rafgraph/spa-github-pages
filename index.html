@@ -44,8 +44,8 @@
           });
           if (q.redirect === 'true') {
             window.history.replaceState(null, null,
-              (q.pathname ? q.pathname : '') +
-              (q.query ? q.query : '') +
+              (q.pathname || '') +
+              (q.query || '') +
               l.hash
             );
           }
