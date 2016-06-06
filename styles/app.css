@@ -1,5 +1,5 @@
 /*reset*/
-html, body,  div, span, a, p, ul, li, h1, nav {
+html, body, div, span, a, p, ul, li, h1, nav {
   margin: 0;
   border: 0;
   padding: 0;
@@ -50,18 +50,15 @@ a {
 }
 
 a:hover, a:active {
-  color: rgb(0, 144, 0);
-  border-bottom: 1px dotted #B0B0B0;
+  border-bottom: 1px solid rgb(0, 168, 0);
 }
 
 .current-input-touch a:hover {
-  color: inherit;
   border-bottom: 1px dotted rgb(0, 168, 0);
 }
 
 .current-input-touch a:active {
-  color: rgb(0, 144, 0);
-  border-bottom: 1px solid #B0B0B0;
+  border-bottom: 1px dashed rgb(0, 168, 0);
 }
 
 /*custom bullets*/
