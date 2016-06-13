@@ -6,7 +6,7 @@ const propTypes = {
   routes: PropTypes.array.isRequired,
 };
 
-const App = ({ children, routes }) => {
+function App({ children, routes }) {
   function generateMapMenu() {
     let path = '';
 
@@ -41,7 +41,7 @@ const App = ({ children, routes }) => {
       {children}
     </div>
   );
-};
+}
 
 App.propTypes = propTypes;
 
