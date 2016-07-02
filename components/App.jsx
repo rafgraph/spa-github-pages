@@ -39,6 +39,11 @@ function App({ children, routes }) {
         {generateMapMenu()}
       </nav>
       {children}
+      <div style={{ color: '#A0A0A0', fontSize: '14px', marginTop: '50px' }}>
+        <a href="http://www.rafaelpedicini.com" className="extended-link">
+          Code and concept by <span className="link-style">Rafael Pedicini</span>
+        </a>
+      </div>
     </div>
   );
 }

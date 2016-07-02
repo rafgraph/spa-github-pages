@@ -77,10 +77,41 @@ a:hover, a:active {
 
 .current-input-touch a:hover {
   border-bottom: 1px dotted rgb(0, 168, 0);
+  color: inherit;
 }
 
 .current-input-touch a:active {
   border-bottom: 1px dashed rgb(0, 168, 0);
+}
+
+/*extended link*/
+.extended-link {
+  border: none;
+}
+
+.extended-link:hover, .extended-link:active,
+.current-input-touch .extended-link:active, .current-input-touch .extended-link:hover {
+  border: none;
+  color: inherit;
+}
+
+.extended-link > span {
+  border-bottom: 1px dotted rgb(0, 168, 0);
+}
+
+.extended-link:hover > span, .extended-link:active > span {
+  border-bottom: 1px solid rgb(0, 168, 0);
+  color: black;
+}
+
+.current-input-touch .extended-link:hover > span {
+  border-bottom: 1px dotted rgb(0, 168, 0);
+  color: inherit;
+}
+
+.current-input-touch .extended-link:active > span {
+  border-bottom: 1px dashed rgb(0, 168, 0);
+  color: black;
 }
 
 /*custom bullets*/
