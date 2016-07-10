@@ -34,7 +34,7 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
       - `$ git init` in the `spa-github-pages` directory, and then `$ git add .` and `$ git commit -m "Add SPA for GitHub Pages boilerplate"` to initialize a fresh repository
       - If this will be a Project Pages site, then change the branch name from `master` to `gh-pages` (`$ git branch -m gh-pages`), if this will be a User or Organization Pages site, then leave the branch name as `master`
       - Create an empty repo on GitHub.com (don't add a readme, gitignore or license), and add it as a remote to the local repo (`$ git remote add origin <your-new-github-repo-url>`)
-      - Feel free to rename the local `spa-github-pages` directory to anything you wnat (e.g. `your-project-name`)
+      - Feel free to rename the local `spa-github-pages` directory to anything you want (e.g. `your-project-name`)
     - If you're adding this boilerplate as the `gh-pages` branch of an existing repository
       - Create and checkout a new orphaned branch named `gh-pages` for your existing repo (`$ git checkout --orphan gh-pages`), note that the `gh-pages` branch won't appear in the list of branches until you make your first commit
       - Delete all of the files and directories (except the `.git` directory) from the directory of your existing repo (`$ git rm -rf .`)
