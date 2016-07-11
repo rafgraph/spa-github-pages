@@ -67,13 +67,13 @@ Thoughts, questions, suggestions? Contact me via [email][email] or [twitter][twi
 
 <!-- links to within repo -->
 [404html]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html
-[indexHtmlScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L34
-[indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L92
+[indexHtmlScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L37
+[indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L95
 [cnameFile]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/CNAME
 [indexHtmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L6
 [404htmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L5
-[favicon]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L8
-[googleAnalytics]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L69
+[favicon]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L11
+[googleAnalytics]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L73
 [webpackConfigOverload]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/webpack.config.babel.js#L19
 [issues]: https://github.com/rafrex/spa-github-pages/issues
 
