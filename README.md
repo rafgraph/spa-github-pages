@@ -53,8 +53,18 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
     - Remove the [favicon links][favicon] from the header of `index.html`
     - Remove the [Google analytics script][googleAnalytics] from the header of `index.html` (the analytics function is wrapped in an `if` statement so that it will only run on the example site's domain (http://spa-github-pages.rafrex.com), but you don't need it, so remove it or replace it with your own analytics)
     - Change the readme, license and package.json as you see fit
-    - After you update your code run `$ webpack` (or `$ webpack -p` for [production][webpackProduction], or `-d` for [development][webpackDevelopment]) to update the build, then `$ git commit` and `$ git push` to make your changes live
+    - For testing changes locally see dev environment info below
+    - To publish your changes run `$ webpack -p` for [production][webpackProduction] to update the build, then `$ git commit` and `$ git push` to make your changes live
       - Note that `$ webpack -p` is [overloaded in the webpack config][webpackConfigOverload] to strip out dead code not needed in production (e.g. PropTypes validation, comments, etc)
+
+##### Dev Environment
+- `$ npm start`
+  - which runs both
+    - `$ webpack -d --watch` (for [development with source maps][webpackDevelopment])
+    - `$ live-server --entry-file=404.html`
+
+  TODO add more info on live-server setup  
+  TODO add info for using you own dev setup (webpack and serve index.html and 404.htm)
 
 ##### Miscellaneous
 - The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
