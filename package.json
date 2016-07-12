@@ -7,6 +7,9 @@
   },
   "author": "Rafael Pedicini <code@rafrex.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node_modules/.bin/webpack -d && node app.js"
+  },
   "dependencies": {
     "current-input": "^0.1.0",
     "react": "^15.1.0",
@@ -25,6 +28,8 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.2.3",
     "eslint-plugin-react": "^5.1.1",
+    "hapi": "^13.5.0",
+    "inert": "^4.0.1",
     "webpack": "^1.13.1"
   }
 }
