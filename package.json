@@ -7,6 +7,9 @@
   },
   "author": "Rafael Pedicini <code@rafrex.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --progress --inline --history-api-fallback"
+  },
   "dependencies": {
     "current-input": "^0.1.0",
     "react": "^15.1.0",
@@ -25,6 +28,7 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.2.3",
     "eslint-plugin-react": "^5.1.1",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }

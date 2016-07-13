@@ -56,6 +56,9 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
     - After you update your code run `$ webpack` (or `$ webpack -p` for [production][webpackProduction], or `-d` for [development][webpackDevelopment]) to update the build, then `$ git commit` and `$ git push` to make your changes live
       - Note that `$ webpack -p` is [overloaded in the webpack config][webpackConfigOverload] to strip out dead code not needed in production (e.g. PropTypes validation, comments, etc)
 
+##### Development
+`npm start` after each modification
+
 ##### Miscellaneous
 - The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
 - Need form submission on your static site? Use [Formspree][formspree]
