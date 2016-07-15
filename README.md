@@ -4,10 +4,10 @@
 
 This is a lightweight solution for deploying single page apps with [GitHub Pages][ghPagesOverview]. You can easily deploy a [React][react] single page app with [React Router][reactRouter] `browserHistory`, like the one in the [live example][liveExample], or a single page app built with any frontend library or framework.
 
-##### Why it's necessary
+#### Why it's necessary
 GitHub Pages doesn't natively support single page apps. When there is a fresh page load for a url like `example.tld/foo`, where `/foo` is a frontend route, the GitHub Pages server returns 404 because it knows nothing of `/foo`.
 
-##### How it works
+#### How it works
 When the GitHub Pages server gets a request for a path defined with frontend routes, e.g. `example.tld/foo`, it returns a custom `404.html` page. The [custom `404.html` page contains a script][404html] that takes the current url and converts the path and query string into just a query string, and then redirects the browser to the new url with only a query string and hash fragment. For example, `example.tld/one/two?a=b&c=d#qwe`, becomes `example.tld/?redirect=true&pathname=%2Fone%2Ftwo&query=a=b%26c=d#qwe`.
 
 The GitHub Pages server receives the new request, e.g. `example.tld?redirect=true...`, ignores the query string and hash fragment and returns the `index.html` file, which has a [script that checks for a redirect in the query string][indexHtmlScript] before the single page app is loaded. If a redirect is present it is converted back into the correct url and added to the browser's history with `window.history.replaceState(...)`, but the browser won't attempt to load the new url. When the [single page app is loaded][indexHtmlSPA] further down in the `index.html` file, the correct url will be waiting in the browser's history for the single page app to route accordingly. (Note that these redirects are only needed with fresh page loads, and not when navigating within the single page app once it's loaded).
@@ -57,7 +57,7 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
     - To publish your changes to GitHub Pages run `$ webpack -p` for [production][webpackProduction] to update the build, then `$ git commit` and `$ git push` to make your changes live
       - Note that `$ webpack -p` is [overloaded in the webpack config][webpackConfigOverload] to strip out dead code not needed in production (e.g. PropTypes validation, comments, etc)
 
-##### Development environment
+#### Development environment
 I have included my preferred development environment for testing changes locally, which will auto refresh the browser any time changes are made, and can be accessed by running `$ npm start` (details below). Or you can use your own setup by running `$ webpack` and serving the `index.html` file and the `404.html` file for 404s.
 - `$ npm start` runs the [start script][startScript] in `package.json`, which runs both of the following commands simultaneously:
     - `$ webpack -d --watch`
@@ -66,7 +66,7 @@ I have included my preferred development environment for testing changes locally
     - `$ live-server --entry-file=404.html`
       - [`live-server`][liveServer] does live reloading of all assets - `bundle.js`, `app.css`, etc - the `--entry-file=404.html` will serve `404.html` when the requested file can't be found so it mimics how GitHub Pages works (normally I would set `--entry-file=index.html` which is basically how servers that support single page apps work - and what I wish GitHub Pages would do)
 
-##### Miscellaneous
+#### Miscellaneous
 - The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
 - Need form submission on your static site? Use [Formspree][formspree]
 - One of the awesome things about the GitHub Pages CDN is that all files are automatically compressed with gzip, so no need to worry about compressing your JavaScript, HTML or CSS files for production
