@@ -1,6 +1,9 @@
 {
   "name": "spa-github-pages",
   "description": "Single Page Apps for GitHub Pages",
+  "scripts": {
+    "start": "webpack -d --watch & live-server --entry-file=404.html"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rafrex/spa-github-pages.git"
@@ -25,6 +28,7 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.2.3",
     "eslint-plugin-react": "^5.1.1",
+    "live-server": "^1.0.0",
     "webpack": "^1.13.1"
   }
 }
