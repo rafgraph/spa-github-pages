@@ -53,18 +53,18 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
     - Remove the [favicon links][favicon] from the header of `index.html`
     - Remove the [Google analytics script][googleAnalytics] from the header of `index.html` (the analytics function is wrapped in an `if` statement so that it will only run on the example site's domain (http://spa-github-pages.rafrex.com), but you don't need it, so remove it or replace it with your own analytics)
     - Change the readme, license and package.json as you see fit
-    - For testing changes locally see dev environment info below
-    - To publish your changes run `$ webpack -p` for [production][webpackProduction] to update the build, then `$ git commit` and `$ git push` to make your changes live
+    - For testing changes locally see development environment info below
+    - To publish your changes to GitHub Pages run `$ webpack -p` for [production][webpackProduction] to update the build, then `$ git commit` and `$ git push` to make your changes live
       - Note that `$ webpack -p` is [overloaded in the webpack config][webpackConfigOverload] to strip out dead code not needed in production (e.g. PropTypes validation, comments, etc)
 
-##### Dev Environment
-- `$ npm start`
-  - which runs both
-    - `$ webpack -d --watch` (for [development with source maps][webpackDevelopment])
+##### Development environment
+I have included my preferred development environment for testing changes locally, which will auto refresh the browser any time changes are made, and can be accessed by running `$ npm start` (details below). Or you can use your own setup by running `$ webpack` and serving the `index.html` file and the `404.html` file for 404s.
+- `$ npm start` runs the [start script][startScript] in `package.json`, which runs both of the following commands simultaneously:
+    - `$ webpack -d --watch`
+      - `-d` is for [development mode with source maps][webpackDevelopment]
+      - `--watch` will automatically run `webpack -d` whenever the files change
     - `$ live-server --entry-file=404.html`
-
-  TODO add more info on live-server setup  
-  TODO add info for using you own dev setup (webpack and serve index.html and 404.htm)
+      - [`live-server`][liveServer] does live reloading of all assets - `bundle.js`, `app.css`, etc - the `--entry-file=404.html` will serve `404.html` when the requested file can't be found so it mimics how GitHub Pages works (normally I would set `--entry-file=index.html` which is basically how servers that support single page apps work - and what I wish GitHub Pages would do)
 
 ##### Miscellaneous
 - The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
@@ -85,6 +85,8 @@ Thoughts, questions, suggestions? Contact me via [email][email] or [twitter][twi
 [favicon]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L11
 [googleAnalytics]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L73
 [webpackConfigOverload]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/webpack.config.babel.js#L19
+[startScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/package.json#L5
+[liveServer]: https://github.com/tapio/live-server
 [issues]: https://github.com/rafrex/spa-github-pages/issues
 
 <!-- links to github docs -->
