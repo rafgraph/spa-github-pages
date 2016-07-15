@@ -15,6 +15,13 @@
       // to the new url with only a query string and hash fragment,
       // e.g. http://www.foo.tld/one/two?a=b&c=d#qwe, becomes
       // http://www.foo.tld/?redirect=true&pathname=%2Fone%2Ftwo&query=a=b%26c=d#qwe
+
+      // http://www.foo.tld/?p=one/two&q=a=b-and-b=c#qwe
+      // in index.html check that there is no path and that p !== undefined in search
+      // for path only (but can still work with queries): http://www.foo.tld/?p=one/two
+      // for path only (never queries): http://www.foo.tld/?one/two
+      // ^ in index.html, if there is a query then always convert it into a path
+
       // Note: this 404.html file must be at least 512 bytes for it to work
       // with Internet Explorer (it is currently > 512 bytes)
       /////////////////////////////////////////////////////////////////////////
