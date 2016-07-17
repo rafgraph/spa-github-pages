@@ -14,14 +14,7 @@
       // string into just a query string, and then redirects the browser
       // to the new url with only a query string and hash fragment,
       // e.g. http://www.foo.tld/one/two?a=b&c=d#qwe, becomes
-      // http://www.foo.tld/?redirect=true&pathname=%2Fone%2Ftwo&query=a=b%26c=d#qwe
-
-      // http://www.foo.tld/?p=one/two&q=a=b-and-b=c#qwe
-      // in index.html check that there is no path and that p !== undefined in search
-      // for path only (but can still work with queries): http://www.foo.tld/?p=one/two
-      // for path only (never queries): http://www.foo.tld/?one/two
-      // ^ in index.html, if there is a query then always convert it into a path
-
+      // http://www.foo.tld/?p=/one/two&q=a=b~and~c=d#qwe
       // Note: this 404.html file must be at least 512 bytes for it to work
       // with Internet Explorer (it is currently > 512 bytes)
       /////////////////////////////////////////////////////////////////////////
@@ -29,9 +22,9 @@
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        '/?' + 'redirect=true' +
-        (l.pathname ? '&pathname=' + l.pathname.replace(/\//g, '%2F').replace(/&/g, '%26') : '') +
-        (l.search ? '&query=' + l.search.replace(/\//g, '%2F').replace(/&/g, '%26') : '') +
+        '/?' +
+        (l.pathname ? 'p=' + l.pathname.replace(/&/g, '~and~') : '') +
+        (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
       );
 
