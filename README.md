@@ -1,5 +1,7 @@
 # Single Page Apps for GitHub Pages
 
+> Version 2.0 has an improved redirect query for better SEO performance. The redirect query is what search engines index as the url, which has no negative side effects other than that it is what the user sees as the url on the search results page. The updated query is much more readable by humans so the user has a better semantic understanding of where the search result links to.
+
 [Live example][liveExample]  
 
 This is a lightweight solution for deploying single page apps with [GitHub Pages][ghPagesOverview]. You can easily deploy a [React][react] single page app with [React Router][reactRouter] `browserHistory`, like the one in the [live example][liveExample], or a single page app built with any frontend library or framework.
