@@ -1,8 +1,9 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 import webpack from 'webpack';
 
 export default {
   context: __dirname,
-  entry: './index.js',
+  entry: './index.jsx',
   output: {
     path: `${__dirname}/__build__`,
     filename: 'bundle.js',
