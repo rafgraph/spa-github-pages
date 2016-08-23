@@ -42,14 +42,18 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
       - Delete all of the files and directories (except the `.git` directory) from the directory of your existing repo (`$ git rm -rf .`)
       - Copy all of the files and directories (including hidden dot files) from the cloned `spa-github-pages` directory into your project's now empty directory (`$ mv path/to/spa-github-pages/{.[!.],}* path/to/your-projects-directory`)
       - `$ git add .` and `$ git commit -m "Add SPA for GitHub Pages boilerplate"` to instantiate the `gh-pages` branch
-  4. Set up your custom domain (optional) - see GitHub Pages instructions for [setting up a custom domain][customDomain]
+  4. Set up a custom domain (optional) - see GitHub Pages instructions for [setting up a custom domain][customDomain]
     - Update the [`CNAME` file][cnameFile] with your custom domain, don't include `http://`, but do include a subdomain if desired, e.g. `www` or `your-subdomain`
     - Update your `CNAME` and/or `A` record with your DNS provider
     - Run `$ dig your-subdomain.your-domain.tld` to make sure it's set up properly with your DNS (don't include `http://`)
   5. Set up without using a custom domain (optional)
     - Delete the [`CNAME` file][cnameFile]
-    - If you are creating a User or Organization Pages site, then that's all you need to do.
-    - If you are creating a Project Pages site, (i.e. your site's address is `username.github.io/repo-name`), then you need to set [`pathPrefix` to `true` in the `404.html` file][pathPrefix] in order to keep `/repo-name` in the path after the redirect.
+    - If you are creating a User or Organization Pages site, then that's all you need to do
+    - If you are creating a Project Pages site, (i.e. your site's address is `username.github.io/repo-name`):
+      - Set [`pathPrefix` to `true` in the `404.html` file][pathPrefix] in order to keep `/repo-name` in the path after the redirect
+      - Add your `repo-name` to the absolute path of assets in `index.html`
+        - Change the [stylesheet href][styleHref] to `"/repo-name/styles/app.css"`
+        - Change the [bundle.js src][indexHtmlSPA] to `"/repo-name/__build__/bundle.js"`
   6. Run `$ npm install` to install React and other dependencies, and then run `$ webpack` to update the build
   7. `$ git add .` and `$ git commit -m "Update boilerplate for use with my domain"` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin master` for User or Organization Pages) - the example site should now be live on your domain
   8. Creating your own site
@@ -83,8 +87,9 @@ Thoughts, questions, suggestions? Contact me via [email][email] or [twitter][twi
 <!-- links to within repo -->
 [404html]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html
 [pathPrefix]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L27
+[styleHref]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L35
 [indexHtmlScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L37
-[indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L95
+[indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L96
 [cnameFile]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/CNAME
 [indexHtmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L6
 [404htmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L5
