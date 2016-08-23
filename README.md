@@ -23,7 +23,7 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
 
 **Basic instructions** - there are two things you need from this repo for your single page app to run on GitHub Pages
   1. Copy over the [`404.html`][404html] file to your repo as is
-    - Note that you must use a [custom domain][customDomain] if you are setting up a Project Pages site in order for GitHub Pages to serve the custom 404 page (if you are creating a User or Organization Pages site, then using a custom domain is optional)
+    - Note that if you are setting up a Project Pages site and not using a [custom domain][customDomain] (i.e. your site's address is `username.github.io/repo-name`), then you need to set [`pathPrefix` to `true` in the `404.html` file][pathPrefix] in order to keep `/repo-name` in the path after the redirect.
   2. Copy the [redirect script][indexHtmlScript] in the `index.html` file and add it to your `index.html` file
     - Note that the redirect script must be placed *before* your single page app script in your `index.html` file
 &nbsp;
@@ -42,14 +42,17 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
       - Delete all of the files and directories (except the `.git` directory) from the directory of your existing repo (`$ git rm -rf .`)
       - Copy all of the files and directories (including hidden dot files) from the cloned `spa-github-pages` directory into your project's now empty directory (`$ mv path/to/spa-github-pages/{.[!.],}* path/to/your-projects-directory`)
       - `$ git add .` and `$ git commit -m "Add SPA for GitHub Pages boilerplate"` to instantiate the `gh-pages` branch
-  4. Set up your custom domain - see GitHub Pages instructions for [setting up a custom domain][customDomain]
-    - *Note that you must use a custom domain if you are setting up a Project Pages site in order for GitHub Pages to serve the custom 404 page, however, if you are creating a User or Organization Pages site, then using a custom domain is optional (if you don't use a custom domain delete the `CNAME` file)*
+  4. Set up your custom domain (optional) - see GitHub Pages instructions for [setting up a custom domain][customDomain]
     - Update the [`CNAME` file][cnameFile] with your custom domain, don't include `http://`, but do include a subdomain if desired, e.g. `www` or `your-subdomain`
     - Update your `CNAME` and/or `A` record with your DNS provider
     - Run `$ dig your-subdomain.your-domain.tld` to make sure it's set up properly with your DNS (don't include `http://`)
-  5. Run `$ npm install` to install React and other dependencies, and then run `$ webpack` to update the build
-  6. `$ git add .` and `$ git commit -m "Update boilerplate for use with my domain"` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin master` for User or Organization Pages) - the example site should now be live on your domain
-  7. Creating your own site
+  5. Set up without using a custom domain (optional)
+    - Delete the [`CNAME` file][cnameFile]
+    - If you are creating a User or Organization Pages site, then that's all you need to do.
+    - If you are creating a Project Pages site, (i.e. your site's address is `username.github.io/repo-name`), then you need to set [`pathPrefix` to `true` in the `404.html` file][pathPrefix] in order to keep `/repo-name` in the path after the redirect.
+  6. Run `$ npm install` to install React and other dependencies, and then run `$ webpack` to update the build
+  7. `$ git add .` and `$ git commit -m "Update boilerplate for use with my domain"` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin master` for User or Organization Pages) - the example site should now be live on your domain
+  8. Creating your own site
     - Write your own React components, create your own routes, and add your own style!
     - Change the [title in `index.html`][indexHtmlTitle] and the [title in `404.html`][404htmlTitle] to your site's title
     - Remove the [favicon links][favicon] from the header of `index.html`
@@ -79,6 +82,7 @@ Thoughts, questions, suggestions? Contact me via [email][email] or [twitter][twi
 
 <!-- links to within repo -->
 [404html]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html
+[pathPrefix]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L27
 [indexHtmlScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L37
 [indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L95
 [cnameFile]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/CNAME

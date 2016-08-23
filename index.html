@@ -60,7 +60,7 @@
           });
           if (q.p !== undefined) {
             window.history.replaceState(null, null,
-              (q.p || '') +
+              l.pathname.slice(0, -1) + (q.p || '') +
               (q.q ? ('?' + q.q) : '') +
               l.hash
             );
