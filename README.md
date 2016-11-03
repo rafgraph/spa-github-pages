@@ -56,6 +56,9 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
       - Add your `repo-name` to the absolute path of assets in `index.html`
         - Change the [stylesheet href][styleHref] to `"/repo-name/styles/app.css"`
         - Change the [bundle.js src][indexHtmlSPA] to `"/repo-name/__build__/bundle.js"`
+      - If you are using React Router, you'll need to add the `repo-name` prefix to your routes and links, for example:
+        - `<Route path="/repo-name/about" component={About} />`
+        - `<Link to="/repo-name/about">About</Link>`
   6. Run `$ npm install` to install React and other dependencies, and then run `$ webpack` to update the build
   7. `$ git add .` and `$ git commit -m "Update boilerplate for use with my domain"` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin master` for User or Organization Pages) - the example site should now be live on your domain
   8. Creating your own site
