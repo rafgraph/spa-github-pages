@@ -16,7 +16,7 @@ function ExampleTwoDeepComponent({ location }) {
 
   function hashFragmentTitle() {
     if (hashPresent) return 'The hash fragment is:';
-    return 'No hash frgament in the url';
+    return 'No hash fragment in the url';
   }
 
   function linkToShowQueryAndOrHash() {
