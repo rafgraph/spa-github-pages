@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
+import Interactive from 'react-interactive';
 import { Link } from 'react-router';
+import s from '../styles/exampleTwoDeepComponent.style';
 
 const propTypes = {
   location: PropTypes.object.isRequired,
@@ -31,28 +33,32 @@ function ExampleTwoDeepComponent({ location }) {
     if (!queryPresent && !hashPresent) linkText = 'Show with query string and hash fragment';
 
     return (
-      <div><Link to={`/example/two-deep${queryString}${hashFragment}`}>
-        {linkText}
-      </Link></div>
+      <div style={s.lineContainer}>
+        <Interactive
+          as={Link}
+          to={`/example/two-deep${queryString}${hashFragment}`}
+          {...s.link}
+        >{linkText}</Interactive>
+      </div>
     );
   }
 
   return (
     <div>
-      <div>
+      <div style={s.lineContainer}>
         <div>{queryStringTitle()}</div>
         <ul>
-          {Object.keys(location.query).map((field, index) =>
-            <li key={index}>
-              {field}: {location.query[field]}
-            </li>
-          )}
+          {
+            Object.keys(location.query).map((field, index) => (
+              s.li(`${field}: ${location.query[field]}`, { key: index })
+            ))
+          }
         </ul>
       </div>
-      <div>
+      <div style={s.lineContainer}>
         <div>{hashFragmentTitle()}</div>
         <ul>
-          {hashPresent ? <li>{location.hash.slice(1)}</li> : undefined}
+          {hashPresent ? s.li(location.hash.slice(1)) : undefined}
         </ul>
       </div>
       {linkToShowQueryAndOrHash()}
