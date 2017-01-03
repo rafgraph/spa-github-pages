@@ -6,7 +6,30 @@
     <title>Single Page Apps for GitHub Pages</title>
     <meta name="description" content="Lightweight solution for deploying single page apps with GitHub Pages. Code and concept by Rafael Pedicini.">
 
-    <style>html{background-color: #F0F0F0;}</style>
+    <style>
+      html, body, div, span, a, p, ul, li, h1, code, nav {
+        margin: 0;
+        border: 0;
+        padding: 0;
+        box-sizing: inherit;
+        font: inherit;
+        text-decoration: inherit;
+        text-align: inherit;
+        color: inherit;
+        background: transparent;
+      }
+      /*pass window height (w/o scroll bars) down to react app, note can't use vh becasue that
+      includes scroll bars and mobile browser footer, etc so doesn't give viewable area*/
+      html, body { height: 100%; }
+      html { background-color: rgb(0, 120, 0); }
+      #root { background-color: #F0F0F0; min-height: 100%; }
+
+      /*required for IE/Edge to be compatible with left:50vw & transform:translate(-50%, 0),
+      otherwise there is a phantom div on the right side of the screen (from the left:50vw),
+      that the window will scroll to. Note the left:50vw and transform is used to center content
+      horizaontally based on vw to prevent content jump when vertical scroll bar show/hide.*/
+      body { overflow-x: hidden; }
+    </style>
 
     <!-- start favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="http://favicon.rafrex.com/green-grid-144-168-192/apple-touch-icon-57x57.png">
@@ -31,8 +54,6 @@
     <meta name="msapplication-config" content="http://favicon.rafrex.com/green-grid-144-168-192/browserconfig.xml">
     <meta name="theme-color" content="#000000">
     <!-- end favicon -->
-
-    <link rel="stylesheet" href="/styles/app.css">
 
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
