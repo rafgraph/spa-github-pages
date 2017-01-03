@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Single Page Apps for GitHub Pages",
   "scripts": {
-    "start": "webpack -d --watch & live-server --entry-file=404.html"
+    "start": "webpack-dev-server -d --inline --host 0.0.0.0 --history-api-fallback --progress"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
-    "webpack": "^1.14.0"
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
   }
 }

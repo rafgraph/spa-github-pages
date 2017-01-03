@@ -28,5 +28,5 @@ render(
     history={browserHistory}
     routes={routes}
   />,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

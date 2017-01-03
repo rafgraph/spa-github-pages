@@ -1,9 +1,5 @@
 # Single Page Apps for GitHub Pages
 
-> Version 2.0 has an improved redirect query for better SEO performance. The redirect query is what search engines index as the url, which has no negative side effects other than that it is what the user sees as the url on the search results page. The updated query is much more readable by humans so the user has a better semantic understanding of where the search result links to.  
-
-> Also, check out my latest project [`detect-it`](https://github.com/rafrex/detect-it), which detects if a device is `mouseOnly`, `touchOnly`, or `hybrid`.
-
 [Live example][liveExample]  
 
 This is a lightweight solution for deploying single page apps with [GitHub Pages][ghPagesOverview]. You can easily deploy a [React][react] single page app with [React Router][reactRouter] `browserHistory`, like the one in the [live example][liveExample], or a single page app built with any frontend library or framework.
@@ -54,8 +50,7 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
     - If you are creating a Project Pages site, (i.e. your site's address is `username.github.io/repo-name`):
       - Set [`pathPrefix` to `true` in the `404.html` file][pathPrefix] in order to keep `/repo-name` in the path after the redirect
       - Add your `repo-name` to the absolute path of assets in `index.html`
-        - Change the [stylesheet href][styleHref] to `"/repo-name/styles/app.css"`
-        - Change the [bundle.js src][indexHtmlSPA] to `"/repo-name/__build__/bundle.js"`
+        - Change the [bundle.js src][indexHtmlSPA] to `"/repo-name/build/bundle.js"`
       - If you are using React Router, you'll need to add the `repo-name` prefix to your routes and links, for example:
         - `<Route path="/repo-name/about" component={About} />`
         - `<Link to="/repo-name/about">About</Link>`
@@ -69,30 +64,26 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
     - Change the readme, license and package.json as you see fit
     - For testing changes locally see development environment info below
     - To publish your changes to GitHub Pages run `$ webpack -p` for [production][webpackProduction] to update the build, then `$ git commit` and `$ git push` to make your changes live
-      - Note that `$ webpack -p` is [overloaded in the webpack config][webpackConfigOverload] to strip out dead code not needed in production (e.g. PropTypes validation, comments, etc)
+      - Note that `$ webpack -p` is [overloaded in the webpack config][webpackConfigOverload] to make React run faster (e.g. no PropType checking, etc) and strip out dead code not needed in production (e.g. comments, etc)
 
 #### Development environment
-I have included my preferred development environment for testing changes locally, which will auto refresh the browser any time changes are made, and can be accessed by running `$ npm start` (details below). Or you can use your own setup by running `$ webpack` and serving the `index.html` file and the `404.html` file for 404s.
-- `$ npm start` runs the [start script][startScript] in `package.json`, which runs both of the following commands simultaneously:
-    - `$ webpack -d --watch`
-      - `-d` is for [development mode with source maps][webpackDevelopment]
-      - `--watch` will automatically run `webpack -d` whenever the files change
-    - `$ live-server --entry-file=404.html`
-      - [`live-server`][liveServer] does live reloading of all assets - `bundle.js`, `app.css`, etc - the `--entry-file=404.html` will serve `404.html` when the requested file can't be found so it mimics how GitHub Pages works (normally I would set `--entry-file=index.html` which is basically how servers that support single page apps work - and what I wish GitHub Pages would do)
+I have included `webpack-dev-server` for testing changes locally, and can be accessed by running `$ npm start` (details below), or you can use your own setup by running `$ webpack` and serving the `index.html` file and the `404.html` file for 404s. Note that `webpack-dev-server` automatically creates new bundle whenever the source files change and serves the bundle from memory, so you'll never see the bundle as a file saved to disk.
+- `$ npm start` runs the [start script][startScript] in `package.json`, which runs the command `$ webpack-dev-server -d --inline --host 0.0.0.0 --history-api-fallback --progress`
+  - `-d` is for [development mode with source maps][webpackDevelopment]
+  - `--inline` runs the server in [inline mode][webpackInline] which means that it will automatically push changes to the browser so you don't have to refresh the page.
+  - `--host 0.0.0.0` makes the server listen for requests from the local network and not just the localhost, this is very useful for testing your site on a mobile device connected to your local network.
+  - `--history-api-fallback` allows for frontend routing and will serve `index.html` when the requested file can't be found.
+  - `--progress` shows the progress of the compilation in the command line.
 
 #### Miscellaneous
 - The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
 - Need form submission on your static site? Use [Formspree][formspree]
-- One of the awesome things about the GitHub Pages CDN is that all files are automatically compressed with gzip, so no need to worry about compressing your JavaScript, HTML or CSS files for production
+- One of the great things about the GitHub Pages CDN is that all files are automatically compressed with gzip, so no need to worry about compressing your JavaScript, HTML or CSS files for production
 
-
-Pull requests welcome. Please open [issues][issues] to report bugs.  
-Thoughts, questions, suggestions? Contact me via [email][email] or [twitter][twitter].
 
 <!-- links to within repo -->
 [404html]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html
 [pathPrefix]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L27
-[styleHref]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L35
 [indexHtmlScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L37
 [indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L96
 [cnameFile]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/CNAME
@@ -119,6 +110,7 @@ Thoughts, questions, suggestions? Contact me via [email][email] or [twitter][twi
 [seoLand]: http://searchengineland.com/tested-googlebot-crawls-javascript-heres-learned-220157
 [webpackProduction]: https://webpack.github.io/docs/cli.html#production-shortcut-p
 [webpackDevelopment]: https://webpack.github.io/docs/cli.html#development-shortcut-d
+[webpackInline]: https://webpack.github.io/docs/webpack-dev-server.html#inline-mode
 [formspree]: http://formspree.io/
 [email]: mailto:code@rafrex.com
 [twitter]: https://twitter.com/rafrrex
