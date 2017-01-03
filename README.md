@@ -56,8 +56,9 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
         - `<Link to="/repo-name/about">About</Link>`
   6. Run `$ npm install` to install React and other dependencies, and then run `$ webpack` to update the build
   7. `$ git add .` and `$ git commit -m "Update boilerplate for use with my domain"` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin master` for User or Organization Pages) - the example site should now be live on your domain
-  8. Creating your own site
-    - Write your own React components, create your own routes, and add your own style!
+  8. Create your own site
+    - Write your own React components, create your own routes, and add your own style
+      - Note that the example site is created with all inline styles and uses [React Interactive][reactInteractive] for the links and other interactive components (there is no CSS except for a reset in `index.html`)
     - Change the [title in `index.html`][indexHtmlTitle] and the [title in `404.html`][404htmlTitle] to your site's title
     - Remove the [favicon links][favicon] from the header of `index.html`
     - Remove the [Google analytics script][googleAnalytics] from the header of `index.html` (the analytics function is wrapped in an `if` statement so that it will only run on the example site's domain (http://spa-github-pages.rafrex.com), but you don't need it, so remove it or replace it with your own analytics)
@@ -67,13 +68,13 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
       - Note that `$ webpack -p` is [overloaded in the webpack config][webpackConfigOverload] to make React run faster (e.g. no PropType checking, etc) and strip out dead code not needed in production (e.g. comments, etc)
 
 #### Development environment
-I have included `webpack-dev-server` for testing changes locally, and can be accessed by running `$ npm start` (details below), or you can use your own setup by running `$ webpack` and serving the `index.html` file and the `404.html` file for 404s. Note that `webpack-dev-server` automatically creates new bundle whenever the source files change and serves the bundle from memory, so you'll never see the bundle as a file saved to disk.
+I have included `webpack-dev-server` for testing changes locally. It can be accessed by running `$ npm start` (details below), or you can use your own dev setup by running `$ webpack` and serving the `index.html` file and the `404.html` file for 404s. Note that `webpack-dev-server` automatically creates a new bundle whenever the source files change and serves the bundle from memory, so you'll never see the bundle as a file saved to disk.
 - `$ npm start` runs the [start script][startScript] in `package.json`, which runs the command `$ webpack-dev-server -d --inline --host 0.0.0.0 --history-api-fallback --progress`
   - `-d` is for [development mode with source maps][webpackDevelopment]
-  - `--inline` runs the server in [inline mode][webpackInline] which means that it will automatically push changes to the browser so you don't have to refresh the page.
-  - `--host 0.0.0.0` makes the server listen for requests from the local network and not just the localhost, this is very useful for testing your site on a mobile device connected to your local network.
-  - `--history-api-fallback` allows for frontend routing and will serve `index.html` when the requested file can't be found.
-  - `--progress` shows the progress of the compilation in the command line.
+  - `--inline` runs the server in [inline mode][webpackInline] which means that it will automatically push changes to the browser so you don't have to refresh the page
+  - `--host 0.0.0.0` makes the server listen for requests from the local network and not just the localhost, this is very useful for testing your site on a mobile device connected to your local network
+  - `--history-api-fallback` allows for frontend routing and will serve `index.html` when the requested file can't be found
+  - `--progress` shows the progress of the compilation in the command line
 
 #### Miscellaneous
 - The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
@@ -83,18 +84,16 @@ I have included `webpack-dev-server` for testing changes locally, and can be acc
 
 <!-- links to within repo -->
 [404html]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html
-[pathPrefix]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L27
-[indexHtmlScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L37
-[indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L96
+[pathPrefix]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L24
+[indexHtmlScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L58
+[indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L113
 [cnameFile]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/CNAME
 [indexHtmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L6
 [404htmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L5
-[favicon]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L11
-[googleAnalytics]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L73
-[webpackConfigOverload]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/webpack.config.babel.js#L19
-[startScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/package.json#L5
-[liveServer]: https://github.com/tapio/live-server
-[issues]: https://github.com/rafrex/spa-github-pages/issues
+[favicon]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L34
+[googleAnalytics]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L90
+[webpackConfigOverload]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/webpack.config.babel.js#L21
+[startScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/package.json#L6
 
 <!-- links to github docs -->
 [ghPagesOverview]: https://pages.github.com/
@@ -111,6 +110,5 @@ I have included `webpack-dev-server` for testing changes locally, and can be acc
 [webpackProduction]: https://webpack.github.io/docs/cli.html#production-shortcut-p
 [webpackDevelopment]: https://webpack.github.io/docs/cli.html#development-shortcut-d
 [webpackInline]: https://webpack.github.io/docs/webpack-dev-server.html#inline-mode
+[reactInteractive]: https://github.com/rafrex/react-interactive
 [formspree]: http://formspree.io/
-[email]: mailto:code@rafrex.com
-[twitter]: https://twitter.com/rafrrex
