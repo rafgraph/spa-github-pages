@@ -1,6 +1,6 @@
 {
   "name": "spa-github-pages",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Single Page Apps for GitHub Pages",
   "scripts": {
     "start": "webpack-dev-server -d --inline --host 0.0.0.0 --history-api-fallback --progress"
