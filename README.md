@@ -75,6 +75,7 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
   - `--host 0.0.0.0` makes the server listen for requests from the local network and not just the localhost, this is very useful for testing your site on a mobile device connected to your local network
   - `--history-api-fallback` allows for frontend routing and will serve `index.html` when the requested file can't be found
   - `--progress` shows the progress of the compilation in the command line
+- `webpack-dev-server` will serve `index.html` at `http://localhost:8080` (port 8080 is the default). Note that you must load the `index.html` from the server and not just open it directly in the browser or the scripts won't load.
 
 #### Miscellaneous
 - The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
