@@ -9,7 +9,8 @@
     "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
     "no-plusplus": "off",
     "import/no-extraneous-dependencies": ["error", {"devDependencies": ["./webpack.config.babel.js"]}],
-    "react/forbid-prop-types": "off"
+    "react/forbid-prop-types": "off",
+    "react/jsx-filename-extension": "off"
   },
   "parserOptions": {
     "ecmaFeatures": {
