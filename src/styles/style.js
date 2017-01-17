@@ -18,11 +18,14 @@ const link = {
     outlineOffset: '2px',
     color: 'black',
   },
+  touchActiveTapOnly: true,
 };
 
 const childLink = {};
 Object.keys(link).forEach((key) => {
-  childLink[`onParent${key.slice(0, 1).toUpperCase()}${key.slice(1)}`] = link[key];
+  if (key !== 'touchActiveTapOnly') {
+    childLink[`onParent${key.slice(0, 1).toUpperCase()}${key.slice(1)}`] = link[key];
+  }
 });
 
 export default {

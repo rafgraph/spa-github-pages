@@ -56,6 +56,7 @@ function App({ children, routes }) {
           interactiveChild
           focus={{}}
           touchActive={{}}
+          touchActiveTapOnly
         >
           Code and concept by <span {...s.childLink}>Rafael Pedicini</span>
         </Interactive>
