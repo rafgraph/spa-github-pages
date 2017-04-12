@@ -21,7 +21,7 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
 
 **Basic instructions** - there are two things you need from this repo for your single page app to run on GitHub Pages
   1. Copy over the [`404.html`][404html] file to your repo as is
-    - Note that if you are setting up a Project Pages site and not using a [custom domain][customDomain] (i.e. your site's address is `username.github.io/repo-name`), then you need to set [`pathPrefix` to `true` in the `404.html` file][pathPrefix] in order to keep `/repo-name` in the path after the redirect.
+    - Note that if you are setting up a Project Pages site and not using a [custom domain][customDomain] (i.e. your site's address is `username.github.io/repo-name`), then you need to set [`segmentCount` to `1` in the `404.html` file][segmentCount] in order to keep `/repo-name` in the path after the redirect.
   2. Copy the [redirect script][indexHtmlScript] in the `index.html` file and add it to your `index.html` file
     - Note that the redirect script must be placed *before* your single page app script in your `index.html` file
 &nbsp;
@@ -48,7 +48,7 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
     - Delete the [`CNAME` file][cnameFile]
     - If you are creating a User or Organization Pages site, then that's all you need to do
     - If you are creating a Project Pages site, (i.e. your site's address is `username.github.io/repo-name`):
-      - Set [`pathPrefix` to `true` in the `404.html` file][pathPrefix] in order to keep `/repo-name` in the path after the redirect
+      - Set [`segmentCount` to `1` in the `404.html` file][segmentCount] in order to keep `/repo-name` in the path after the redirect
       - Add your `repo-name` to the absolute path of assets in `index.html`
         - Change the [bundle.js src][indexHtmlSPA] to `"/repo-name/build/bundle.js"`
       - If you are using React Router, you'll need to add the `repo-name` prefix to your routes and links, for example:
@@ -85,7 +85,7 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
 
 <!-- links to within repo -->
 [404html]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html
-[pathPrefix]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L24
+[segmentCount]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L26
 [indexHtmlScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L58
 [indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L113
 [cnameFile]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/CNAME
