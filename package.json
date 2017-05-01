@@ -3,7 +3,8 @@
   "version": "4.0.0",
   "description": "Single Page Apps for GitHub Pages",
   "scripts": {
-    "start": "webpack-dev-server -d --history-api-fallback"
+    "start": "webpack-dev-server -d --history-api-fallback",
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
