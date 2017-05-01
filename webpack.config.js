@@ -1,6 +1,6 @@
-import webpack from 'webpack';
+const webpack = require('webpack');
 
-export default {
+module.exports = {
   entry: `${__dirname}/src/index.js`,
   output: {
     path: `${__dirname}/build`,
@@ -9,16 +9,12 @@ export default {
   },
 
   module: {
-    loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel' },
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
     ],
   },
 
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-  },
-
-  plugins: process.argv.indexOf('-p') === -1 ? null : [
+  plugins: process.argv.indexOf('-p') === -1 ? [] : [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
