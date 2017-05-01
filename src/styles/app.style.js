@@ -3,7 +3,7 @@ import style from './style';
 const s = Object.create(style);
 
 s.root = {
-  fontFamily: 'helvetica neue, helvetica, sans-serif',
+  fontFamily: 'helvetica, sans-serif',
   fontWeight: '300',
   fontSize: '16px',
   letterSpacing: '0.025em',
