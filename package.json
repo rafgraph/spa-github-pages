@@ -1,6 +1,7 @@
 {
   "name": "spa-github-pages",
   "version": "4.0.0",
+  "private": true,
   "description": "Single Page Apps for GitHub Pages",
   "scripts": {
     "start": "webpack-dev-server --devtool eval-source-map --history-api-fallback --open",
