@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Interactive from 'react-interactive';
 import { Link } from 'react-router-dom';
+import { Li } from '../styles/style';
 import s from '../styles/exampleTwoDeepComponent.style';
 
 const propTypes = {
@@ -60,7 +61,7 @@ export default function ExampleTwoDeepComponent({ location }) {
         <ul>
           {
             parseQueryString().map((pair, index) => (
-              s.li(`${pair[0]}: ${pair[1]}`, { key: index })
+              <Li key={`${pair[0]}${pair[1]}${index}`}>{`${pair[0]}: ${pair[1]}`}</Li>
             ))
           }
         </ul>
@@ -68,7 +69,7 @@ export default function ExampleTwoDeepComponent({ location }) {
       <div style={s.lineContainer}>
         <div>{hashFragmentTitle()}</div>
         <ul>
-          {hashPresent ? s.li(location.hash.slice(1)) : undefined}
+          {hashPresent && <Li>{location.hash.slice(1)}</Li>}
         </ul>
       </div>
       {linkToShowQueryAndOrHash()}
