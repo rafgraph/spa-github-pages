@@ -2,7 +2,7 @@
 
 [Live example][liveExample]  
 
-This is a lightweight solution for deploying single page apps with [GitHub Pages][ghPagesOverview]. You can easily deploy a [React][react] single page app with [React Router][reactRouter] `browserHistory`, like the one in the [live example][liveExample], or a single page app built with any frontend library or framework.
+This is a lightweight solution for deploying single page apps with [GitHub Pages][ghPagesOverview]. You can easily deploy a [React][react] single page app with [React Router][reactRouter] `<BrowserRouter />`, like the one in the [live example][liveExample], or a single page app built with any frontend library or framework.
 
 #### Why it's necessary
 GitHub Pages doesn't natively support single page apps. When there is a fresh page load for a url like `example.tld/foo`, where `/foo` is a frontend route, the GitHub Pages server returns 404 because it knows nothing of `/foo`.
@@ -101,7 +101,7 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
 <!-- other links -->
 [liveExample]: http://spa-github-pages.rafrex.com
 [react]: https://github.com/facebook/react
-[reactRouter]: https://github.com/reactjs/react-router
+[reactRouter]: https://github.com/ReactTraining/react-router
 [seoLand]: http://searchengineland.com/tested-googlebot-crawls-javascript-heres-learned-220157
 [webpackProduction]: https://webpack.js.org/guides/production-build/#the-automatic-way
 [webpackDevtool]: https://webpack.js.org/configuration/devtool/
