@@ -54,28 +54,25 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
       - If you are using React Router, you'll need to add the `repo-name` prefix to your routes and links, for example:
         - `<Route path="/repo-name/about" component={About} />`
         - `<Link to="/repo-name/about">About</Link>`
-  6. Run `$ npm install` to install React and other dependencies, and then run `$ webpack` to update the build
+  6. Run `$ npm install` to install React and other dependencies, and then run `$ npm run build` to update the build
   7. `$ git add .` and `$ git commit -m "Update boilerplate for use with my domain"` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin master` for User or Organization Pages) - the example site should now be live on your domain
   8. Create your own site
     - Write your own React components, create your own routes, and add your own style
       - Note that the example site is created with all inline styles and uses [React Interactive][reactInteractive] for the links and other interactive components (there is no CSS except for a reset in `index.html`)
     - Change the [title in `index.html`][indexHtmlTitle] and the [title in `404.html`][404htmlTitle] to your site's title
     - Remove the [favicon links][favicon] from the header of `index.html`
-    - Remove the [Google analytics script][googleAnalytics] from the header of `index.html` (the analytics function is wrapped in an `if` statement so that it will only run on the example site's domain (http://spa-github-pages.rafrex.com), but you don't need it, so remove it or replace it with your own analytics)
     - Change the readme, license and package.json as you see fit
     - For testing changes locally see development environment info below
-    - To publish your changes to GitHub Pages run `$ webpack -p` for [production][webpackProduction] to update the build, then `$ git commit` and `$ git push` to make your changes live
-      - Note that `$ webpack -p` is [overloaded in the webpack config][webpackConfigOverload] to make React run faster (e.g. no PropType checking, etc) and strip out dead code not needed in production (e.g. comments, etc)
+    - To publish your changes to GitHub Pages run `$ npm run build` (this runs `webpack -p` for [production][webpackProduction]) to update the build, then `$ git commit` and `$ git push` to make your changes live
+
 
 #### Development environment
 I have included `webpack-dev-server` for testing changes locally. It can be accessed by running `$ npm start` (details below), or you can use your own dev setup by running `$ webpack` and serving the `index.html` file and the `404.html` file for 404s. Note that `webpack-dev-server` automatically creates a new bundle whenever the source files change and serves the bundle from memory, so you'll never see the bundle as a file saved to disk.
-- `$ npm start` runs the [start script][startScript] in `package.json`, which runs the command `$ webpack-dev-server -d --inline --host 0.0.0.0 --history-api-fallback --progress`
-  - `-d` is for [development mode with source maps][webpackDevelopment]
-  - `--inline` runs the server in [inline mode][webpackInline] which means that it will automatically push changes to the browser so you don't have to refresh the page
-  - `--host 0.0.0.0` makes the server listen for requests from the local network and not just the localhost, this is very useful for testing your site on a mobile device connected to your local network
+- `$ npm start` runs the [start script][startScript] in `package.json`, which runs the command `$ webpack-dev-server --devtool eval-source-map --history-api-fallback --open`
+  - `-devtool eval-source-map` is for [generating source maps][webpackDevtool] in while in development
   - `--history-api-fallback` allows for frontend routing and will serve `index.html` when the requested file can't be found
-  - `--progress` shows the progress of the compilation in the command line
-- `webpack-dev-server` will serve `index.html` at `http://localhost:8080` (port 8080 is the default). Note that you must load the `index.html` from the server and not just open it directly in the browser or the scripts won't load.
+  - `--open` will open automatically open the site in your browser
+- `webpack-dev-server` will serve `index.html` at `http://localhost:8080` (port `8080` is the default). Note that you must load the `index.html` from the server and not just open it directly in the browser or the scripts won't load.
 
 #### Miscellaneous
 - The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
@@ -87,13 +84,11 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
 [404html]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html
 [segmentCount]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L26
 [indexHtmlScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L58
-[indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L113
+[indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L94
 [cnameFile]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/CNAME
 [indexHtmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L6
 [404htmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L5
 [favicon]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L34
-[googleAnalytics]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L90
-[webpackConfigOverload]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/webpack.config.babel.js#L21
 [startScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/package.json#L6
 
 <!-- links to github docs -->
@@ -108,8 +103,7 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
 [react]: https://github.com/facebook/react
 [reactRouter]: https://github.com/reactjs/react-router
 [seoLand]: http://searchengineland.com/tested-googlebot-crawls-javascript-heres-learned-220157
-[webpackProduction]: https://webpack.github.io/docs/cli.html#production-shortcut-p
-[webpackDevelopment]: https://webpack.github.io/docs/cli.html#development-shortcut-d
-[webpackInline]: https://webpack.github.io/docs/webpack-dev-server.html#inline-mode
+[webpackProduction]: https://webpack.js.org/guides/production-build/#the-automatic-way
+[webpackDevtool]: https://webpack.js.org/configuration/devtool/
 [reactInteractive]: https://github.com/rafrex/react-interactive
 [formspree]: http://formspree.io/

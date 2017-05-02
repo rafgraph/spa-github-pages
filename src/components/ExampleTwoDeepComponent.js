@@ -1,14 +1,16 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Interactive from 'react-interactive';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import { Li } from '../styles/style';
 import s from '../styles/exampleTwoDeepComponent.style';
 
 const propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-function ExampleTwoDeepComponent({ location }) {
-  const queryPresent = Object.keys(location.query).length !== 0;
+export default function ExampleTwoDeepComponent({ location }) {
+  const queryPresent = location.search !== '';
   const hashPresent = location.hash !== '';
 
   function queryStringTitle() {
@@ -43,14 +45,23 @@ function ExampleTwoDeepComponent({ location }) {
     );
   }
 
+  function parseQueryString() {
+    if (!queryPresent) return [];
+    return location.search
+      .replace('?', '')
+      .split('&')
+      .map(fvPair => fvPair.split('='))
+      .map(pair => [pair[0], pair.slice(1).join('=')]);
+  }
+
   return (
     <div>
       <div style={s.lineContainer}>
         <div>{queryStringTitle()}</div>
         <ul>
           {
-            Object.keys(location.query).map((field, index) => (
-              s.li(`${field}: ${location.query[field]}`, { key: index })
+            parseQueryString().map((pair, index) => (
+              <Li key={`${pair[0]}${pair[1]}${index}`}>{`${pair[0]}: ${pair[1]}`}</Li>
             ))
           }
         </ul>
@@ -58,7 +69,7 @@ function ExampleTwoDeepComponent({ location }) {
       <div style={s.lineContainer}>
         <div>{hashFragmentTitle()}</div>
         <ul>
-          {hashPresent ? s.li(location.hash.slice(1)) : undefined}
+          {hashPresent && <Li>{location.hash.slice(1)}</Li>}
         </ul>
       </div>
       {linkToShowQueryAndOrHash()}
@@ -67,5 +78,3 @@ function ExampleTwoDeepComponent({ location }) {
 }
 
 ExampleTwoDeepComponent.propTypes = propTypes;
-
-export default ExampleTwoDeepComponent;

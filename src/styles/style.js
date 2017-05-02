@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const link = {
   normal: {
@@ -35,31 +36,37 @@ export default {
     margin: '3vh 0',
     lineHeight: '1.4',
   },
+};
 
-  // generate text formatted as code
-  code: content => (
-    <code
-      style={{
-        fontFamily: 'monospace',
-        fontSize: '15px',
-        paddingLeft: '2px',
-      }}
-    >{content}</code>
-  ),
+export const Code = ({ children }) => (
+  <code
+    style={{
+      fontFamily: 'monospace',
+      fontSize: '15px',
+      paddingLeft: '2px',
+    }}
+  >{children}</code>
+);
 
-  // custom bullets for li items
-  li: (content, props) => (
-    <li
-      style={{
-        paddingLeft: '18px',
-        textIndent: '-15px',
-        margin: '0.5vh 0',
-        listStyle: 'none',
-      }}
-      {...props}
-    >
-      <span style={{ paddingRight: '7px' }}>&ndash;</span>
-      {content}
-    </li>
-  ),
+Code.propTypes = {
+  children: PropTypes.string.isRequired,
+};
+
+export const Li = ({ children, ...rest }) => (
+  <li
+    style={{
+      paddingLeft: '18px',
+      textIndent: '-15px',
+      margin: '0.5vh 0',
+      listStyle: 'none',
+    }}
+    {...rest}
+  >
+    <span style={{ paddingRight: '7px' }}>&ndash;</span>
+    {children}
+  </li>
+);
+
+Li.propTypes = {
+  children: PropTypes.string.isRequired,
 };
