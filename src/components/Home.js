@@ -1,9 +1,9 @@
 import React from 'react';
 import Interactive from 'react-interactive';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import s from '../styles/home.style';
 
-function Home() {
+export default function Home() {
   const repoReadmeLink = text => (
     <Interactive
       as="a"
@@ -43,5 +43,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;

@@ -1,42 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Interactive from 'react-interactive';
-import { Link } from 'react-router';
+import { Switch, Route } from 'react-router-dom';
+import Home from './Home';
+import ExampleComponent from './ExampleComponent';
+import PageNotFound from './PageNotFound';
+import Breadcrumbs from './Breadcrumbs';
 import s from '../styles/app.style';
 
-const propTypes = {
-  children: PropTypes.element.isRequired,
-  routes: PropTypes.array.isRequired,
-};
-
-function App({ children, routes }) {
-  function generateMapMenu() {
-    let path = '';
-
-    function nextPath(route) {
-      path += (
-        (path.slice(-1) === '/' ? '' : '/') +
-        (route.path === '/' ? '' : route.path)
-      );
-      return path;
-    }
-
-    return (
-      routes.filter(route => route.mapMenuTitle)
-        .map((route, index, array) => (
-          <span key={index}>
-            <Interactive
-              as={Link}
-              {...s.link}
-              to={nextPath(route)}
-            >{route.mapMenuTitle}</Interactive>
-            {(index + 1) < array.length && ' / '}
-          </span>
-        ))
-    );
-  }
-
-
+export default function App() {
   return (
     <div style={s.root}>
       <h1 style={s.title}>Single Page Apps for GitHub Pages</h1>
@@ -46,10 +17,17 @@ function App({ children, routes }) {
         style={s.repoLink}
         {...s.link}
       >https://github.com/rafrex/spa-github-pages</Interactive>
-      <nav style={s.mapMenu}>
-        {generateMapMenu()}
+
+      <nav style={s.breadcrumbs}>
+        <Breadcrumbs />
       </nav>
-      {children}
+
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/example" component={ExampleComponent} />
+        <Route component={PageNotFound} />
+      </Switch>
+
       <div style={s.creditLine}>
         <Interactive
           as="a"
@@ -65,7 +43,3 @@ function App({ children, routes }) {
     </div>
   );
 }
-
-App.propTypes = propTypes;
-
-export default App;

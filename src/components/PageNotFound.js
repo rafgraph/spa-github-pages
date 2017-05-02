@@ -6,7 +6,7 @@ const propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-function PageNotFound({ location }) {
+export default function PageNotFound({ location }) {
   return (
     <p style={s.p}>
       Page not found - the path, {s.code(location.pathname)},
@@ -16,5 +16,3 @@ function PageNotFound({ location }) {
 }
 
 PageNotFound.propTypes = propTypes;
-
-export default PageNotFound;

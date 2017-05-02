@@ -40,7 +40,7 @@ s.repoLink = {
   fontSize: '14px',
 };
 
-s.mapMenu = {
+s.breadcrumbs = {
   margin: '3vh 0',
 };
 
