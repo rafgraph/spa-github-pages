@@ -17,7 +17,7 @@
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-interactive": "^0.6.2",
+    "react-interactive": "^0.6.5",
     "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
