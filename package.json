@@ -1,6 +1,6 @@
 {
   "name": "spa-github-pages",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "private": true,
   "description": "Single Page Apps for GitHub Pages",
   "scripts": {
