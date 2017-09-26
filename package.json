@@ -18,7 +18,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-interactive": "^0.6.5",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
