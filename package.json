@@ -14,7 +14,7 @@
   "author": "Rafael Pedicini <code@rafrex.com>",
   "license": "MIT",
   "dependencies": {
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.6.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-interactive": "^0.6.5",
