@@ -81,7 +81,7 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
 <!-- links to within repo -->
 [404html]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html
 [segmentCount]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L26
-[indexHtmlScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L58
+[indexHtmlScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L58-L88
 [indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L94
 [cnameFile]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/CNAME
 [indexHtmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L6
