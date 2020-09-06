@@ -4,7 +4,7 @@
   "private": true,
   "description": "Single Page Apps for GitHub Pages",
   "scripts": {
-    "start": "webpack-dev-server --devtool eval-source-map --history-api-fallback --open",
+    "start": "webpack-dev-server --devtool eval-source-map --host 0.0.0.0 --disable-host-check",
     "build": "webpack -p"
   },
   "repository": {
@@ -17,7 +17,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-interactive": "^0.8.1",
+    "react-interactive": "^0.9.1",
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
