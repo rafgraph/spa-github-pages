@@ -74,7 +74,7 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
 
 #### Miscellaneous
 - The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
-- Need form submission on your static site? Use [Formspree][formspree]
+- Need form submission on your static site? Use [Getform][https://getform.io] [Formspree][formspree]
 - One of the great things about the GitHub Pages CDN is that all files are automatically compressed with gzip, so no need to worry about compressing your JavaScript, HTML or CSS files for production
 
 
