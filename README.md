@@ -1,8 +1,8 @@
 # Single Page Apps for GitHub Pages
 
-[Live example][liveExample]  
+[Demo app][demoApp]  
 
-This is a lightweight solution for deploying single page apps with [GitHub Pages][ghPagesOverview]. You can easily deploy a [React][react] single page app with [React Router][reactRouter] `<BrowserRouter />`, like the one in the [live example][liveExample], or a single page app built with any frontend library or framework.
+This is a lightweight solution for deploying single page apps with [GitHub Pages][ghPagesOverview]. You can easily deploy a [React][react] single page app with [React Router][reactRouter] `<BrowserRouter />`, like the one in the [demo app][demoApp], or a single page app built with any frontend library or framework.
 
 #### Why it's necessary
 GitHub Pages doesn't natively support single page apps. When there is a fresh page load for a url like `example.tld/foo`, where `/foo` is a frontend route, the GitHub Pages server returns 404 because it knows nothing of `/foo`.
@@ -27,12 +27,12 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
 &nbsp;
 
 **Detailed instructions** - using this repo as a boilerplate for a React single page app hosted with GitHub Pages  
-  1. Clone this repo (`$ git clone https://github.com/rafrex/spa-github-pages.git`)
+  1. Clone this repo (`$ git clone https://github.com/rafgraph/spa-github-pages.git`)
   2. Delete the `.git` directory (`cd` into the `spa-github-pages` directory and run `$ rm -rf .git`)
   3. Instantiate the repository
       - If you're using this boilerplate as a new repository
         - `$ git init` in the `spa-github-pages` directory, and then `$ git add .` and `$ git commit -m "Add SPA for GitHub Pages boilerplate"` to initialize a fresh repository
-        - If this will be a Project Pages site, then change the branch name from `master` to `gh-pages` (`$ git branch -m gh-pages`), if this will be a User or Organization Pages site, then leave the branch name as `master`
+        - If this will be a Project Pages site, then change the branch name from `main` to `gh-pages` (`$ git branch -m gh-pages`), if this will be a User or Organization Pages site, then leave the branch name as `main`
         - Create an empty repo on GitHub.com (don't add a readme, gitignore or license), and add it as a remote to the local repo (`$ git remote add origin <your-new-github-repo-url>`)
         - Feel free to rename the local `spa-github-pages` directory to anything you want (e.g. `your-project-name`)
       - If you're adding this boilerplate as the `gh-pages` branch of an existing repository
@@ -41,9 +41,9 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
         - Copy all of the files and directories (including hidden dot files) from the cloned `spa-github-pages` directory into your project's now empty directory (`$ mv path/to/spa-github-pages/{.[!.],}* path/to/your-projects-directory`)
         - `$ git add .` and `$ git commit -m "Add SPA for GitHub Pages boilerplate"` to instantiate the `gh-pages` branch
   4. Set up a custom domain (optional) - see GitHub Pages instructions for [setting up a custom domain][customDomain]
-      - Update the [`CNAME` file][cnameFile] with your custom domain, don't include `http://`, but do include a subdomain if desired, e.g. `www` or `your-subdomain`
+      - Update the [`CNAME` file][cnameFile] with your custom domain, don't include `https://`, but do include a subdomain if desired, e.g. `www` or `your-subdomain`
       - Update your `CNAME` and/or `A` record with your DNS provider
-      - Run `$ dig your-subdomain.your-domain.tld` to make sure it's set up properly with your DNS (don't include `http://`)
+      - Run `$ dig your-subdomain.your-domain.tld` to make sure it's set up properly with your DNS (don't include `https://`)
   5. Set up without using a custom domain (optional)
       - Delete the [`CNAME` file][cnameFile]
       - If you are creating a User or Organization Pages site, then that's all you need to do
@@ -53,12 +53,12 @@ A quick SEO note - while it's never good to have a 404 response, it appears base
           - Change the [bundle.js src][indexHtmlSPA] to `"/repo-name/build/bundle.js"`
         - If you are using React Router you'll need to tell it to use the `repo-name` as the `basename`, for example `<BrowserRouter basename="/repo-name" />`
   6. Run `$ npm install` to install React and other dependencies, and then run `$ npm run build` to update the build
-  7. `$ git add .` and `$ git commit -m "Update boilerplate for use with my domain"` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin master` for User or Organization Pages) - the example site should now be live on your domain
+  7. `$ git add .` and `$ git commit -m "Update boilerplate for use with my domain"` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin main` for User or Organization Pages) - the example site should now be live on your domain
   8. Create your own site
       - Write your own React components, create your own routes, and add your own style
         - Note that the example site is created with all inline styles and uses [React Interactive][reactInteractive] for the links and other interactive components (there is no CSS except for a reset in `index.html`)
       - Change the [title in `index.html`][indexHtmlTitle] and the [title in `404.html`][404htmlTitle] to your site's title
-      - Remove the [favicon links][favicon] from the header of `index.html`
+      - Remove the [favicon links][favicon] from the header of `index.html` and the [`favicon` directory][faviconDir].
       - Change the readme, license and package.json as you see fit
       - For testing changes locally see development environment info below
       - To publish your changes to GitHub Pages run `$ npm run build` (this runs `webpack -p` for [production][webpackProduction]) to update the build, then `$ git commit` and `$ git push` to make your changes live
@@ -70,24 +70,25 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
   - `-devtool eval-source-map` is for [generating source maps][webpackDevtool] in while in development
   - `--history-api-fallback` allows for frontend routing and will serve `index.html` when the requested file can't be found
   - `--open` will open automatically open the site in your browser
-- `webpack-dev-server` will serve `index.html` at `http://localhost:8080` (port `8080` is the default). Note that you must load the `index.html` from the server and not just open it directly in the browser or the scripts won't load.
+- `webpack-dev-server` will serve `index.html` at `https://localhost:8080` (port `8080` is the default). Note that you must load the `index.html` from the server and not just open it directly in the browser or the scripts won't load.
 
 #### Miscellaneous
 - The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
-- Need form submission on your static site? Use [Getform][https://getform.io] [Formspree][formspree]
+- Need form submission on your static site? Use [Formspree][formspree] or [Getform][getform]
 - One of the great things about the GitHub Pages CDN is that all files are automatically compressed with gzip, so no need to worry about compressing your JavaScript, HTML or CSS files for production
 
 
 <!-- links to within repo -->
-[404html]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html
-[segmentCount]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L26
-[indexHtmlScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L58-L88
-[indexHtmlSPA]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L94
-[cnameFile]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/CNAME
-[indexHtmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L6
-[404htmlTitle]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/404.html#L5
-[favicon]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/index.html#L34
-[startScript]: https://github.com/rafrex/spa-github-pages/blob/gh-pages/package.json#L6
+[404html]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html
+[segmentCount]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html#L26
+[indexHtmlScript]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L42-L70
+[indexHtmlSPA]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L77
+[cnameFile]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/CNAME
+[indexHtmlTitle]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L6
+[404htmlTitle]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html#L5
+[favicon]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L34
+[faviconDir]: https://github.com/rafgraph/spa-github-pages/tree/gh-pages/favicon
+[startScript]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/package.json#L6
 
 <!-- links to github docs -->
 [ghPagesOverview]: https://pages.github.com/
@@ -97,11 +98,12 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
 [nojekyll]: https://help.github.com/articles/files-that-start-with-an-underscore-are-missing/
 
 <!-- other links -->
-[liveExample]: http://spa-github-pages.rafrex.com
+[demoApp]: https://spa-github-pages.rafgraph.dev
 [react]: https://github.com/facebook/react
 [reactRouter]: https://github.com/ReactTraining/react-router
-[seoLand]: http://searchengineland.com/tested-googlebot-crawls-javascript-heres-learned-220157
+[seoLand]: https://searchengineland.com/tested-googlebot-crawls-javascript-heres-learned-220157
 [webpackProduction]: https://webpack.js.org/guides/production-build/#the-automatic-way
 [webpackDevtool]: https://webpack.js.org/configuration/devtool/
-[reactInteractive]: https://github.com/rafrex/react-interactive
-[formspree]: http://formspree.io/
+[reactInteractive]: https://github.com/rafgraph/react-interactive
+[formspree]: https://formspree.io/
+[getform]: https://getform.io

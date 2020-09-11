@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+    <g fill="#009000">
+        <path d="M0,12 h4 v4 h-4 z"/>
+        <path d="M6,12 h4 v4 h-4 z"/>
+        <path d="M12,12 h4 v4 h-4 z"/>
+    </g>
+    <g fill="#00A800">
+        <path d="M0,6 h4 v4 h-4 z"/>
+        <path d="M6,6 h4 v4 h-4 z"/>
+        <path d="M12,6 h4 v4 h-4 z"/>
+    </g>
+    <g fill="#00C000">
+        <path d="M0,0 h4 v4 h-4 z"/>
+        <path d="M6,0 h4 v4 h-4 z"/>
+        <path d="M12,0 h4 v4 h-4 z"/>
+    </g>
+</svg>

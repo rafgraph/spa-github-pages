@@ -13,10 +13,10 @@ export default function App() {
       <h1 style={s.title}>Single Page Apps for GitHub Pages</h1>
       <Interactive
         as="a"
-        href="https://github.com/rafrex/spa-github-pages"
+        href="https://github.com/rafgraph/spa-github-pages"
         style={s.repoLink}
         {...s.link}
-      >https://github.com/rafrex/spa-github-pages</Interactive>
+      >https://github.com/rafgraph/spa-github-pages</Interactive>
 
       <nav style={s.breadcrumbs}>
         <Breadcrumbs />
@@ -28,18 +28,6 @@ export default function App() {
         <Route component={PageNotFound} />
       </Switch>
 
-      <div style={s.creditLine}>
-        <Interactive
-          as="a"
-          href="http://www.rafaelpedicini.com"
-          interactiveChild
-          focus={{}}
-          touchActive={{}}
-          touchActiveTapOnly
-        >
-          Code and concept by <span {...s.childLink}>Rafael Pedicini</span>
-        </Interactive>
-      </div>
     </div>
   );
 }
