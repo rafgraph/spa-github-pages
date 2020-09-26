@@ -7,6 +7,7 @@ const breadCrumbTitles = {
   '': 'Home',
   example: 'Example',
   'two-deep': 'Two Deep',
+  'sitemap-link-generator': 'Sitemap Link Generator',
 };
 
 function BreadcrumbsItem({ match }) {

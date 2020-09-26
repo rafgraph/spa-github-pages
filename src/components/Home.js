@@ -32,6 +32,11 @@ export default function Home() {
           Example two deep with query and hash
         </InteractiveLink>
       </div>
+      <div style={s.pageLinkContainer}>
+        <InteractiveLink to="/sitemap-link-generator">
+          Sitemap Link Generator
+        </InteractiveLink>
+      </div>
     </div>
   );
 }
