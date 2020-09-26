@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Interactive from 'react-interactive';
-import { Link } from 'react-router-dom';
+import InteractiveLink from './InteractiveLink';
 import { Li } from '../styles/style';
 import s from '../styles/exampleTwoDeepComponent.style';
 
@@ -26,21 +25,22 @@ export default function ExampleTwoDeepComponent({ location }) {
   function linkToShowQueryAndOrHash() {
     if (queryPresent && hashPresent) return null;
 
-    const queryString = (queryPresent ? location.search : '?field1=foo&field2=bar');
-    const hashFragment = (hashPresent ? location.hash : '#boom!');
+    const queryString = queryPresent
+      ? location.search
+      : '?field1=foo&field2=bar';
+    const hashFragment = hashPresent ? location.hash : '#boom!';
 
     let linkText = '';
     if (queryPresent && !hashPresent) linkText = 'Show with hash fragment';
     if (!queryPresent && hashPresent) linkText = 'Show with query string';
-    if (!queryPresent && !hashPresent) linkText = 'Show with query string and hash fragment';
+    if (!queryPresent && !hashPresent)
+      linkText = 'Show with query string and hash fragment';
 
     return (
       <div style={s.lineContainer}>
-        <Interactive
-          as={Link}
-          to={`/example/two-deep${queryString}${hashFragment}`}
-          {...s.link}
-        >{linkText}</Interactive>
+        <InteractiveLink to={`/example/two-deep${queryString}${hashFragment}`}>
+          {linkText}
+        </InteractiveLink>
       </div>
     );
   }
@@ -50,27 +50,30 @@ export default function ExampleTwoDeepComponent({ location }) {
     return location.search
       .replace('?', '')
       .split('&')
-      .map(fvPair => fvPair.split('='))
-      .map(pair => [pair[0], pair.slice(1).join('=')]);
+      .map((fvPair) => fvPair.split('='))
+      .map((pair) => [pair[0], pair.slice(1).join('=')]);
   }
 
   return (
     <div>
+      <p style={s.p}>
+        This is an example page with query string and hash fragment. Refresh the
+        page or copy/paste the url to test out the redirect functionality (this
+        same page should load after the redirect).
+      </p>
       <div style={s.lineContainer}>
         <div>{queryStringTitle()}</div>
         <ul>
-          {
-            parseQueryString().map((pair, index) => (
-              <Li key={`${pair[0]}${pair[1]}${index}`}>{`${pair[0]}: ${pair[1]}`}</Li>
-            ))
-          }
+          {parseQueryString().map((pair, index) => (
+            <Li
+              key={`${pair[0]}${pair[1]}${index}`}
+            >{`${pair[0]}: ${pair[1]}`}</Li>
+          ))}
         </ul>
       </div>
       <div style={s.lineContainer}>
         <div>{hashFragmentTitle()}</div>
-        <ul>
-          {hashPresent && <Li>{location.hash.slice(1)}</Li>}
-        </ul>
+        <ul>{hashPresent && <Li>{location.hash.slice(1)}</Li>}</ul>
       </div>
       {linkToShowQueryAndOrHash()}
     </div>
