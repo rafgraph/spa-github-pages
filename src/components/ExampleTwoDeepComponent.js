@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import InteractiveLink from './InteractiveLink';
-import { Li } from '../styles/style';
-import s from '../styles/exampleTwoDeepComponent.style';
+import { Li, P } from './UI';
+
+const lineContainerStyle = {
+  margin: '3vh 0',
+};
 
 const propTypes = {
   location: PropTypes.object.isRequired,
@@ -37,7 +40,7 @@ export default function ExampleTwoDeepComponent({ location }) {
       linkText = 'Show with query string and hash fragment';
 
     return (
-      <div style={s.lineContainer}>
+      <div style={lineContainerStyle}>
         <InteractiveLink to={`/example/two-deep${queryString}${hashFragment}`}>
           {linkText}
         </InteractiveLink>
@@ -56,12 +59,12 @@ export default function ExampleTwoDeepComponent({ location }) {
 
   return (
     <div>
-      <p style={s.p}>
+      <P>
         This is an example page with query string and hash fragment. Refresh the
         page or copy/paste the url to test out the redirect functionality (this
         same page should load after the redirect).
-      </p>
-      <div style={s.lineContainer}>
+      </P>
+      <div style={lineContainerStyle}>
         <div>{queryStringTitle()}</div>
         <ul>
           {parseQueryString().map((pair, index) => (
@@ -71,7 +74,7 @@ export default function ExampleTwoDeepComponent({ location }) {
           ))}
         </ul>
       </div>
-      <div style={s.lineContainer}>
+      <div style={lineContainerStyle}>
         <div>{hashFragmentTitle()}</div>
         <ul>{hashPresent && <Li>{location.hash.slice(1)}</Li>}</ul>
       </div>
