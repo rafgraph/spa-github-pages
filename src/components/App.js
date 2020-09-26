@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import ExampleComponent from './ExampleComponent';
 import ExampleTwoDeepComponent from './ExampleTwoDeepComponent';
+import SitemapLinkGenerator from './SitemapLinkGenerator';
 import PageNotFound from './PageNotFound';
 import Breadcrumbs from './Breadcrumbs';
 import s from '../styles/app.style';
@@ -30,6 +31,11 @@ export default function App() {
           exact
           path="/example/two-deep"
           component={ExampleTwoDeepComponent}
+        />
+        <Route
+          exact
+          path="/sitemap-link-generator"
+          component={SitemapLinkGenerator}
         />
         <Route component={PageNotFound} />
       </Switch>
