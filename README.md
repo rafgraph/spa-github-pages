@@ -24,7 +24,7 @@ _For general information on using GitHub Pages please see [GitHub Pages Basics][
 **Basic instructions** - there are two things you need from this repo for your single page app to run on GitHub Pages
 
 1. Copy over the [`404.html`][404html] file to your repo as is
-   - Note that if you are setting up a Project Pages site and not using a [custom domain][customdomain] (i.e. your site's address is `username.github.io/repo-name`), then you need to set [`segmentCount` to `1` in the `404.html` file][segmentcount] in order to keep `/repo-name` in the path after the redirect. If you are using React Router you'll need to tell it to use the `repo-name` as the `basename`, for example `<BrowserRouter basename="/repo-name" />`.
+   - Note that if you are setting up a Project Pages site and not using a [custom domain][customdomain] (i.e. your site's address is `username.github.io/repo-name`), then you need to set [`pathSegmentsToKeep` to `1` in the `404.html` file][pathsegmentstokeep] in order to keep `/repo-name` in the path after the redirect. If you are using React Router you'll need to tell it to use the `repo-name` as the `basename`, for example `<BrowserRouter basename="/repo-name" />`.
 2. Copy the [redirect script][indexhtmlscript] in the `index.html` file and add it to your `index.html` file - Note that the redirect script must be placed _before_ your single page app script in your `index.html` file
    &nbsp;
 
@@ -51,7 +51,7 @@ _For general information on using GitHub Pages please see [GitHub Pages Basics][
    - Delete the [`CNAME` file][cnamefile]
    - If you are creating a User or Organization Pages site, then that's all you need to do
    - If you are creating a Project Pages site, (i.e. your site's address is `username.github.io/repo-name`):
-     - Set [`segmentCount` to `1` in the `404.html` file][segmentcount] in order to keep `/repo-name` in the path after the redirect
+     - Set [`pathSegmentsToKeep` to `1` in the `404.html` file][pathsegmentstokeep] in order to keep `/repo-name` in the path after the redirect
      - Add your `repo-name` to the absolute path of assets in `index.html`
        - Change the [bundle.js src][indexhtmlspa] to `"/repo-name/build/bundle.js"`
      - If you are using React Router you'll need to tell it to use the `repo-name` as the `basename`, for example `<BrowserRouter basename="/repo-name" />`
@@ -85,9 +85,9 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
 <!-- links to within repo -->
 
 [404html]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html
-[segmentcount]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html#L26
-[indexhtmlscript]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L42-L70
-[indexhtmlspa]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L77
+[pathsegmentstokeep]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html#L25
+[indexhtmlscript]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L42-L63
+[indexhtmlspa]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L70
 [cnamefile]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/CNAME
 [indexhtmltitle]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L6
 [404htmltitle]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html#L5
