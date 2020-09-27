@@ -11,8 +11,12 @@ const breadCrumbTitles = {
 };
 
 function BreadcrumbsItem({ match }) {
-  const title = breadCrumbTitles[match.url.split('/').slice(-1)];
-  const to = title === undefined ? '/' : match.url;
+  const path =
+    match.url.length > 1 && match.url[match.url.length - 1] === '/'
+      ? match.url.slice(0, -1)
+      : match.url;
+  const title = breadCrumbTitles[path.split('/').slice(-1)];
+  const to = title === undefined ? '/' : path;
 
   return (
     <span>

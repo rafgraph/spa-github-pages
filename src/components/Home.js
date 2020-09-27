@@ -3,16 +3,17 @@ import InteractiveLink from './InteractiveLink';
 import { Code, P } from './UI';
 
 const pageLinkContainerStyle = {
+  display: 'block',
   margin: '1vh 0',
 };
 
-export default function Home() {
-  const repoReadmeLink = (text) => (
-    <InteractiveLink href="https://github.com/rafgraph/spa-github-pages#readme">
-      {text}
-    </InteractiveLink>
-  );
+const RepoReadmeLink = () => (
+  <InteractiveLink href="https://github.com/rafgraph/spa-github-pages#readme">
+    repo readme
+  </InteractiveLink>
+);
 
+export default function Home() {
   return (
     <div>
       <P>
@@ -23,23 +24,24 @@ export default function Home() {
         incompatibility with single page apps (like this one).
       </P>
       <P>
-        Please see the {repoReadmeLink('repo readme')} for instructions on how
-        to use this boilerplate to deploy your own single page app using GitHub
-        Pages.
+        Please see the <RepoReadmeLink /> for instructions on how to use this
+        boilerplate to deploy your own single page app using GitHub Pages.
       </P>
-      <div style={pageLinkContainerStyle}>
-        <InteractiveLink to="/example">Example page</InteractiveLink>
-      </div>
-      <div style={pageLinkContainerStyle}>
-        <InteractiveLink to="/example/two-deep?field1=foo&field2=bar#boom!">
-          Example two deep with query and hash
-        </InteractiveLink>
-      </div>
-      <div style={pageLinkContainerStyle}>
+      <P>
+        <span style={pageLinkContainerStyle}>
+          <InteractiveLink to="/example">Example page</InteractiveLink>
+        </span>
+        <span style={pageLinkContainerStyle}>
+          <InteractiveLink to="/example/two-deep?field1=foo&field2=bar#boom!">
+            Example two deep with query and hash
+          </InteractiveLink>
+        </span>
+      </P>
+      <P>
         <InteractiveLink to="/sitemap-link-generator">
           Sitemap Link Generator
         </InteractiveLink>
-      </div>
+      </P>
     </div>
   );
 }
