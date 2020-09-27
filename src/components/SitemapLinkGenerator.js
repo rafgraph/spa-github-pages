@@ -67,7 +67,7 @@ export default function SitemapLinkGenerator() {
         Use this to generate sitemap links for your site. Search engines
         don&apos;t like 404s so you need to create a sitemap with the redirect
         path for each page instead of the normal path. For more info see the{' '}
-        <InteractiveLink href="https://github.com/rafgraph/spa-github-pages">
+        <InteractiveLink href="https://github.com/rafgraph/spa-github-pages#seo">
           readme
         </InteractiveLink>
         .

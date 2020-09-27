@@ -10,25 +10,23 @@ GitHub Pages doesn't natively support single page apps. When there is a fresh pa
 
 #### How it works
 
-When the GitHub Pages server gets a request for a path defined with frontend routes, e.g. `example.tld/foo`, it returns a custom `404.html` page. The [custom `404.html` page contains a script][404html] that takes the current url and converts the path and query string into just a query string, and then redirects the browser to the new url with only a query string and hash fragment. For example, `example.tld/one/two?a=b&c=d#qwe`, becomes `example.tld/?p=/one/two&q=a=b~and~c=d#qwe`.
+When the GitHub Pages server gets a request for a path defined with frontend routes, e.g. `example.tld/foo`, it returns a custom `404.html` page. The [custom `404.html` page contains a script][404html] that takes the current url and converts the path and query string into just a query string, and then redirects the browser to the new url with only a query string and hash fragment. For example, `example.tld/one/two?a=b&c=d#qwe`, becomes `example.tld/?/one/two&a=b~and~c=d#qwe`.
 
-The GitHub Pages server receives the new request, e.g. `example.tld?p=/...`, ignores the query string and hash fragment and returns the `index.html` file, which has a [script that checks for a redirect in the query string][indexhtmlscript] before the single page app is loaded. If a redirect is present it is converted back into the correct url and added to the browser's history with `window.history.replaceState(...)`, but the browser won't attempt to load the new url. When the [single page app is loaded][indexhtmlspa] further down in the `index.html` file, the correct url will be waiting in the browser's history for the single page app to route accordingly. (Note that these redirects are only needed with fresh page loads, and not when navigating within the single page app once it's loaded).
-
-A quick SEO note - while it's never good to have a 404 response, it appears based on [Search Engine Land's testing][seoland] that Google's crawler will treat the JavaScript `window.location` redirect in the `404.html` file the same as a 301 redirect for its indexing. From my testing I can confirm that Google will index all pages without issue, the only caveat is that the redirect query is what Google indexes as the url. For example, the url `example.tld/about` will get indexed as `example.tld/?p=/about`. When the user clicks on the search result, the url will change back to `example.tld/about` once the site loads.
+The GitHub Pages server receives the new request, e.g. `example.tld/?/...`, ignores the query string and returns the `index.html` file, which has a [script that checks for a redirect in the query string][indexhtmlscript] before the single page app is loaded. If a redirect is present it is converted back into the correct url and added to the browser's history with `window.history.replaceState(...)`, but the browser won't attempt to load the new url. When the [single page app is loaded][indexhtmlspa] further down in the `index.html` file, the correct url will be waiting in the browser's history for the single page app to route accordingly. (Note that these redirects are only needed with fresh page loads, and not when navigating within the single page app once it's loaded).
 
 ## Usage instructions
 
-_For general information on using GitHub Pages please see [GitHub Pages Basics][ghpagesbasics], note that pages can be [User, Organization or Project Pages][ghpagestypes]_  
+_For general information on using GitHub Pages please see [Getting Started with GitHub Pages][ghpagesbasics], note that pages can be [User, Organization or Project Pages][ghpagestypes]_  
 &nbsp;
 
-**Basic instructions** - there are two things you need from this repo for your single page app to run on GitHub Pages
+**Basic instructions** - there are two things you need from this repo for your single page app to run on GitHub Pages.
 
 1. Copy over the [`404.html`][404html] file to your repo as is
    - Note that if you are setting up a Project Pages site and not using a [custom domain][customdomain] (i.e. your site's address is `username.github.io/repo-name`), then you need to set [`pathSegmentsToKeep` to `1` in the `404.html` file][pathsegmentstokeep] in order to keep `/repo-name` in the path after the redirect. If you are using React Router you'll need to tell it to use the `repo-name` as the `basename`, for example `<BrowserRouter basename="/repo-name" />`.
-2. Copy the [redirect script][indexhtmlscript] in the `index.html` file and add it to your `index.html` file - Note that the redirect script must be placed _before_ your single page app script in your `index.html` file
+2. Copy the [redirect script][indexhtmlscript] in the `index.html` file and add it to your `index.html` file - Note that the redirect script must be placed _before_ your single page app script in your `index.html` file.
    &nbsp;
 
-**Detailed instructions** - using this repo as a boilerplate for a React single page app hosted with GitHub Pages
+**Detailed instructions** - using this repo as a boilerplate for a React single page app hosted with GitHub Pages.
 
 1. Clone this repo (`$ git clone https://github.com/rafgraph/spa-github-pages.git`)
 2. Delete the `.git` directory (`cd` into the `spa-github-pages` directory and run `$ rm -rf .git`)
@@ -52,9 +50,12 @@ _For general information on using GitHub Pages please see [GitHub Pages Basics][
    - If you are creating a User or Organization Pages site, then that's all you need to do
    - If you are creating a Project Pages site, (i.e. your site's address is `username.github.io/repo-name`):
      - Set [`pathSegmentsToKeep` to `1` in the `404.html` file][pathsegmentstokeep] in order to keep `/repo-name` in the path after the redirect
-     - Add your `repo-name` to the absolute path of assets in `index.html`
-       - Change the [bundle.js src][indexhtmlspa] to `"/repo-name/build/bundle.js"`
-     - If you are using React Router you'll need to tell it to use the `repo-name` as the `basename`, for example `<BrowserRouter basename="/repo-name" />`
+     - Add your `repo-name` to the absolute path of assets in `index.html`, change the [bundle.js src][indexhtmlspa] to `"/repo-name/build/bundle.js"`
+     - In React Router set the `basename` to `/repo-name` [here][browserrouter] like `<BrowserRouter basename="/repo-name" />`
+     - In the [start script][startscript] in `package.json` replace `--open` with `--open-page repo-name`
+     - In `webpack.config.js`:
+       - Add `repo-name` to the [`publicPath`][webpackpublicpath] like `publicPath: '/repo-name/build/'`
+       - Change the [`historyApiFallback rewrites`][webpackdevrewrites] to `rewrites: [{ from: /\/repo-name\/[^?]/, to: '/404.html' }]`
 6. Run `$ npm install` to install React and other dependencies, and then run `$ npm run build` to update the build
 7. `$ git add .` and `$ git commit -m "Update boilerplate for use with my domain"` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin main` for User or Organization Pages) - the example site should now be live on your domain
 8. Create your own site
@@ -62,9 +63,17 @@ _For general information on using GitHub Pages please see [GitHub Pages Basics][
      - Note that the example site is created with all inline styles and uses [React Interactive][reactinteractive] for the links and other interactive components (there is no CSS except for a reset in `index.html`)
    - Change the [title in `index.html`][indexhtmltitle] and the [title in `404.html`][404htmltitle] to your site's title
    - Remove the [favicon links][favicon] from the header of `index.html` and the [`favicon` directory][favicondir].
+   - Update or delete [`robots.txt`][robots] and [`sitemap.txt`][sitemap] as you see fit (see SEO section below for more info)
    - Change the readme, license and package.json as you see fit
    - For testing changes locally see development environment info below
    - To publish your changes to GitHub Pages run `$ npm run build` (this runs `webpack -p` for [production][webpackproduction]) to update the build, then `$ git commit` and `$ git push` to make your changes live
+
+**Serving from the `/docs` folder on the `main` branch** - alternatively you can serve your site from the `/docs` folder instead of the root folder while your source code remains in the root folder.
+
+1. After following the previous set of instructions for using this repo as a boilerplate, create a `/docs` folder in the root and move `index.html`, `404.html` and the `/build` folder into `/docs`
+2. Add `--content-base docs/` to the [start script][startscript] in `package.json`
+3. In `webpack.config.js` change the [output path][webpackoutputpath] to `` path: `${__dirname}/docs/build`, ``
+4. On GitHub in your repo settings select the `/docs` folder as the source for GitHub Pages
 
 #### Development environment
 
@@ -76,10 +85,13 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
   - `--open` will open automatically open the site in your browser
 - `webpack-dev-server` will serve `index.html` at `http://localhost:8080` (port `8080` is the default). Note that you must load the `index.html` from the server and not just open it directly in the browser or the scripts won't load.
 
+#### SEO
+
+When I first created this solution in 2016 Google treated the redirect in `404.html` the same as a 301 redirect and indexed pages without issue. Around 2019 Google changed their algorithm and no longer follows redirects in `404.html`. In order to have your site indexed by Google you need to create a [`robots.txt`][robots] and [`sitemap.txt`][sitemap] file to tell Google about the pages on your site. The `sitemap.txt` needs to contain the redirect links for each page of your site so the crawler doesn't get a 404 response when it requests the page. To make this easier I created a [sitemap link generator][sitemaplinkgenerator] that transforms normal links into redirect links to use in the sitemap. I have done this for the demo site (this repo) and you can see the [pages indexed here][googlesitesearch]. This is easy to do if you have a small site, but if you have a large site with lots of pages that need to be indexed I'd suggest looking for another solution. Some options are using GitHub Pages with a static site generator like [Gatsby][gatsby] which generates an `html` file for each page as part of its build process, or hosting your single page app on a service that has native support for spas, like [Netlify][netlify].
+
 #### Miscellaneous
 
-- The `.nojekyll` file in this repo [turns off Jekyll for GitHub Pages][nojekyll]
-- Need form submission on your static site? Use [Formspree][formspree] or [Getform][getform]
+- The `.nojekyll` file in this repo turns off Jekyll for GitHub Pages
 - One of the great things about the GitHub Pages CDN is that all files are automatically compressed with gzip, so no need to worry about compressing your JavaScript, HTML or CSS files for production
 
 <!-- links to within repo -->
@@ -91,26 +103,34 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
 [cnamefile]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/CNAME
 [indexhtmltitle]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L6
 [404htmltitle]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html#L5
+[browserrouter]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/src/index.js#L7
 [favicon]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L34
 [favicondir]: https://github.com/rafgraph/spa-github-pages/tree/gh-pages/favicon
+[robots]: https://github.com/rafgraph/spa-github-pages/blob/robots.txt
+[sitemap]: https://github.com/rafgraph/spa-github-pages/blob/sitemap.txt
+[webpackpublicpath]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L5
+[webpackoutputpath]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L4
+[webpackdevrewrites]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L17
 [startscript]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/package.json#L7
 
 <!-- links to github docs -->
 
 [ghpagesoverview]: https://pages.github.com/
-[ghpagesbasics]: https://help.github.com/categories/github-pages-basics/
-[ghpagestypes]: https://help.github.com/articles/user-organization-and-project-pages/
-[customdomain]: https://help.github.com/articles/quick-start-setting-up-a-custom-domain/
-[nojekyll]: https://help.github.com/articles/files-that-start-with-an-underscore-are-missing/
+[ghpagesbasics]: https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/getting-started-with-github-pages
+[ghpagestypes]: https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites
+[customdomain]: https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site
 
 <!-- other links -->
 
 [demoapp]: https://spa-github-pages.rafgraph.dev
+[sitemaplinkgenerator]: https://spa-github-pages.rafgraph.dev/sitemap-link-generator
 [react]: https://github.com/facebook/react
 [reactrouter]: https://github.com/ReactTraining/react-router
 [seoland]: https://searchengineland.com/tested-googlebot-crawls-javascript-heres-learned-220157
 [webpackproduction]: https://webpack.js.org/guides/production-build/#the-automatic-way
 [webpackdevtool]: https://webpack.js.org/configuration/devtool/
 [reactinteractive]: https://github.com/rafgraph/react-interactive
-[formspree]: https://formspree.io/
-[getform]: https://getform.io
+[googlesitesearch]: https://www.google.com/search?q=site%3Aspa-github-pages.rafgraph.dev&rlz=1C5CHFA_enUS781US781&oq=site%3Aspa-github-pages.rafgraph.dev
+[gatsby]: https://github.com/gatsbyjs/gatsby
+
+[netlify]: [https://www.netlify.com/blog/2020/04/07/creating-better-more-predictable-redirect-rules-for-spas/]
