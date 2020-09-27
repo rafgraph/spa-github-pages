@@ -20,6 +20,8 @@ const Input = ({ style, ...rest }) => (
       backgroundColor: 'white',
       padding: '1px 5px',
       border: '1px solid black',
+      borderRadius: '0',
+      WebkitAppearance: 'none',
       ...style,
     }}
     {...rest}
@@ -73,9 +75,11 @@ export default function SitemapLinkGenerator() {
       <P>
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label>
-          <Code>pathSegmentsToKeep</Code> (set in <Code>404.html</Code>):
+          <span style={{ marginRight: '10px' }}>
+            <Code>pathSegmentsToKeep</Code> (set in <Code>404.html</Code>):
+          </span>
           <Input
-            style={{ margin: '0 10px', width: '35px' }}
+            style={{ width: '40px' }}
             type="number"
             min="0"
             step="1"
