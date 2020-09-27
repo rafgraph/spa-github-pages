@@ -19,6 +19,7 @@ const rootStyle = {
   // space for vertical scroll bar without creating horizontal scroll bar
   // (if there is padding, the window will scroll horizontally to show the padding)
   maxWidth: 'calc(100vw - 40px)',
+  boxSizing: 'border-box',
 
   // center based on vw to prevent content jump when vertical scroll bar show/hide
   // note: vw/vh include the width of scroll bars. Note that centering using margin auto
