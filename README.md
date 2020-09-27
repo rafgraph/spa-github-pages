@@ -132,5 +132,4 @@ When I first created this solution in 2016 Google treated the redirect in `404.h
 [reactinteractive]: https://github.com/rafgraph/react-interactive
 [googlesitesearch]: https://www.google.com/search?q=site%3Aspa-github-pages.rafgraph.dev&rlz=1C5CHFA_enUS781US781&oq=site%3Aspa-github-pages.rafgraph.dev
 [gatsby]: https://github.com/gatsbyjs/gatsby
-
-[netlify]: [https://www.netlify.com/blog/2020/04/07/creating-better-more-predictable-redirect-rules-for-spas/]
+[netlify]: https://www.netlify.com/blog/2020/04/07/creating-better-more-predictable-redirect-rules-for-spas
