@@ -106,8 +106,8 @@ When I first created this solution in 2016 Google treated the redirect in `404.h
 [browserrouter]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/src/index.js#L7
 [favicon]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L34
 [favicondir]: https://github.com/rafgraph/spa-github-pages/tree/gh-pages/favicon
-[robots]: https://github.com/rafgraph/spa-github-pages/blob/robots.txt
-[sitemap]: https://github.com/rafgraph/spa-github-pages/blob/sitemap.txt
+[robots]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/robots.txt
+[sitemap]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/sitemap.txt
 [webpackpublicpath]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L5
 [webpackoutputpath]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L4
 [webpackdevrewrites]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L17
