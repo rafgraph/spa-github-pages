@@ -87,7 +87,7 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
 
 #### SEO
 
-When I first created this solution in 2016 Google treated the redirect in `404.html` the same as a 301 redirect and indexed pages without issue. Around 2019 Google changed their algorithm and no longer follows redirects in `404.html`. In order to have your site indexed by Google you need to create a [`robots.txt`][robots] and [`sitemap.txt`][sitemap] file to tell Google about the pages on your site. The `sitemap.txt` needs to contain the redirect links for each page of your site so the crawler doesn't get a 404 response when it requests the page. To make this easier I created a [sitemap link generator][sitemaplinkgenerator] that transforms normal links into redirect links to use in the sitemap. I have done this for the demo site (this repo) and you can see the [pages indexed here][googlesitesearch]. This is easy to do if you have a small site, but if you have a large site with lots of pages that need to be indexed I'd suggest looking for another solution. Some options are using GitHub Pages with a static site generator like [Gatsby][gatsby] which generates an `html` file for each page as part of its build process, or hosting your single page app on a service that has native support for spas, like [Netlify][netlify].
+When I first created this solution in 2016 Google treated the redirect in `404.html` the same as a 301 redirect and indexed pages without issue. Around 2019 Google changed their algorithm and no longer follows redirects in `404.html`. In order to have all the pages on your site indexed by Google you need to create a `robots.txt` and `sitemap.txt` file to let Google know what pages exist. The [`robots.txt`][robots] file needs to contain the location of the sitemap, and the [`sitemap.txt`][sitemap] file needs to contain the redirect links for each page of your site so the crawler doesn't get a 404 response when it requests the page. To make this easier I created a [sitemap link generator][sitemaplinkgenerator] that transforms normal links into redirect links to use in the sitemap. I have done this for the demo site (this repo) and you can see the [pages indexed here][googlesitesearch]. Note that since Google is no longer associating the redirect links with the real paths, incoming links from other sites won't help your site's page rank. If you are creating a site where page rank on generic search terms is important, then I'd suggest looking for another solution. Some options are using GitHub Pages with a static site generator like [Gatsby][gatsby] which generates an `html` file for each page as part of its build process, or hosting your single page app on a service that has native support for spas, like [Netlify][netlify].
 
 #### Miscellaneous
 
@@ -126,10 +126,9 @@ When I first created this solution in 2016 Google treated the redirect in `404.h
 [sitemaplinkgenerator]: https://spa-github-pages.rafgraph.dev/sitemap-link-generator
 [react]: https://github.com/facebook/react
 [reactrouter]: https://github.com/ReactTraining/react-router
-[seoland]: https://searchengineland.com/tested-googlebot-crawls-javascript-heres-learned-220157
 [webpackproduction]: https://webpack.js.org/guides/production-build/#the-automatic-way
 [webpackdevtool]: https://webpack.js.org/configuration/devtool/
 [reactinteractive]: https://github.com/rafgraph/react-interactive
-[googlesitesearch]: https://www.google.com/search?q=site%3Aspa-github-pages.rafgraph.dev&rlz=1C5CHFA_enUS781US781&oq=site%3Aspa-github-pages.rafgraph.dev
+[googlesitesearch]: https://www.google.com/search?q=site%3Aspa-github-pages.rafgraph.dev
 [gatsby]: https://github.com/gatsbyjs/gatsby
 [netlify]: https://www.netlify.com/blog/2020/04/07/creating-better-more-predictable-redirect-rules-for-spas
