@@ -26,7 +26,7 @@ _For general information on using GitHub Pages please see [Getting Started with 
 2. Copy the [redirect script][indexhtmlscript] in the `index.html` file and add it to your `index.html` file - Note that the redirect script must be placed _before_ your single page app script in your `index.html` file.
    &nbsp;
 
-**Detailed instructions** - using this repo as a boilerplate for a React single page app hosted with GitHub Pages.
+**Detailed instructions** - using this repo as a boilerplate for a React single page app hosted with GitHub Pages. Note that this boilerplate is written in TypeScript but is setup to accept JavaScript files as well. It was previously written in JS and if you prefer a JS only boilerplate you can use [version 6][spa-github-pages-v6].
 
 1. Clone this repo (`$ git clone https://github.com/rafgraph/spa-github-pages.git`)
 2. Delete the `.git` directory (`cd` into the `spa-github-pages` directory and run `$ rm -rf .git`)
@@ -77,13 +77,13 @@ _For general information on using GitHub Pages please see [Getting Started with 
 
 #### Development environment
 
-I have included `webpack-dev-server` for testing changes locally. It can be accessed by running `$ npm start` (details below), or you can use your own dev setup by running `$ webpack` and serving the `index.html` file and the `404.html` file for 404s. Note that `webpack-dev-server` automatically creates a new bundle whenever the source files change and serves the bundle from memory, so you'll never see the bundle as a file saved to disk.
+I have included `webpack-dev-server` for testing changes locally. It can be accessed by running `$ npm start` (details below). Note that `webpack-dev-server` automatically creates a new bundle whenever the source files change and serves the bundle from memory, so you'll never see the bundle as a file saved to disk.
 
-- `$ npm start` runs the [start script][startscript] in `package.json`, which runs the command `$ webpack-dev-server --devtool eval-source-map --host 0.0.0.0 --disable-host-check --open`
-  - `--devtool eval-source-map` is for [generating source maps][webpackdevtool] while in development
+- `$ npm start` runs the [start script][startscript] in `package.json`, which runs the command `$ webpack-dev-server --host 0.0.0.0 --disable-host-check --open`
   - `--host 0.0.0.0 --disable-host-check` is so you can access the site on your local network from other devices at `http://[YOUR COMPUTER'S IP ADDRESS]:8080`
   - `--open` will open automatically open the site in your browser
 - `webpack-dev-server` will serve `index.html` at `http://localhost:8080` (port `8080` is the default). Note that you must load the `index.html` from the server and not just open it directly in the browser or the scripts won't load.
+- You can also run the TypeScript compiler by running `$ npm run tsc`, this can be run at the same time as `webpack-dev-server` or separately, but it is not required (TypeScript errors will show up in the `webpack-dev-server` output).
 
 #### SEO
 
@@ -96,22 +96,23 @@ When I first created this solution in 2016 Google treated the redirect in `404.h
 
 <!-- links to within repo -->
 
-[404html]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html
-[pathsegmentstokeep]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html#L25
-[indexhtmlscript]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L42-L63
-[indexhtmlspa]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L70
-[cnamefile]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/CNAME
 [indexhtmltitle]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L6
+[favicon]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L28
+[indexhtmlscript]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L36-L57
+[indexhtmlspa]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L64
+[404html]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html
 [404htmltitle]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html#L5
-[browserrouter]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/src/index.js#L7
-[favicon]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L34
+[pathsegmentstokeep]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html#L25
+[browserrouter]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/src/index.tsx#L7
+[webpackoutputpath]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L6
+[webpackpublicpath]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L7
+[webpackdevrewrites]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L48
+[startscript]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/package.json#L7
+[cnamefile]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/CNAME
 [favicondir]: https://github.com/rafgraph/spa-github-pages/tree/gh-pages/favicon
 [robots]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/robots.txt
 [sitemap]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/sitemap.txt
-[webpackpublicpath]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L5
-[webpackoutputpath]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L4
-[webpackdevrewrites]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L17
-[startscript]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/package.json#L7
+[spa-github-pages-v6]: https://github.com/rafgraph/spa-github-pages/tree/v6.0.0
 
 <!-- links to github docs -->
 
@@ -127,7 +128,6 @@ When I first created this solution in 2016 Google treated the redirect in `404.h
 [react]: https://github.com/facebook/react
 [reactrouter]: https://github.com/ReactTraining/react-router
 [webpackproduction]: https://webpack.js.org/guides/production-build/#the-automatic-way
-[webpackdevtool]: https://webpack.js.org/configuration/devtool/
 [reactinteractive]: https://github.com/rafgraph/react-interactive
 [googlesitesearch]: https://www.google.com/search?q=site%3Aspa-github-pages.rafgraph.dev
 [gatsby]: https://github.com/gatsbyjs/gatsby

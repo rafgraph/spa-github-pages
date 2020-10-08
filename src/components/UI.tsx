@@ -1,7 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as CSS from 'csstype';
 
-export const P = ({ children, style, ...rest }) => (
+interface PProps {
+  style?: CSS.Properties;
+  children: React.ReactNode;
+}
+export const P: React.VFC<PProps> = ({ children, style, ...rest }) => (
   <p
     style={{
       margin: '3vh 0',
@@ -14,12 +18,10 @@ export const P = ({ children, style, ...rest }) => (
   </p>
 );
 
-P.propTypes = {
-  children: PropTypes.node,
-  style: PropTypes.object,
-};
-
-export const Code = ({ children }) => (
+interface CodeProps {
+  children: React.ReactText;
+}
+export const Code: React.VFC<CodeProps> = ({ children }) => (
   <code
     style={{
       fontFamily: 'monospace',
@@ -31,11 +33,10 @@ export const Code = ({ children }) => (
   </code>
 );
 
-Code.propTypes = {
-  children: PropTypes.string.isRequired,
-};
-
-export const Li = ({ children, ...rest }) => (
+interface LiProps {
+  children: React.ReactText;
+}
+export const Li: React.VFC<LiProps> = ({ children, ...rest }) => (
   <li
     style={{
       paddingLeft: '18px',
@@ -49,7 +50,3 @@ export const Li = ({ children, ...rest }) => (
     {children}
   </li>
 );
-
-Li.propTypes = {
-  children: PropTypes.string.isRequired,
-};

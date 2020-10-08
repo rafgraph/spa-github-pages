@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as CSS from 'csstype';
 import Interactive from 'react-interactive';
 import { Link } from 'react-router-dom';
 
@@ -24,15 +24,12 @@ const linkStyle = {
   touchActiveTapOnly: true,
 };
 
-const propTypes = {
-  href: PropTypes.string,
-  to: PropTypes.string,
-  children: PropTypes.node,
-};
+type InteractiveLinkProps = {
+  children: React.ReactNode;
+  style?: CSS.Properties;
+} & ({ href: string; to?: never } | { href?: never; to: string });
 
-export default function InteractiveLink(props) {
+export const InteractiveLink: React.VFC<InteractiveLinkProps> = (props) => {
   const as = props.href ? 'a' : Link;
   return <Interactive as={as} {...linkStyle} {...props} />;
-}
-
-InteractiveLink.propTypes = propTypes;
+};
