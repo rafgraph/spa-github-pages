@@ -1,17 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import InteractiveLink from './InteractiveLink';
+import * as React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
+import { InteractiveLink } from './InteractiveLink';
 import { Li, P } from './UI';
 
 const lineContainerStyle = {
   margin: '3vh 0',
 };
 
-const propTypes = {
-  location: PropTypes.object.isRequired,
-};
-
-export default function ExampleTwoDeepComponent({ location }) {
+export const ExampleTwoDeepComponent: React.VFC<RouteComponentProps> = ({
+  location,
+}) => {
   const queryPresent = location.search !== '';
   const hashPresent = location.hash !== '';
 
@@ -81,6 +79,4 @@ export default function ExampleTwoDeepComponent({ location }) {
       {linkToShowQueryAndOrHash()}
     </div>
   );
-}
-
-ExampleTwoDeepComponent.propTypes = propTypes;
+};

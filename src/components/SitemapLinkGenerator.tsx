@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as CSS from 'csstype';
 import Interactive from 'react-interactive';
-import InteractiveLink from './InteractiveLink';
+import { InteractiveLink } from './InteractiveLink';
 import { P, Code } from './UI';
 
-const propTypes = {
-  style: PropTypes.object,
-};
+interface InputProps {
+  style?: CSS.Properties;
+  type: string;
+  min?: string;
+  step?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+}
 
-const Input = ({ style, ...rest }) => (
+const Input: React.VFC<InputProps> = ({ style, ...rest }) => (
   <Interactive
     as="input"
     focus={{
@@ -28,11 +33,9 @@ const Input = ({ style, ...rest }) => (
   />
 );
 
-Input.propTypes = propTypes;
-
-export default function SitemapLinkGenerator() {
-  const [url, setUrl] = useState('');
-  const [segments, setSegments] = useState('0');
+export const SitemapLinkGenerator: React.VFC = () => {
+  const [url, setUrl] = React.useState('');
+  const [segments, setSegments] = React.useState('0');
   let sitemapLink;
 
   try {
@@ -108,4 +111,4 @@ export default function SitemapLinkGenerator() {
       </P>
     </div>
   );
-}
+};
