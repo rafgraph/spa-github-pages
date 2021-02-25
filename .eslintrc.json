@@ -6,8 +6,7 @@
     "project": "./tsconfig.json"
   },
   "env": {
-    "browser": true,
-    "node": true
+    "browser": true
   },
   "extends": [
     "eslint:recommended",
@@ -19,9 +18,7 @@
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "prettier",
-    "prettier/@typescript-eslint",
-    "prettier/react"
+    "prettier"
   ],
   "rules": {
     "import/no-default-export": "error"
