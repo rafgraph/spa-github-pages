@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Code, P } from './UI';
+import { P } from '../ui/Paragraph';
 
 interface PageNotFoundProps {
   location: { pathname: 'string' };
@@ -7,7 +7,7 @@ interface PageNotFoundProps {
 
 export const PageNotFound: React.VFC<PageNotFoundProps> = ({ location }) => (
   <P>
-    Page not found - the path, <Code>{location.pathname}</Code>, did not match
+    Page not found - the path, <code>{location.pathname}</code>, did not match
     any React Router routes.
   </P>
 );

@@ -60,7 +60,7 @@ _For general information on using GitHub Pages please see [Getting Started with 
 7. `$ git add .` and `$ git commit -m "Update boilerplate for use with my domain"` and then push to GitHub (`$ git push origin gh-pages` for Project Pages or `$ git push origin main` for User or Organization Pages) - the example site should now be live on your domain
 8. Create your own site
    - Write your own React components, create your own routes, and add your own style
-     - Note that the example site is created with all inline styles and uses [React Interactive][reactinteractive] for the links and other interactive components (there is no CSS except for a reset in `index.html`)
+     - Note that the example site is styled with [Stitches][stitches] and uses [React Interactive][reactinteractive] for the links and other interactive components.
    - Change the [title in `index.html`][indexhtmltitle] and the [title in `404.html`][404htmltitle] to your site's title
    - Remove the [favicon links][favicon] from the header of `index.html` and the [`favicon` directory][favicondir].
    - Update or delete [`robots.txt`][robots] and [`sitemap.txt`][sitemap] as you see fit (see SEO section below for more info)
@@ -83,7 +83,6 @@ I have included `webpack-dev-server` for testing changes locally. It can be acce
   - `--host 0.0.0.0 --disable-host-check` is so you can access the site on your local network from other devices at `http://[YOUR COMPUTER'S IP ADDRESS]:8080`
   - `--open` will open automatically open the site in your browser
 - `webpack-dev-server` will serve `index.html` at `http://localhost:8080` (port `8080` is the default). Note that you must load the `index.html` from the server and not just open it directly in the browser or the scripts won't load.
-- You can also run the TypeScript compiler by running `$ npm run tsc`, this can be run at the same time as `webpack-dev-server` or separately, but it is not required (TypeScript errors will show up in the `webpack-dev-server` output).
 
 #### SEO
 
@@ -97,13 +96,13 @@ When I first created this solution in 2016 Google treated the redirect in `404.h
 <!-- links to within repo -->
 
 [indexhtmltitle]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L6
-[favicon]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L28
-[indexhtmlscript]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L36-L57
-[indexhtmlspa]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L64
+[favicon]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L13
+[indexhtmlscript]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L21-L42
+[indexhtmlspa]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L49
 [404html]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html
 [404htmltitle]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html#L5
 [pathsegmentstokeep]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html#L25
-[browserrouter]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/src/index.tsx#L7
+[browserrouter]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/src/index.tsx#L8
 [webpackoutputpath]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L6
 [webpackpublicpath]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L7
 [webpackdevrewrites]: https://github.com/rafgraph/spa-github-pages/blob/gh-pages/webpack.config.js#L48
@@ -128,6 +127,7 @@ When I first created this solution in 2016 Google treated the redirect in `404.h
 [react]: https://github.com/facebook/react
 [reactrouter]: https://github.com/ReactTraining/react-router
 [webpackproduction]: https://webpack.js.org/guides/production-build/#the-automatic-way
+[stitches]: https://stitches.dev/
 [reactinteractive]: https://github.com/rafgraph/react-interactive
 [googlesitesearch]: https://www.google.com/search?q=site%3Aspa-github-pages.rafgraph.dev
 [gatsby]: https://github.com/gatsbyjs/gatsby

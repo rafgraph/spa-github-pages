@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Route, RouteComponentProps } from 'react-router-dom';
-import { InteractiveLink } from './InteractiveLink';
+import { InteractiveLink } from '../ui/InteractiveLink';
 
 interface breadCrumbTitlesInterface {
   [key: string]: string | undefined;

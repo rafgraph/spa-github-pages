@@ -1,37 +1,25 @@
 import * as React from 'react';
 import * as CSS from 'csstype';
-import Interactive from 'react-interactive';
-import { InteractiveLink } from './InteractiveLink';
-import { P, Code } from './UI';
+import { Interactive } from 'react-interactive';
+import { InteractiveLink } from '../ui/InteractiveLink';
+import { P } from '../ui/Paragraph';
+import { styled } from '../stitches.config';
 
-interface InputProps {
-  style?: CSS.Properties;
-  type: string;
-  min?: string;
-  step?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value: string;
-}
-
-const Input: React.VFC<InputProps> = ({ style, ...rest }) => (
-  <Interactive
-    as="input"
-    focus={{
-      outline: '2px solid rgb(0, 152, 0)',
-      outlineOffset: '-1px',
-    }}
-    style={{
-      lineHeight: '1.4',
-      backgroundColor: 'white',
-      padding: '1px 5px',
-      border: '1px solid black',
-      borderRadius: '0',
-      WebkitAppearance: 'none',
-      ...style,
-    }}
-    {...rest}
-  />
-);
+const InteractiveInput = styled(Interactive.Input, {
+  lineHeight: '1.4',
+  backgroundColor: '$formElementsBackground',
+  padding: '1px 5px',
+  border: '1px solid $highContrast',
+  borderRadius: '4px',
+  '&.focus': {
+    borderColor: '$green',
+    boxShadow: '0 0 0 1px $colors$green',
+  },
+  '&.focusFromKey': {
+    borderColor: '$purple',
+    boxShadow: '0 0 0 1px $colors$purple',
+  },
+});
 
 export const SitemapLinkGenerator: React.VFC = () => {
   const [url, setUrl] = React.useState('');
@@ -61,7 +49,6 @@ export const SitemapLinkGenerator: React.VFC = () => {
         .replace(/&/g, '~and~') +
       (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
       l.hash;
-    // eslint-disable-next-line no-empty
   } catch {}
 
   return (
@@ -76,30 +63,32 @@ export const SitemapLinkGenerator: React.VFC = () => {
         .
       </P>
       <P>
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label>
           <span style={{ marginRight: '10px' }}>
-            <Code>pathSegmentsToKeep</Code> (set in <Code>404.html</Code>):
+            <code>pathSegmentsToKeep</code> (set in <code>404.html</code>):
           </span>
-          <Input
-            style={{ width: '40px' }}
+          <InteractiveInput
+            css={{ width: '40px' }}
             type="number"
             min="0"
             step="1"
-            onChange={(e) => setSegments(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setSegments(e.target.value)
+            }
             value={segments}
           />
         </label>
       </P>
       <P>
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label>
           Page URL:
-          <Input
+          <InteractiveInput
             type="text"
-            onChange={(e) => setUrl(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setUrl(e.target.value)
+            }
             value={url}
-            style={{ width: '100%' }}
+            css={{ width: '100%' }}
           />
         </label>
       </P>

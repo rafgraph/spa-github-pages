@@ -1,11 +1,29 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { InteractiveLink } from './InteractiveLink';
-import { Li, P } from './UI';
+import { InteractiveLink } from '../ui/InteractiveLink';
+import { P } from '../ui/Paragraph';
+import { styled } from '../stitches.config';
 
-const lineContainerStyle = {
-  margin: '3vh 0',
-};
+const StyledLi = styled('li', {
+  paddingLeft: '18px',
+  textIndent: '-15px',
+  margin: '4px 0',
+  listStyle: 'none',
+});
+
+interface LiProps {
+  children: React.ReactText;
+}
+const Li: React.VFC<LiProps> = ({ children }) => (
+  <StyledLi>
+    <span style={{ paddingRight: '7px' }}>&ndash;</span>
+    {children}
+  </StyledLi>
+);
+
+const LineContainer = styled('div', {
+  margin: '20px 0',
+});
 
 export const ExampleTwoDeepComponent: React.VFC<RouteComponentProps> = ({
   location,
@@ -38,11 +56,11 @@ export const ExampleTwoDeepComponent: React.VFC<RouteComponentProps> = ({
       linkText = 'Show with query string and hash fragment';
 
     return (
-      <div style={lineContainerStyle}>
+      <LineContainer>
         <InteractiveLink to={`/example/two-deep${queryString}${hashFragment}`}>
           {linkText}
         </InteractiveLink>
-      </div>
+      </LineContainer>
     );
   }
 
@@ -62,7 +80,7 @@ export const ExampleTwoDeepComponent: React.VFC<RouteComponentProps> = ({
         page or copy/paste the url to test out the redirect functionality (this
         same page should load after the redirect).
       </P>
-      <div style={lineContainerStyle}>
+      <LineContainer>
         <div>{queryStringTitle()}</div>
         <ul>
           {parseQueryString().map((pair, index) => (
@@ -71,11 +89,11 @@ export const ExampleTwoDeepComponent: React.VFC<RouteComponentProps> = ({
             >{`${pair[0]}: ${pair[1]}`}</Li>
           ))}
         </ul>
-      </div>
-      <div style={lineContainerStyle}>
+      </LineContainer>
+      <LineContainer>
         <div>{hashFragmentTitle()}</div>
         <ul>{hashPresent && <Li>{location.hash.slice(1)}</Li>}</ul>
-      </div>
+      </LineContainer>
       {linkToShowQueryAndOrHash()}
     </div>
   );
