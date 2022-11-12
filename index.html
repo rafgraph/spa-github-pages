@@ -1,51 +1,318 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Single Page Apps for GitHub Pages</title>
-    <meta name="description" content="Lightweight solution for deploying single page apps with GitHub Pages.">
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - A Pen by Setiadji Ash Shiddiq</title>
+  <link rel="stylesheet" href="./style.css">
 
-    <style>
-      html { background-color: rgb(0, 120, 0); }
-    </style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html lang="en">
 
-    <!-- favicon -->
-    <link rel="icon" type=”image/svg+xml” href="/favicon/green-grid-144-168-192.svg">
-    <link rel="alternate icon" type="image/png" href="/favicon/green-grid-144-168-192-512x512.png">
-    <link rel="apple-touch-icon" href="/favicon/green-grid-144-168-192-180x180.png">
-    <link rel="manifest" href="/favicon/site.webmanifest">
-    <meta name="theme-color" content="#000000">
+<head>
 
-    <!-- Start Single Page Apps for GitHub Pages -->
-    <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
-      // This script checks to see if a redirect is present in the query string,
-      // converts it back into the correct url and adds it to the
-      // browser's history using window.history.replaceState(...),
-      // which won't cause the browser to attempt to load the new url.
-      // When the single page app is loaded further down in this file,
-      // the correct url will be waiting in the browser's history for
-      // the single page app to route accordingly.
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      }(window.location))
-    </script>
-    <!-- End Single Page Apps for GitHub Pages -->
+  <meta charset="UTF-8">
 
-  </head>
-  <body>
-    <div id="root"></div>
-    <!-- single page app in bundle.js -->
-    <script src="/build/bundle.js"></script>
-  </body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lana"Portfolio</title>
+
+  <!-- font awesome cdn link  -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+  <!-- custom css file link  -->
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <!-- header section starts  -->
+
+  <header>
+
+    <div class="user">
+
+      <img src="https://codepen.io/Setiadji/pen/wvXdyyP" alt="">
+
+      <h3 class="name">Setiadji Ash Shiddiq</h3>
+
+      <p class="post">Begineer Learning Code</p>
+
+    </div>
+
+    <nav class="navbar">
+
+      <ul>
+
+        <li><a href="#home">home</a></li>
+
+        <li><a href="#about">about</a></li>
+
+        <li><a href="#education">education</a></li>
+
+        <li><a href="#portfolio">portfolio</a></li>
+
+        <li><a href="#contact">contact</a></li>
+
+      </ul>
+
+    </nav>
+
+  </header>
+
+  <!-- header section ends -->
+
+  <div id="menu" class="fas fa-bars"></div>
+
+  <!-- home section starts  -->
+
+  <section class="home" id="home">
+
+    <h3>Halo !</h3>
+
+    <h1>Saya <span>Setiadji Ash Shiddiq</span></h1>
+
+    <p>Nama Ku Setiadji Ash Shiddiq , Kelaz 7 Smp , Umur Ku 14 Tahun , Aku Belajar Front End Devoloper , Tapi Masih Pemula 🙂 , Ini Adalah Website Portfolio Yang Ku Buat Dengan Recode SC Orang Hehehe😂😂 , Website Portfolio ini dibuat Dengan Github Pages 💻 </p>
+
+    <a href="#about"><button class="btn">about me <i class="fas fa-user"></i></button></a>
+
+  </section>
+
+  <!-- home section ends -->
+
+  <!-- about section starts  -->
+
+  <section class="about" id="about">
+
+    <h1 class="heading"> <span>about</span> me </h1>
+
+    <div class="row">
+
+      <div class="info">
+
+        <h3> <span> Nama : </span> Setiadji Ash Shiddiq </h3>
+
+        <h3> <span> Umur : </span> 14-15 Tahun </h3>
+
+        <h3> <span> Status : </span> --- </h3>
+
+        <h3> <span> Post : </span> Begineer Learning Code </h3>
+
+        <h3> <span> Lokasi in : </span> Indonesia </h3>
+
+        <a href="#"><button class="btn"> download CV <i class="fas fa-download"></i> </button></a>
+
+      </div>
+
+      <h1 class="heading"> <span>Kode Yang</span> Ku Pahami Sekarang </h1>
+
+      <div class="counter">
+
+        <div class="box">
+
+          <span>40%</span>
+
+          <h3>HTML Code</h3>
+
+        </div>
+
+        <div class="box">
+
+          <span>20%</span>
+
+          <h3>CSS Code</h3>
+
+        </div>
+
+        <div class="box">
+
+          <span>9%</span>
+
+          <h3>Java Script Code</h3>
+
+        </div>
+
+        <div class="box">
+
+          <span>100%</span>
+
+          <h3>Turu ?</h3>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- about section ends -->
+
+  <!-- education section starts  -->
+
+  <section class="education" id="education">
+
+    <h1 class="heading"> my <span>education</span> </h1>
+
+    <div class="box-container">
+
+      <div class="box">
+
+        <i class="fas fa-graduation-cap"></i>
+
+        <span>2017/2022</span>
+
+        <h3>Sekolah dasar </h3>
+
+        <p>Saya Bersekolah Di SD negeri 20 oku Karekan , Dari 2020-2022 , Sekarang Saya Telah Lulus , Dan Saya Melanjutkan Sekolah Saya Ke SMP negeri 13 oku </p>
+
+      </div>
+
+      <div class="box">
+
+        <i class="fas fa-graduation-cap"></i>
+
+        <span>2022-????</span>
+
+        <h3>SMP negeri 13 oku </h3>
+
+        <p>Setelah Lulus Di Sekolah Dasar , Saya MelanjutKan Sekolah Saya Ke SMP negeri 13 oku , Saya Sekarang Sedang Duduk Di Bangku Kelaz 7</p>
+
+      </div>
+
+      <div class="box">
+
+        <i class="fas fa-graduation-cap"></i>
+
+        <span>????/????</span>
+
+        <h3>SMP 13 oku Keterampilan</h3>
+
+        <p>Belum Ada Data</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- education section ends -->
+
+  <!-- portfolio section starts  -->
+
+  <section class="portfolio" id="portfolio">
+
+    <h1 class="heading"> Waifu <span>Ku 😅</span> </h1>
+
+    <div class="box-container">
+
+      <div class="box">
+
+        <img src="https://i.postimg.cc/BnjwTvVq/waifu2.jpg" alt="">
+
+      </div>
+
+      <div class="box">
+
+        <img src="https://i.postimg.cc/L6WMKGd8/waifu3.jpg" alt="">
+
+      </div>
+
+      <div class="box">
+
+        <img src="https://i.postimg.cc/dVnNcyZm/waifu4.jpg" alt="">
+
+      </div>
+
+      <div class="box">
+
+        <img src="https://i.postimg.cc/dVnNcyZm/waifu4.jpg" alt="">
+
+      </div>
+
+      <div class="box">
+
+        <img src="https://i.postimg.cc/Wb7cttJt/waifu-1.jpg" alt="">
+
+      </div>
+
+      <div class="box">
+
+        <img src="https://i.postimg.cc/GhK6dNZy/images-41.jpg" alt="">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- portfolio section ends -->
+
+  <!-- contact section starts  -->
+
+  <section class="contact" id="contact">
+
+    <h1 class="heading"> <span>contact</span> me </h1>
+
+    <div class="row">
+
+      <div class="content">
+
+        <h3 class="title">contact info</h3>
+
+        <div class="info">
+
+          <h3> <i class="fas fa-envelope"></i> adjibaturaja6@gmail.com </h3>
+
+          <h3> <i class="fas fa-envelope"></i> adjibaturaja6@gmail.com </h3>
+
+          <h3> <i class="fas fa-phone"> +62 812-9638-2470 </i> </h3>
+
+          <h3> <i class="fas fa-phone"> +62 812-9638-2470 </i> </h3>
+
+          <h3> <i class="fas fa-map-marker-alt"></i> Sumatera Selatan, Indonesia. </h3>
+
+        </div>
+
+      </div>
+
+      <form action="">
+
+        <input type="text" placeholder="name" class="box">
+
+        <input type="email" placeholder="email" class="box">
+
+        <input type="text" placeholder="project" class="box">
+
+        <textarea name="" id="" cols="30" rows="10" class="box message" placeholder="message"></textarea>
+
+        <button type="submit" class="btn"> send <i class="fas fa-paper-plane"></i> </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- contact section ends -->
+
+  <!-- scroll top button  -->
+
+  <a href="#home" class="top"> <img src="images/scroll-top-img.png" alt=""> </a>
+
+  <!-- jquery cdn link  -->
+
+  <!-- custom js file link  -->
+
+</body>
+
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
 </html>
